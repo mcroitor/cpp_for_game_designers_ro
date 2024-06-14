@@ -1,0 +1,41 @@
+CXX = g++
+CXXFLAGS = -O3 -c
+LDFLAGS = -lstdc++
+
+OBJDIR = ./obj
+BINDIR = ./bin
+
+APP = xoxo
+
+all: dirs clean compile link
+
+dirs:
+	@echo create structure
+	mkdir -p ${OBJDIR}
+	mkdir -p ${BINDIR}
+	@echo done
+
+clean:
+	@echo remove obj and exe files
+	rm -drf ${OBJDIR}/*
+	rm -drf ${BINDIR}/*.exe
+	@echo done
+
+compile: ${BINDIR}/board.dll ${BINDIR}/player.dll ${BINDIR}/engine.dll ${OBJDIR}/main.o
+
+${BINDIR}/board.dll:
+	${CXX} board.cpp -o${BINDIR}/board.dll -shared
+
+${BINDIR}/player.dll:
+	${CXX} player.cpp -o${BINDIR}/player.dll -shared
+
+${BINDIR}/engine.dll:
+	${CXX} engine.cpp -o${BINDIR}/engine.dll ${BINDIR}/player.dll ${BINDIR}/board.dll -shared
+
+${OBJDIR}/main.o:
+	${CXX} main.cpp -o${OBJDIR}/main.o ${CXXFLAGS} -c
+
+link:
+	@echo link
+	${CXX} -o${BINDIR}/${APP} ${OBJDIR}/main.o ${LDFLAGS} ${BINDIR}/engine.dll
+	@echo done

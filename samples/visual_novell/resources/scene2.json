@@ -1,0 +1,16 @@
+{
+    "name": "scene2",
+    "description": "This is the second scene",
+    "events": [
+        {
+            "name": "event1",
+            "message": "This is the first event in the second scene",
+            "nextScene": "scene3"
+        },
+        {
+            "name": "event2",
+            "message": "This is the second event in the second scene",
+            "nextScene": "outro"
+        }
+    ]
+}

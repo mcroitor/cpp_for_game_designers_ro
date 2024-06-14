@@ -1,0 +1,23 @@
+; dlltool -z point.def --export-all-symbols point.dll
+EXPORTS
+	CreatePoint @ 9
+;	Point::Point(Point const&)
+	_ZN5PointC1ERKS_ @ 12
+;	Point::Point(int, int)
+	_ZN5PointC1Eii @ 13
+;	Point::Point(Point const&)
+	_ZN5PointC2ERKS_ @ 14
+;	Point::Point(int, int)
+	_ZN5PointC2Eii @ 15
+;	Point::~Point()
+	_ZN5PointD1Ev @ 16
+;	Point::~Point()
+	_ZN5PointD2Ev @ 17
+;	Point::operator=(Point const&)
+	_ZN5PointaSERKS_ @ 18
+;	Point::GetX() const
+	_ZNK5Point4GetXEv @ 19
+;	Point::GetY() const
+	_ZNK5Point4GetYEv @ 20
+;	operator==(Point const&, Point const&)
+	_ZeqRK5PointS1_ @ 21

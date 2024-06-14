@@ -1,0 +1,11 @@
+{
+    "init": {},
+    "scenes": [
+        "intro",
+        "scene1",
+        "scene2",
+        "scene3",
+        "scene4",
+        "outro"
+    ]
+}
