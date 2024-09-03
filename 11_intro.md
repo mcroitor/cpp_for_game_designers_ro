@@ -24,7 +24,7 @@
 
 Limbajul C++ a fost creat de __Bjarne Stroustrup__ la inceputul anilor 80 ca o extensie a limbajului C, in care a vrut sa adauge anumite functionalitati ale limbajului Simula, si anume lucrul cu clase si obiecte. De aceea, la inceput, limbajul a fost numit "C cu clase" (_C with classes_). O descriere preliminara a limbajului a fost publicata sub forma unui raport tehnic la Bell Labs in aprilie 1980 [^1].
 
-In parcursul elaborarii limbajului Straustrup utiliza urmatoarele criterii:
+In parcursul elaborarii limbajului Stroustrup utiliza urmatoarele criterii:
 
 - un instrument bun trebuie sa ofere mijloace de organizare a programelor, similare celor existente in _Simula_: clase, forma ierarhiei lor, suport pentru paralelism si control puternic (adica static) al tipurilor, bazat pe clase. Aceste criterii i s-au parut esentiale pentru a sprijini procesul de proiectare, nu pentru implementarea programului;
 - trebuie sa genereze programe care sa ruleze la fel de repede ca cele scrise in _BCPL_ (predecesorul lui C) si sa aiba capacitatea de a uni module separate compilate intr-un singur program. Trebuie sa existe un acord simplu privind legaturile pentru a putea uni module scrise in diferite limbaje, cum ar fi C, Algol68, Fortran, BCPL, limbaj de asamblare etc. Altfel, programatorul va trebui sa lupte cu restrictiile impuse de un singur limbaj;
