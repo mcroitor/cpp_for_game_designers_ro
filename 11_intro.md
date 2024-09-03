@@ -45,7 +45,7 @@ Prima versiune a limbajului a fost accesibila publicului larg incepand cu anul 1
 
 In anul 1984 a fost implementat suportul functiilor virtuale, ceea ce a marcat inceputul suportului pentru programarea orientata pe obiect.
 
-Pentru nou limbaj creat Straustrup a dezvoltat translator (preprocesor) _cfront_ care traducea codul sursa in limbajul C. Acest preprocesor multi ani specifica traseu de dezvoltare a limbajului, dar dupa incercarea de a adauga in el suport pentru exceptii, a fost abandonat.
+Pentru nou limbaj creat Stroustrup a dezvoltat translator (preprocesor) _cfront_ care traducea codul sursa in limbajul C. Acest preprocesor multi ani specifica traseu de dezvoltare a limbajului, dar dupa incercarea de a adauga in el suport pentru exceptii, a fost abandonat.
 
 ## Filosofia limbajului
 
