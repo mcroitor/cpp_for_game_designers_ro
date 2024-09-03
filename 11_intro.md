@@ -233,6 +233,6 @@ Alt mediu de elaborare pentru C++ este [CLion](https://www.jetbrains.com/clion) 
 
 ## Bibliografie
 
-[^1]: [Страуструп Бьёрн, Дизайн и философия С++]
+[^1]: [Stroustrup Bjarne, The Design and Evolution of C++](https://www.stroustrup.com/dne.html)
 [^2]: [C++, Wikipedia](https://ru.wikipedia.org/wiki/C%2B%2B)
 [^3]: [C++23, Wikipedia](https://en.wikipedia.org/wiki/C%2B%2B23)
