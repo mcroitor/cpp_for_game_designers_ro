@@ -77,7 +77,7 @@ Aceste principii au definit urmatoarele obiective:
 - definitii locale sunt minunate;
 - se evita dependenta de ordine;
 - daca sunt indoieli, alegerea unei caracteristici care este mai usor de invatat;
-- sintaxa este importanta, chiar daca poate fi ilogica;
+- sintaxa este importanta, chiar daca poate fi neintuitiva;
 - utilizarea preprocesorului trebuie eliminata;
 - utilizarea unor linkeri traditionale;
 - fara incompatibilitati nejustificate cu C;
