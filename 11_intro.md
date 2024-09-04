@@ -128,7 +128,7 @@ Un scurt istoric al standardelor cu modificarile importante in ele:
   - corectii si imbunatatiri ale standardului _с++17_.
   - module.
   - corutine.
-  - a fost introdus operatorul "spaceship".
+  - a fost introdus operatorul `<=>`, numit comparatie in trei sensuri.
   - concepte.
   - constante de siruri ca parametri de sablon.
   - initializare numita a structurilor.
