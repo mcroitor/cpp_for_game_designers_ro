@@ -93,7 +93,7 @@ In anul 2003 a fost lansat un nou standard C++, care, cu toate acestea, a contin
 
 La elaborarea fiecarui capitol al viitorului standard al limbajului C++, se respecta urmatoarele reguli:
 
-1. sa se asigure stabilitatea limbajului si compatibilitatea cu C++98 si, pe cat posibil, cu C;
+1. sa se asigure stabilitatea limbajului si compatibilitatea, pe cat posibil, cu C++98 si cu C;
 2. se prefera introducerea de noi posibilitati prin intermediul bibliotecii standard, nu prin nucleul limbajului;
 3. se prefera schimbarile care imbunatatesc tehnica programarii;
 4. sa se imbunatateasca C++ din punct de vedere al proiectarii sistemului si al bibliotecii, in loc sa se introduca noi posibilitati utile pentru aplicatii individuale;
