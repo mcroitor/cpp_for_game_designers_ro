@@ -65,7 +65,7 @@ Aceste principii au definit urmatoarele obiective:
 - Intotdeauna ramane o cale de trecere;
 - C++ este un limbaj, nu un sistem complet;
 - Sa se ofere suport pentru fiecare stil de programare;
-- Sa nu se faca nimic fortat;
+- Sa nu se faca nimic forțat;
 - A se sustine metodele de proiectare stabilite;
 - A se oferi mijloace pentru organizarea programelor;
 - A se spune exact ceea ce se vrea;
@@ -100,8 +100,7 @@ La elaborarea fiecarui capitol al viitorului standard al limbajului C++, se resp
 5. sa se creasca siguranta tipurilor pentru a oferi o alternativa sigura la abordarile periculoase actuale;
 6. sa se creasca performanta si posibilitatea de a lucra direct cu partea hardware;
 7. sa se rezolve probleme reale si larg raspandite;
-8. sa se implementeze principiul "nu platiti pentru ceea ce nu folositi";
-9. sa se faca C++ mai usor de invatat fara a elimina posibilitatile utilizate de programatorii experti.
+8. sa se faca C++ mai usor de invatat fara a elimina posibilitatile utilizate de programatorii experti.
 
 Multa atentie este acordata programatorilor incepatori, care vor reprezenta intotdeauna o parte semnificativa a programatorilor. Multi incepatori nu incearca sa inteleaga in profunzime C++, limitandu-se la utilizarea acestuia in lucrul cu sarcini specifice. In plus, avand in vedere universalitatea C++ si diversitatea utilizarii sale (inclusiv varietatea aplicatiilor si stilurilor de programare), chiar si profesionistii pot fi incepatori atunci cand utilizeaza noi paradigme de programare.
 
@@ -120,7 +119,6 @@ Un scurt istoric al standardelor cu modificarile importante in ele:
   - a fost eliminate trigrarfele.
   - a fost eliminat cuvantul cheie __register__.
   - a fost eliminata operatia `++` pentru tipul `bool`.
-  - a fost eliminata lista de exceptii.
   - biblioteca pentru lucru cu sistemul de fisiere.
   - tip variabil `std::any`.
   - versiuni paralele pentru o serie de algoritmi.
@@ -128,7 +126,7 @@ Un scurt istoric al standardelor cu modificarile importante in ele:
   - corectii si imbunatatiri ale standardului _с++17_.
   - module.
   - corutine.
-  - a fost introdus operatorul `<=>`, numit comparatie in trei sensuri.
+  - a fost introdus operatorul `<=>`, numit comparatie in trei sensuri (_spaceship_ operator).
   - concepte.
   - constante de siruri ca parametri de sablon.
   - initializare numita a structurilor.
@@ -199,7 +197,7 @@ Exista multe medii de elaborare pentru C++, o parte din ele sunt prezentate mai 
 
 ![Dev-C++](./images/11_2_devcpp.png)
 
-[Dev-C++](https://sourceforge.net/projects/orwelldevcpp) este un mediu de elaborare gratuit pentru C++, destinat sistemului de operare Windows. Dev-C++ include un compilator MinGW, care permite compilarea programelor C++ sub Windows. Dev-C++ este un mediu de elaborare invechit, dar inca este utilizat pentru a invata programarea in C++ in scoli.
+[Dev-C++](https://github.com/Embarcadero/Dev-Cpp) este un mediu de elaborare gratuit pentru C++, destinat sistemului de operare Windows. Dev-C++ include un compilator MinGW, care permite compilarea programelor C++ sub Windows. Dev-C++ este un mediu de elaborare invechit, dar inca este utilizat pentru a invata programarea in C++ in școli.
 
 ### NetBeans
 
