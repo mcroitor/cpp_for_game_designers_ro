@@ -6,7 +6,7 @@ După executarea acestei lucrării de laborator student va face cunoștința cu 
 
 ## Sarcina
 
-Pentru simplificarea procesului de lucru se propune să se efectueze pașii în mediul de dezvoltare `Visual Studio Code`, și cu compilatorul instalat `MingW G++`. De asemenea, pe calculator trebuie să fie instalat `GIT`.
+Pentru simplificarea procesului de lucru se propune să se efectueze pașii în mediul de dezvoltare [`Visual Studio Code`](https://code.visualstudio.com/Download), și cu compilatorul instalat [`MinGW G++`](https://sourceforge.net/projects/mingw-w64/). De asemenea, pe calculator trebuie să fie instalat [`Git`](https://git-scm.com/downloads).
 
 ### 1. Crearea contului pe [GitHub](https://github.com/)
 
