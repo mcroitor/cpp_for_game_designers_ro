@@ -13,7 +13,10 @@ După executarea acestei lucrării de laborator student va face cunoștința cu 
    4. Minesweeper
    5. Pacman
    6. Dame
-   7. Rogue-like
+   7. Story Tale (text adventure)
+   8. Visual Novel
+   9. Rogue-like
+   10. etc.
 2. Înregistrați-vă pe [GitHub](https://github.com/).
 3. Creați un repozitoriu nou.
 4. Clonați repozitoriu pe calculator personal
