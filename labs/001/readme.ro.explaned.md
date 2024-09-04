@@ -172,7 +172,7 @@ git commit -m "structure defined"
 git push
 ```
 
-Dupa aceasta puteti adauga ramura creata la ramura `main`, creand un pull request pe GitHub.
+Dupa aceasta, puteti interclasa ramura `lab01` in ramura `main`, prin intermediul crearii unui pull request pe GitHub.
 
 ## Prezentare
 
