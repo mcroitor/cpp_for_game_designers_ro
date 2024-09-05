@@ -119,7 +119,8 @@ Cheia `-o` indică compilatorului să creeze un fișier obiect. În urma execut�
 
 ### Crearea fișierului de construcție
 
-În directorul proiectului creați fișierul `Makefile` cu următorul conținut:
+În directorul proiectului creați fișierul de construcție `Makefile` cu următorul conținut:
+
 
 ```makefile
 all: SnakeGame
