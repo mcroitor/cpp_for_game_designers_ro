@@ -21,7 +21,7 @@ După executarea acestei lucrării de laborator student va face cunoștința cu 
 3. Creați un repozitoriu nou.
 4. Clonați repozitoriu pe calculator personal
 5. Adăugați în repozitoriu fișier README.md cu descrierea proiectului
-6. Creați fișiere  `h` / `cpp` cu definirea structurilor de bază necesitate pentru proiect
+6. Creați fișiere `hpp` cu definirea structurilor de bază necesitate pentru proiect
 7. Plasați cod pe __GitHub__
 
 ## Prezentare
