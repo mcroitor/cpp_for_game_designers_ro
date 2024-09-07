@@ -99,7 +99,7 @@ Limbajul C++ conține un set de cuvinte cheie, care sunt rezervate pentru a desc
 - __struct__ - definește o structură
 - __switch__ - definește o structură de control cu mai multe cazuri
 - __typedef__ - definește un sinonim pentru un tip de date existent
-- __union__ - definește un tip de date care poate stoca mai multe tipuri de date
+- __union__ - definește un tip de date care poate stoca mai multe tipuri de date în aceeași zonă de memorie
 - __unsigned__ - definește un tip de date ca fiind fără semn
 - __void__ - definește un tip de date pentru funcții care nu returnează valoare
 - __volatile__ - definește o variabilă ca fiind volatilă
