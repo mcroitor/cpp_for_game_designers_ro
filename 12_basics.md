@@ -534,7 +534,7 @@ delete intPtr;
 
 ### Vectori
 
-Vectorii sunt structuri de date, care permit stocarea mai multor elemente de același tip. Vectorii se utilizează pentru stocarea unui număr mare de elemente de același tip.
+Vectorii sunt structuri de date, care permit stocarea congruentă mai multor elemente de același tip. Vectorii se utilizează pentru stocarea unui număr mare de elemente de același tip.
 
 Definirea unui vector se face prin specificarea tipului de date, urmat de numele vectorului și de dimensiunea vectorului între paranteze drepte. Acces către elementele vectorului se face cu ajutorul indicelui elementului.
 
