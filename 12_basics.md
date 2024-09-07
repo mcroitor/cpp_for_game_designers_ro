@@ -72,7 +72,7 @@ Exemple de identificatori:
 
 Limbajul C++ conține un set de cuvinte cheie, care sunt rezervate pentru a descrie programul. Acest set de cuvinte chei include cuvinte cheie din limbajul C. În versiunea C89 a limbajului C sunt definite 32 de cuvinte cheie.
 
-- __auto__ -  specifică că o variabilă este o variabilă locală și că valoarea sa este stocată în stiva de execuție. În versiunea C++11, cuvântul cheie auto este folosit pentru a declara o variabilă cu tipul de date al unei expresii.
+- __auto__ -  specifică că o variabilă este o variabilă locală și că valoarea sa este stocată în stiva de execuție. În versiunea C++11, cuvântul cheie _auto_ este folosit pentru a declara o variabilă cu tipul de date al unei expresii.
 - __break__ - iese din structura de control
 - __case__ - definește un caz într-o instrucțiune _switch_
 - __char__ - definește un tip de date pentru caractere
