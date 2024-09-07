@@ -75,7 +75,7 @@ void Painter::DrawImage(Point topLeft, Point bottomRight, char **image) {}
 void Painter::WriteText(Point position, char *text) {}
 ```
 
-6. `pont.cpp`
+6. `point.cpp`
 
 ```cpp
 #include "point.hpp"
