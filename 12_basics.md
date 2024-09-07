@@ -93,7 +93,7 @@ Limbajul C++ conține un set de cuvinte cheie, care sunt rezervate pentru a desc
 - __register__ - definește o variabilă ca fiind stocată într-un registru. Începând cu versiunea C++11, cuvântul cheie register este ignorat.
 - __return__ - returnează controlul la apelant
 - __short__ - definește un tip de date pentru numere întregi scurte
-- __signed__ - definește un tip de date ca fiind semnat
+- __signed__ - definește un tip de date ca fiind cu semn
 - __sizeof__ - returnează dimensiunea unui tip de date
 - __static__ - definește o variabilă ca fiind statică
 - __struct__ - definește o structură
