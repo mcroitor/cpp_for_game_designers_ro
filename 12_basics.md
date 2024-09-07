@@ -55,8 +55,8 @@ Identificatori sunt nume care se atribuie variabilelor, funcțiilor, constantelo
 Identificatorul se formează dintr-o secvență de caractere, care poate conține litere, cifre și simbolul de subliniere, conform regulilor:
 
 - identificatorul poate conține unul sau mai multe caractere;
-- identificatorul poate începe cu o literă sau cu simbolul de subliniere;
-- identificatorul poate conține litere, cifre și simbolul de subliniere;
+- identificatorul poate începe cu o literă sau cu simbolul `_` (de subliniere);
+- identificatorul poate conține litere, cifre și simbolul `_`;
 - identificatorul nu poate fi un cuvânt cheie.
 
 Caracterele majuscule și minuscule sunt considerate diferite, adică `sample` și `Sample` sunt două identificatori diferiți.
