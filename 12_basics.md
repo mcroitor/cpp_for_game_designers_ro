@@ -332,7 +332,7 @@ Dacă bloc de comenzi este format dintr-o singură comandă, atunci acoladele po
 ```cpp
 // bloc de comenzi contine o singura comanda, acoladele sunt omise, nu se recomandă
 if(/* conditie */)
-    // comando 1
+    // comanda 1
 else
     // comanda 2
 ```
