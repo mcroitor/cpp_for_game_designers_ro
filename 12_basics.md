@@ -417,7 +417,7 @@ Declarația funcției are următoarea structură:
 }
 ```
 
-Tipul de date întors este tipul de date al rezultatului funcției. Dacă funcția nu returnează niciun rezultat, atunci tipul de date întors este `void`.
+Tipul de date întors este tipul de date al rezultatului funcției. Dacă funcția nu returnează niciun rezultat, atunci tipul de date întors trebuie să fie `void`.
 
 Funcția poate fi apelată în orice loc al programului. 
 
