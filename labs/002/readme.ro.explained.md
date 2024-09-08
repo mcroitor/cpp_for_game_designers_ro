@@ -71,8 +71,8 @@ void GameEngine::Run() {/* ... */}
 ```cpp
 #include "painter.hpp"
 
-void Painter::DrawImage(Point topLeft, Point bottomRight, char **image) {}
-void Painter::WriteText(Point position, char *text) {}
+void Painter::DrawImage(Point topLeft, Point bottomRight, char **image) {/* ... */}
+void Painter::WriteText(Point position, char *text) {/* ... */}
 ```
 
 6. `point.cpp`
