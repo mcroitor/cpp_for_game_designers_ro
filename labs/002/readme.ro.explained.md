@@ -35,9 +35,9 @@ Pentru fiecare fișier `hpp` creat anterior, creați un fișier `cpp` corespunz�
 ```cpp
 #include "apple.hpp"
 
-Apple::Apple() {}
-Apple::Apple(const Point &position) {}
-Point Apple::GetPosition() const {}
+Apple::Apple() {/* ... */}
+Apple::Apple(const Point &position) {/* ... */}
+Point Apple::GetPosition() const {/* ... */}
 ```
 
 2. `board.cpp`
