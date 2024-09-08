@@ -86,12 +86,12 @@ void Painter::WriteText(Point position, char *text) {/* ... */}
 ```cpp
 #include "snake.hpp"
 
-Snake::Snake() {}
-Snake::Snake(const Point &_position) {}
-void Snake::Move(Direction direction) {}
-int Snake::GetSize() const {}
-Point Snake::GetPosition() const {}
-void Snake::Eat(const Apple &apple) {}
+Snake::Snake() {/* ... */}
+Snake::Snake(const Point &_position) {/* ... */}
+void Snake::Move(Direction direction) {/* ... */}
+int Snake::GetSize() const {/* ... */}
+Point Snake::GetPosition() const {/* ... */}
+void Snake::Eat(const Apple &apple) {/* ... */}
 ```
 
 Creati fisierul `main.cpp` care va contine punctul de intrare:
