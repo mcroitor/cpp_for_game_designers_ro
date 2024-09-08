@@ -2,7 +2,7 @@
 
 ## Scop
 
-În cadrul acestei lucrări, studentul va învăța să redefinească operatori, precum și să se familiarizeze cu definiția și opțiunile de utilizare a constructorilor. 
+În cadrul acestei lucrări, studentul va învăța să redefinească operatori, precum și să se familiarizeze cu definiția și opțiunile de utilizare a constructorilor.
 
 În plus, această lucrare va pregăti proiectul pentru a utiliza biblioteca standard C++.
 
@@ -25,3 +25,11 @@ Pentru fiecare structură de date care reprezintă date de joc, definiți
 La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 ## Evaluare
+
+- `2p` - implementarea constructorilor
+- `2p` - implementarea operatorilor de copiere
+- `2p` - implementarea operatorilor de comparație
+- `2p` - implementarea operatorilor de citire și afișare
+- `2p` - implementarea clasei abstracte de bază
+- `-1p` - pentru fiecare zi de întârziere
+- `-5p` - pentru plagiat
