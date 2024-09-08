@@ -61,9 +61,9 @@ int Board::GetHeight() const {/* ... */}
 ```cpp
 #include "game_engine.hpp"
 
-GameEngine::GameEngine() {}
-void GameEngine::Init() {}
-void GameEngine::Run() {}
+GameEngine::GameEngine() {/* ... */}
+void GameEngine::Init() {/* ... */}
+void GameEngine::Run() {/* ... */}
 ```
 
 5. `painter.cpp`
