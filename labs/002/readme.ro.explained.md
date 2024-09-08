@@ -45,9 +45,9 @@ Point Apple::GetPosition() const {/* ... */}
 ```cpp
 #include "board.hpp"
 
-Board::Board(int width, int height) {}
-int Board::GetWidth() const {}
-int Board::GetHeight() const {}
+Board::Board(int width, int height) {/* ... */}
+int Board::GetWidth() const {/* ... */}
+int Board::GetHeight() const {/* ... */}
 ```
 
 3. `direction.cpp`
