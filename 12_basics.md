@@ -1,236 +1,247 @@
 # Bazele limbajului C++
 
 - [Bazele limbajului C++](#bazele-limbajului-c)
-  - [Elemente de limbaj](#elemente-de-limbaj)
+  - [Elementele limbajului C++](#elementele-limbajului-c)
     - [Constante](#constante)
-    - [identificatoare](#identificatoare)
+    - [Identificatori](#identificatori)
     - [Cuvinte cheie](#cuvinte-cheie)
-    - [simboluri speciale](#simboluri-speciale)
+    - [Simboluri speciale](#simboluri-speciale)
     - [Comentarii](#comentarii)
   - [Tipuri de date de bază și variabile](#tipuri-de-date-de-bază-și-variabile)
     - [Numere întregi](#numere-întregi)
-    - [Действительные числа](#действительные-числа)
-    - [Логический тип](#логический-тип)
-    - [Переменные](#переменные)
-  - [Базовые структуры](#базовые-структуры)
-    - [Ветвления](#ветвления)
-    - [Выбор](#выбор)
-    - [Циклы](#циклы)
-      - [Цикл со счетчиком](#цикл-со-счетчиком)
-      - [Цикл с предусловием](#цикл-с-предусловием)
-      - [Цикл с постусловием:](#цикл-с-постусловием)
-    - [Функции](#функции)
-  - [Управление памятью](#управление-памятью)
-    - [Cсылки](#cсылки)
-    - [Указатели](#указатели)
-    - [Выделение и освобождение памяти](#выделение-и-освобождение-памяти)
-    - [Массивы](#массивы)
+    - [Numere reale](#numere-reale)
+    - [Tip de date logic](#tip-de-date-logic)
+    - [Variabile](#variabile)
+  - [Structuri de bază](#structuri-de-bază)
+    - [Ramificații](#ramificații)
+    - [Ramificații multiple](#ramificații-multiple)
+    - [Bucle](#bucle)
+      - [Bucla cu contor](#bucla-cu-contor)
+      - [Bucla cu precondiție](#bucla-cu-precondiție)
+      - [Bucla cu postcondiție](#bucla-cu-postcondiție)
+    - [Funcții](#funcții)
+  - [Gestionarea memoriei](#gestionarea-memoriei)
+    - [Pointeri](#pointeri)
+    - [Referințe](#referințe)
+    - [Alocarea și eliberarea memoriei](#alocarea-și-eliberarea-memoriei)
+    - [Vectori](#vectori)
+  - [Bibliografie](#bibliografie)
 
-## Elemente de limbaj
+## Elementele limbajului C++
 
-Limbajul C++ la fel ca orice alt limbaj este definit de următoarele elemente:
+Limbajul C++ ca orice alt limbaj se definește prin elementele următoare
 
- - __constante__ - definesc datele programului;
- - __identificatori__ - permit denumirea de containere de date și algoritmi pentru utilizarea lor;
- - __cuvinte cheie__ - cuvinte rezervate de limbaj, destinate descrierii programelor;
- - __simboluri speciale__ - caractere de punctuație cu o semnificație specială, în funcție de context;
- - __comentarii__ - blocuri de text care nu sunt traduse în cod binar, destinate explicării codului programului.
+- __constante__ - definesc datele programului;
+- __identificatori__ - permit denumirea stocării datelor și algoritmilor pentru utilizarea lor;
+- __cuvinte cheie__ - cuvinte rezervate de limbaj, destinate descrierii programelor;
+- __simboluri speciale__ - semne de punctuație, cu semnificație specială, în funcție de context;
+- __comentarii__ - blocuri de text, care nu sunt traduse în cod binar, destinate explicării codului programului.
 
 ### Constante
 
-Constantele sunt valori imutabile și pot fi reprezentate de un număr (întreg sau real), un caracter sau o secvență de caractere (șir de caractere).
+Constantele sunt valori care nu se schimbă pe parcursul programului. Ele pot fi reprezentate de numere (întregi sau reale), simboluri sau secvențe de caractere (șiruri de caractere).
 
-Exemple de constante:
- * `1`, `-12l`, `0b0010011`, `01237`, `0xab` - numere intregi 
- * `1.0`, `-2.32e+05`, `1.0e-5` - numere reale
- * `'a'`, `'U'`, `'\n'`, `'\0xa3'`, `'\200'` - simboluri 
- * `"this is a string"`, `""`, `"\13\255\32\32"` - șiruri de caractere 
+Aici puteți găsi exemple de constante:
 
-### identificatoare
+- `1`, `-12l`, `0b0010011`, `01237`, `0xab` - numere întregi
+- `1.0`, `-2.32e+05`, `1.0e-5` - numere reale
+- `'a'`, `'U'`, `'\n'`, `'\0xa3'`, `'\200'` - caractere
+- `"this is a string"`, `""`, `"\13\255\32\32"` - șiruri de caractere
 
-Identificatorii sunt numele variabilelor, funcțiilor, constantelor și tipurilor de date personalizate.
+### Identificatori
 
-Un identificator este o secvență de caractere utilizată pentru a denumi:
+Identificatori sunt nume care se atribuie variabilelor, funcțiilor, constantelor și altor elemente programelor.
 
- * Un identificator constă dintr-unul sau mai multe caractere.
- * Un identificator poate începe cu un caracter de subliniere sau cu o literă din alfabetul latin.
- * După primul caracter din identificator poate urma un caracter de subliniere, litere din alfabetul latin sau cifre.
- * Nu se pot utiliza cuvinte cheie ca identificatori.
+Identificatorul se formează dintr-o secvență de caractere, care poate conține litere, cifre și simbolul de subliniere, conform regulilor:
 
-Caracterele majuscule și minuscule sunt diferite! ( `sample` != `Sample` )
+- identificatorul poate conține unul sau mai multe caractere;
+- identificatorul poate începe cu o literă sau cu simbolul `_` (de subliniere);
+- identificatorul poate conține litere, cifre și simbolul `_`;
+- identificatorul nu poate fi un cuvânt cheie.
 
-Exemple:
- - `sample`
- - `_my_variable`
- - `THIS_IS_A_CONSTANT`
- - `MyVariable10`
+Caracterele majuscule și minuscule sunt considerate diferite, adică `sample` și `Sample` sunt două identificatori diferiți.
+
+Exemple de identificatori:
+
+- `sample`
+- `_my_variable`
+- `THIS_IS_A_CONSTANT`
+- `MyVariable10`
 
 ### Cuvinte cheie
 
-În standardului С89 a limbajului C sunt definite 32 cuvinte chei.
+Limbajul C++ conține un set de cuvinte cheie, care sunt rezervate pentru a descrie programul. Acest set de cuvinte chei include cuvinte cheie din limbajul C. În versiunea C89 a limbajului C sunt definite 32 de cuvinte cheie.
 
- - __auto__ — Instruiți compilatorului să deducă tipul unei variabile pe baza tipului valorii atribuite
- - __break__ — Operator de ieșire în buclă
- - __case__ — Operator pentru specificarea unei alegeri (utilizat împreună cu _switch_)
- - __char__ — Tip de date caracter
- - __const__ — Obiectele de tip _const_ nu pot fi modificate de program în timpul execuției sale
- - __continue__ — Operatorul de continuare a buclei, omite instrucțiunile rămase până la sfârșitul blocului
- - __default__ — Operator de selecție implicit
- - __do__ — Operator buclă cu postcondiție fără contor
- - __double__ — Tip de date cu precizie dublă în virgulă mobilă
- - __else__ — Operatorul condiționat "else"
- - __enum__ — Tip de date personalizat "tip de enumerare"
- - __extern__ — Specificator de tip pentru a indica compilatorului legarea externă a unei variabile
- - __float__ — Tip de date cu virgulă mobilă
- - __for__ — Operator buclă cu precondiție, cu contor
- - __goto__ — Operator de salt necondiționat
- - __if__ — Operator condițional "dacă".
- - __int__ — Tip de date întreg
- - __long__ — Modificator de tip de date pentru definirea variabilelor lungi
- - __register__ — Specificator de tip pentru stocarea unei variabile în registrele procesorului
- - __return__ — Operator pentru returnarea unei valori dintr-o funcție
- - __short__ — Modificator de tip de date pentru definirea variabilelor scurte
- - __signed__ — Modificator de tip de date pentru definirea variabilelor semnate
- - __sizeof__ — Operator folosit pentru a determina dimensiunea unui tip de date la momentul compilării
- - __static__ - Spune compilatorului să stocheze o variabilă locală pe parcursul ciclului de viață al programului
- - __struct__ — Tip de date personalizat "structură"
- - __switch__ — Operator de selecție
- - __typedef__ — Operator pentru a crea un nou nume de tip de date
- - __union__ — Tip de date personalizat "union"
- - __unsigned__ — Modificator de tip de date pentru definirea variabilelor nesemnate
- - __void__ — Tip de date gol
- - __volatile__ — Calificatorul de tip îi spune compilatorului că valoarea variabilei poate fi modificată prin mijloace specificate implicit în program
- - __while__ — Operator buclă cu precondiție, fără contor
+- __auto__ -  specifică că o variabilă este o variabilă locală și că valoarea sa este stocată în stiva de execuție. În versiunea C++11, cuvântul cheie _auto_ este folosit pentru a declara o variabilă cu tipul de date al unei expresii.
+- __break__ - iese din structura de control
+- __case__ - definește un caz într-o instrucțiune _switch_
+- __char__ - definește un tip de date pentru caractere
+- __const__ - definește o variabilă ca fiind constantă
+- __continue__ - trece la următoarea iterație a unei structuri de control
+- __default__ - definește o acțiune implicită într-o instrucțiune _switch_
+- __do__ - definește o buclă cu postcondiție
+- __double__ - definește un tip de date pentru numere cu virgulă mobilă dublă
+- __else__ - definește o acțiune alternativă într-o structură de control
+- __enum__ - definește un tip de date enumerat
+- __extern__ - definește o variabilă ca fiind externă și că este definită în altă parte
+- __float__ - definește un tip de date pentru numere cu virgulă mobilă
+- __for__ - definește o buclă cu condiție
+- __goto__ - transferă controlul la o etichetă
+- __if__ - definește o structură de control cu condiție
+- __int__ - definește un tip de date pentru numere întregi
+- __long__ - definește un tip de date pentru numere întregi lungi
+- __register__ - definește o variabilă ca fiind stocată într-un registru. Începând cu versiunea C++11, cuvântul cheie register este ignorat.
+- __return__ - returnează controlul la apelant
+- __short__ - definește un tip de date pentru numere întregi scurte
+- __signed__ - definește un tip de date ca fiind cu semn
+- __sizeof__ - returnează dimensiunea unui tip de date
+- __static__ - definește o variabilă ca fiind statică
+- __struct__ - definește o structură
+- __switch__ - definește o structură de control cu mai multe cazuri
+- __typedef__ - definește un sinonim pentru un tip de date existent
+- __union__ - definește un tip de date care poate stoca mai multe tipuri de date în aceeași zonă de memorie
+- __unsigned__ - definește un tip de date ca fiind fără semn
+- __void__ - definește un tip de date pentru funcții care nu returnează valoare
+- __volatile__ - definește o variabilă ca fiind modificabilă, în mod neprezicător, de factorii externi. Ca rezultat, se suprimă anumite optimizări de citire/înscriere asupra variabilei
+- __while__ - definește o buclă cu precondiție
 
-Limbajul C++ conține toate cuvinte chei ale limbajului C, standard _C89_ inclusiv următoarele:
+În afară de cuvintele cheie din C, C++ conține și cuvinte cheie suplimentare:
 
- - __asm__ — Cuvânt cheie pentru inserarea uneia sau mai multor instrucțiuni de asamblare
- - __bool__ — tip de date boolean
- - __catch__ — Bloc de program care conține acea parte a programului care gestionează eroarea
- - __class__ — Tip de date personalizat "class"
- - __const_cast__ — Operatorul de tip casting, folosit pentru a suprascrie în mod explicit modificatorii _const_ și/sau _volatile_
- - __delete__ — Operatorul eliberează memoria indicată de argument
- - __dynamic_cast__ — Operator de turnare de tip, verifică legalitatea efectuării unei operațiuni de turnare de tip dat
- - __explicit__ — Un constructor definit cu specificatorul _explicit_ va fi folosit numai dacă inițializarea este exact aceeași cu cea specificată de constructor
- - __export__ - Un cuvânt cheie care permite altor fișiere să utilizeze un șablon declarat într-un alt fișier specificând doar declarația acestuia.
- - __false__ — O constantă logică care are valoarea "false".
- - __friend__ — Cuvântul cheie definește funcțiile sau clasele de prieteni
- - __inline__ — Specificator folosit pentru a plasa corpul unei funcții direct în textul programului
- - __mutable__ — Specificatorul de tip permite unui membru al unui obiect să suprascrie proprietatea de persistență
- - __namespace__ — Cuvânt cheie pentru crearea unui spațiu de nume
- - __new__ — Operatorul alocă memorie dinamică și returnează un pointer de tipul adecvat în această zonă de memorie
- - __operator__ — Cuvântul cheie operator este folosit pentru a crea funcții de operator supraîncărcate
- - __private__ — specificatorul de acces "privat" care determină modul în care este moștenită clasa de bază
- - __protected__ — specificatorul de acces "protejat" care determină modul în care este moștenită clasa de bază
- - __public__ — specificatorul de acces "public" care determină modul în care este moștenită clasa de bază
- - __reinterpret_cast__ - Operator de turnare tip, convertește un tip într-unul complet diferit
- - __static_cast__ — Operator de turnare de tip, efectuează turnare de tip nepolimorf
- - __template__ — Cuvântul cheie _template_ este folosit pentru a crea funcții și clase generice
- - __this__ — Folosit pentru a indica pointerii către obiectul care a generat apelul la funcția membru
- - __throw__ — Operatorul _throw_ aruncă o excepție
- - __true__ — O constantă logică care are valoarea "adevărat"
- - __try__ - Un bloc de program care conține acea parte a programului care este destinată gestionării erorilor
- - __typeid__ — Operatorul _typeid_ returnează o referință la obiectul _type\_info_ care descrie tipul de obiect căruia îi aparține operatorul _typeid_
- - __typename__ — Un cuvânt cheie care poate fi folosit în locul cuvântului cheie _class_ într-o declarație șablon sau pentru a denota un tip nedefinit
- - __using__ — Mută ​​o variabilă dintr-un spațiu de nume specific în domeniul de aplicare al variabilei globale
- - __virtual__ — Specificator de tip care definește funcțiile virtuale
- - __wchar_t__ — Tip de date caracter pe doi octeți
+- __asm__ - cuvânt cheie pentru a insera una sau mai multe instrucțiuni de asamblare
+- __bool__ - tip de date logic
+- __catch__ - bloc de cod care conține partea programului care tratează o excepție
+- __class__ - tip de date personalizat "clasă"
+- __const_cast__ - operator de conversie folosit pentru a anula modificatorii _const_ și / sau _volatile_
+- __delete__ - operator care eliberează memoria la care se referă argumentul
+- __dynamic_cast__ - operator de conversie care verifică legalitatea efectuării unei operații de conversie
+- __explicit__ - constructor definit cu specificatorul _explicit_ va fi utilizat numai dacă inițializarea se potrivește exact cu ceea ce este definit de constructor
+- __export__ - cuvânt cheie care permite altor fișiere să utilizeze șablonul definit în alt fișier prin furnizarea doar a declarației sale.
+- __false__ - constantă logică cu valoarea "fals"
+- __friend__ - cuvânt cheie care definește funcții sau clase prietenoase
+- __inline__ - specificator utilizat pentru a plasa corpul funcției direct în textul programului
+- __mutable__ - specificator de tip care permite unui membru al unui obiect să anuleze proprietatea de constantă
+- __namespace__ - cuvânt cheie pentru a crea spații de nume
+- __new__ - operator care alocă memorie dinamică și returnează un pointer de tip corespunzător la acea zonă de memorie
+- __operator__ - cuvânt cheie utilizat pentru a crea funcții supraincarcate
+- __private__ - specificator de acces "privat" care definește modul în care se face moștenirea unei clase de bază
+- __protected__ - specificator de acces "protejat" care definește modul în care se face moștenirea unei clase de bază
+- __public__ - specificator de acces "public" care definește modul în care se face moștenirea unei clase de bază
+- __reinterpret_cast__ - operator de conversie care convertește un tip într-un cu totul altul
+- __static_cast__ - operator de conversie care efectuează conversia non-polimorfică a tipurilor
+- __template__ - cuvânt cheie utilizat pentru a crea funcții și clase generice
+- __this__ - folosit pentru a face referire la pointerii la obiectul care a generat apelul la funcția membru
+- __throw__ - operator _throw_ generează o excepție
+- __true__ - constantă logică cu valoarea "adevărat"
+- __try__ - bloc de cod care conține partea programului care poate genera o excepție
+- __typeid__ - operator _typeid_ returnează o referință la un obiect _type_info_ care descrie tipul obiectului la care se referă operatorul _typeid_
+- __typename__ - cuvânt cheie care poate fi utilizat în loc de cuvântul cheie _class_ în declarația unui șablon sau pentru a face referire la un tip nedeterminat
+- __using__ - transferă o variabilă dintr-un spațiu de nume definit în spațiul global al variabilelor
+- __virtual__ - specificator de tip care definește funcții virtuale
+- __wchar_t__ - tip de date de caractere de 2 octeți
 
-### simboluri speciale
+Totodată, cât noul standard C, atât și noul standard C++ definește niște cuvinte cheie specifice, care se încep cu caracterul `_` [^1].
 
-Semnele de punctuație și caracterele speciale din setul de caractere C/C++ au o varietate de utilizări, de la organizarea textului programului până la definirea sarcinilor efectuate de un compilator sau un program compilat.
+### Simboluri speciale
 
-Următoarele caractere speciale sunt utilizate în C++:
+Simbolurile de punctuație și caractere speciale din setul de caractere C sunt utilizate pentru a organiza codul sursă și pentru a defini sarcinile pe care le va efectua compilatorul sau programul compilat.
 
- - `( )`
- - `[ ]` 
- - `{ }` 
- - `*` 
- - `,` 
- - `:` 
- - `=` 
- - `;` 
- - `...` 
- - `#`
+În C++ utilizăm următoarele simboluri speciale:
 
-Aceste semne nu precizează operațiunile de efectuat și pot avea semnificații diferite în funcție de context.
+- `( )`
+- `[ ]`
+- `{ }`
+- `*`
+- `,`
+- `:`
+- `=`
+- `;`
+- `...`
+- `#`
 
-Unele semne de punctuație sunt și operatori de limbă.
+Acestea simboluri nu definesc operații care trebuie efectuate și pot avea sensuri diferite, în funcție de context.
 
+Unele simboluri speciale sunt utilizate pentru a defini operatori ale limbajului.
 
 ### Comentarii
 
-Codul sursă poate conține cât comentarii pe o singură linie atât și blocuri de comentarii.
+Comentariile sunt utilizate pentru a explica codul sursă. Ele sunt ignorate de compilator și nu sunt incluse în codul binar.
 
-Comentariu pe o singură linie se începe cu simboluri `//` și se consideră până la sfârșitul liniei.
+În codul sursă pot fi incluse comentarii lineare și cu multe linii.
 
-Un bloc de comentarii se definește cu etichete `/*` `*/`, printre care putem specifica orice număr de linii de text.
+Comentariu linear începe cu `//` și se termină la sfârșitul liniei.
 
-Comentariile sunt utilizate pe scară largă nu numai pentru a explica codul programului, dar și pentru a crea documentație tehnică. Există o serie de aplicații (Doxygen, JavaDoc etc.) care analizează comentariile și creează documentație în HTML, PDF sau alt format. De asemenea, IDE-urile moderne folosesc comentarii pentru a genera sfaturi pentru cod.
+Comentariul cu multe linii începe cu `/*` și se termină cu `*/`, între care se poate scrie orice număr de linii de text.
+
+Comentarii se utilizează nu numai pentru a explica codul, dar și pentru creația documentației tehnice. Există o serie de aplicații (Doxygen, JavaDoc etc.), care analizează comentariile și creează documentație în format HTML, PDF sau altul. De asemenea, IDE moderne utilizează comentariile pentru a genera pop-up-uri cu sugestii la cod.
 
 ## Tipuri de date de bază și variabile
 
-Fiecare program este conceput pentru a procesa date. Datele sunt numere, șiruri de caractere sau o combinație de numere și șiruri de caractere (date compuse). În consecință, pentru a stoca date și a lucra cu acestea, sunt utilizate "stocare" speciale - _variabile_.
+Fiecare program este destinat pentru prelucrarea datelor. Datele pot fi numere, șiruri de caractere sau combinații de numere și șiruri de caractere (date compuse). Pentru a stoca și lucra cu date se utilizează _variabile_.
 
-O variabilă este un identificator care desemnează o zonă din memorie. Fiecare variabilă are propriul ei tip.
+Variabila este un identificator care se referă la o zonă de memorie, în care se stochează date. Variabila are un nume și un tip de date.
 
-Tipuri de bază sunt numere întregi, numere reale, tip boolean.
+Tipuri de date de bază sunt numerele întregi, numerele reale și valorile logice.
 
-Tipul determină ce valori poate avea o variabilă și câți octeți în memorie va ocupa.
+Tipul de date determină ce valori poate stoca variabila și ce operații se pot efectua cu aceste valori.
 
 ### Numere întregi
 
- * __char__ - представляет один символ. Занимает в памяти 1 байт. Может хранить любое значение из диапазона от -128 до 127. Переменным типа char можно присвоить один символ в одинарных кавычках.
- * __unsigned char__ - представляет один символ. Занимает в памяти 1 байт (8 бит). Может хранить значение из диапазона от 0 до 255.
- * __short__ -  представляет целое число в диапазоне от –32768 до 32767. Занимает в памяти обычно 2 байта.
- * __int__ - представляет целое число. В зависимости от архитектуры процессора может занимать 2, 4 или 8 байт.
- * __long long__ - представляет целое число в диапазоне от -9223372036854775807 до +9 223 372 036 854 775 807. Занимает в памяти, как правило, 8 байт.
+- __char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127` sau de la `0` pana la `255` in dependenta de platforma. Variabilele de tip `char` pot fi inițializate cu un singur caracter între ghilimele simple.
+- __signed char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127`.
+- __unsigned char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `0` la `255`.
+- __short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la `-32768` la `32767`.
+- __unsigned short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la `0` la `65535`.
+- __int__ - tip de date pentru numere întregi, ocupă 2, 4 sau 8 bytes în memorie, în funcție de arhitectura procesorului.
+- __unsigned int__ - tip de date pentru numere întregi nenegative, ocupă 2, 4 sau 8 bytes în memorie, în funcție de arhitectura procesorului.
+- __long long__ - tip de date pentru numere întregi, ocupă 8 bytes în memorie. Poate stoca valori de la `-9223372036854775807` la `9223372036854775807`.
+- __unsigned long long__ - tip de date pentru numere întregi nenegative, ocupă 8 bytes în memorie.
 
-Любое десятичное число рассматривается по умолчанию как значение типов `int` / `long int` / `long long int`` (в зависимости от размера) и при присвоении переменным другим типов будет выполняться преобразование.
+Fiecare număr întreg implicit se tratează ca o valoare de tip __int__, __long int__ și __long long int__, în dependența de valoarea numărului, și la atribuirea variabilelor de alt tip întreg va fi convertit implicit în alte tipuri de date întregi.
 
-Чтобы указать, что число явным образом представляет определенный тип, к числу добавляется определенный суффикс:
- - `unsigned int` – `u` или `U`
- - `long int` – `l` или `L`
- - `unsigned long int` – `ul` или `UL`
- - `long long` – `ll` или `LL`
- - `unsigned long long` – `ull` или `ULL`
+Pentru a defini tip de date implicit la numărul întreg, se adaugă la numărul întreg un sufix:
 
-### Действительные числа
+- `unsigned int` – `u` sau `U`
+- `long int` – `l` sau `L`
+- `unsigned long int` – `ul` sau `UL`
+- `long long` – `ll` sau `LL`
+- `unsigned long long` – `ull` sau `ULL`
 
- * __float__ - представляет вещественное число одинарной точности с плавающей точкой в диапазоне `-3.4E+38` до `3.4E+38`. В памяти занимает 4 байта.
- * __double__ - представляет вещественное число двойной точности с плавающей точкой в диапазоне `-1.7E+308` до `1.7E+308`. В памяти занимает 8 байт.
- * __long double__ - представляет вещественное число двойной точности с плавающей точкой в диапазоне +/- 3.4E-4932 до 1.1E+4932. В памяти занимает 10 байт (80 бит). На некоторых системах может занимать 96 и 128 бит.
+Tip da date `char` este un tip de date întreg specific, care de obicei se utilizează pentru stocarea simbolurilor. Standardul nou de C++11 definește tipuri de date `char8_t`, `char16_t` și `char32_t` pentru stocarea simbolurilor Unicode.
 
-### Логический тип
+### Numere reale
 
-В языке С++ для логических значений существует специальный тип — __bool__. Допустимыми значениями этого типа являются только `true` и `false`, при этом других значений у переменной данного типа быть не может.
+- __float__ - tip de date pentru numere reale, ocupă 4 bytes în memorie. Poate stoca valori de la -3.4E+38 la 3.4E+38.
+- __double__ - tip de date pentru numere reale, ocupă 8 bytes în memorie. Poate stoca valori de la -1.7E+308 la 1.7E+308.
+- __long double__ - tip de date pentru numere reale, ocupă 10 bytes în memorie. Poate stoca valori de la +/- 3.4E-4932 la 1.1E+4932.
 
-Переменная типа __bool__ может занимать в памяти ровно 1 байт.
+### Tip de date logic
 
-Тип bool совместим с типом __int__ по присваиванию в обе стороны, при этом `true` переходит в `1`, `false` — в `0`.
+În limbajul C++ pentru valorile logice se utilizează tipul de date `bool`. Acest tip de date poate avea doar două valori: `true` sau `false`, alte valori nu sunt permise.
 
-При обратном приведении любое число, не равное нулю — переходит в `true`, `0` — в `false`.
+Tipul `bool` compatibil cu tipul `__int__` la atribuire în ambele direcții, în acest caz `true` se convertește în `1`, `false` în `0`.
 
-Значения логического типа являются результатом выполнения операций сравнения или составленных из сравнений выражений.
+La convertirea înapoi `0` se convertește în `false`, orice altă valoare se convertește în `true`.
 
-В С++ определены следующие операции сравнения:
+Valorile logice sunt rezultatul operațiilor de comparație sau operațiilor logice.
 
-| оператор | пример |
+În C++ sunt definite următoarele operații de comparație:
+
+| operator | exemplu |
 | -------- | ------ |
-| Меньше   | X < Y |
-| Больше   | X > Y |
-| Меньше или равно | X <= Y |
-| Больше или равно | X >= Y |
-| Равно    | X == Y |
-| Не равно | X != Y |
+| Mai mic | X < Y |
+| Mai mare | X > Y |
+| Mai mic sau egal | X <= Y |
+| Mai mare sau egal | X >= Y |
+| Egal | X == Y |
+| Diferit | X != Y |
 
-В языке C++ существует 3 логические операции
+Limbajul C++ are 3 operații logice:
 
- * `&&` - операция И (конъюнкция)
- * `||` - операция ИЛИ (дизъюнкция)
- * `!` – операция НЕ (отрицание)
+- `&&` - operația ȘI (conjuncție)
+- `||` - operația SAU (disjuncție)
+- `!` – operația NU (negare)
 
-Логические операции позволяют составить из нескольких простых логических выражений одно более сложное.
+Acestea operații logice permit compunerea unor expresii logice mai complexe.
 
 | A | B | A && B | A \|\| B | !A |
 | ----- | ----- | ------ | ------ | ----- |
@@ -239,29 +250,30 @@ Tipul determină ce valori poate avea o variabilă și câți octeți în memori
 | false | true | false | true | true |
 | false | false | false | false | true  |
 
-### Переменные
+### Variabile
 
-При объявлении переменной сначала указывается её тип, потом, через пробельный символ (символы), название переменной.
+La definirea variabilei se specifică tipul de date și, prin simboluri spațiale, numele variabilei.
 
 ```cpp
 int variable;
 ```
 
-Можно определить сразу несколько переменных одного типа, перечислив их через запятую.
+Pot fi definite mai multe variabile de același tip într-o singură linie, separate prin virgulă.
 
 ```cpp
 int a, b, c;
 ```
-Переменную можно сразу инициализировать, присвоив ей значение по умолчанию.
+
+Variabilele pot fi inițializate la momentul declarării, adăugând valoarea după simbol `=`.
 
 ```cpp
 int x = 0, y = x;
 char chr1 = 10, chr2 = 'x';
 ```
 
-## Базовые структуры
+## Structuri de bază
 
-Простейшая программа на С++ выглядит следующим образом:
+Cel mai simplu program în C++ arată în felul următor:
 
 ```cpp
 int main() {
@@ -269,9 +281,9 @@ int main() {
 }
 ```
 
-Простейшая программа на С++ состоит из функции main, называемой точкой входа.
+Cel mai simplu program în C++ constă din funcția `main`, care este __punctul de intrare__ în program[^2]. Funcția `main` întoarce un număr întreg, care reprezintă codul de ieșire al programului. Dacă programul se termină cu succes, atunci funcția `main` întoarce `0`.
 
-Функция main возвращает целое число – код завершения программы. Также точка входа может иметь входные параметры: аргументы программы, передаваемые при запуске (например, в командной строке).
+Totodată, punctul de intrare în program poate avea parametrii de intrare: argumentele aplicatiei, care se transmit la lansarea programului (de exemplu, în linia de comandă).
 
 ```cpp
 int main(int argc, char** argv) {
@@ -279,7 +291,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-Первый параметр _argc_ содержит количество передаваемых аргументов, второй параметр _argv_ представляет собой массив передаваемых аргументов. Для понимания работы с аргументами точки входа рекомендуется рассмотреть и выполнить следующий код:
+Primul parametru `argc` conține numărul de argumente transmise, al doilea parametru `argv` este un masiv de argumente transmise. Pentru a înțelege cum funcționează argumentele punctului de intrare, se recomandă să examinați și să executați următorul cod:
 
 ```cpp
 #include <iostream>
@@ -292,119 +304,125 @@ int main(int argc, char **argv) {
 }
 ```
 
-### Ветвления
+### Ramificații
 
-Ветвление является одним из базовых блоков программирования. Оно позволяет выполнять тот или иной код, в зависимости от условия (логическое выражение).
-
-Если блок команд после __else__ пустой, то он может пропускаться.
-
-Если блок команд в условии состоит из одной команды, фигурные скобки могут быть пропущены.
-
-Полный синтаксис ветвления выглядит следующим образом:
+Ramificația este unul dintre blocurile de bază ale programării. Aceasta permite executarea unui cod sau altul, în funcție de condiție (expresie logică). Structura de bază a ramificației este următoarea:
 
 ```cpp
-if(/* условие */) {
-    // блок команд 1
+if(/* expresie logică */) {
+    // bloc de comenzi 1
 }
 else {
-    // блок команд 2
+    // bloc de comenzi 2
 }
 ```
 
-Однако могут встречаться и укороченные (упрощенные) формы, в зависимости от сложности конструкции:
+Blocul de comenzi 1 se execută dacă expresia logică este adevărată, blocul de comenzi 2 se execută dacă expresia logică este falsă.
+
+Dacă bloc de comenzi declarat după __else__ este vid, atunci el poate fi omis.
 
 ```cpp
-// блок команд содержит одну команду, фигурные скобки опущены, не рекомендуется
-if(/* условие */)
-    // команда 1
+// nu sunt definite comenzi pentru execuție alternativă, bloc else este omis
+if(/* conditie */) {
+    // bloc de comenzi
+}
+```
+
+Dacă bloc de comenzi este format dintr-o singură comandă, atunci acoladele pot fi omise.
+
+```cpp
+// bloc de comenzi contine o singura comanda, acoladele sunt omise, nu se recomandă
+if(/* conditie */)
+    // comanda 1
 else
-    // команда 2
-
-// нет команд для альтернативного выполнения, блок else пропущен
-if(/* условие */) {
-    // блок команд
-}
+    // comanda 2
 ```
 
-### Выбор
+### Ramificații multiple
 
-Конструкция __switch__ / __case__ позволяет сравнить некоторое выражение с набором значений.
-После ключевого слова __switch__ в скобках идет сравниваемое выражение. Значение этого выражения последовательно сравнивается со значениями после оператора __сase__. И если совпадение будет найдено, то будет выполняться определенный блок __сase__ и все последующие за ним (если не стоит __break__).
+Construcția __switch__ / __case__ permite compararea unei expresii cu un set de valori. După cuvântul cheie __switch__ în paranteze se află expresia de comparare. Valoarea acestei expresii este comparată cu valorile după operatorul __case__. Dacă se găsește o valoare egală, atunci se execută blocul de comenzi asociat și toate blocurile de comenzi care urmează (dacă nu este specificat __break__). Dacă nu se găsește nicio valoare egală, atunci se execută blocul de comenzi asociat cu operatorul __default__.
 
 ```cpp
-switch( /* выражение */) {
-   case /* значение_1 */: /* инструкции_1 */;
-   case /* значение_2 */: /* инструкции_2 */;
+switch( /* expresie */) {
+   case /* valoare_1 */: /* instructii_1 */;
+   case /* valoare_2 */: /* instructii_2 */;
    // ...................
-   case /* значение_N */: /* инструкции_N */;
-   default: /* инструкции */;
+   case /* valoare_N */: /* instructii_N */;
+   default: /* instructii */;
 }
 ```
 
-### Циклы
-Циклы являются одной из базовых конструкций языка, позволяющей выполнить ряд одних и тех же команд несколько раз.
+### Bucle
 
-В языке C++ существует 3 вида операторов цикла:
+Bucle sunt construcții de bază a limbajului de programare, care permit executarea repetată a unui bloc de comenzi.
 
- - цикл for;
- - цикл while с предусловием;
- - цикл do…while с постусловием.
+Limbajul C++ oferă 3 tipuri de bucle:
 
-Любой из вышеприведенных операторов цикла может быть заменен другим.
+- bucla cu contor (__for__);
+- bucla cu precondiție (__while__);
+- bucla cu postcondiție (__do...while__).
 
-Начиная со стандарта С++11 введен цикл «для каждого» (for each).
+Fiecare tip de buclă poate fi înlocuit cu oricare altul.
 
-#### Цикл со счетчиком
+Începând cu standardul C++11, a fost introdusă o nouă construcție de buclă - bucla "pentru fiecare" (__for each__). Acest tip de ciclu va fi discutat în temele următoare.
 
-Часто возникает необходимость выполнить одну и ту же последовательность действий несколько (N) раз. Для этого используются циклы со счетчиком:
+#### Bucla cu contor
+
+Deseori apare necesitate de a executa un bloc de comenzi un număr cunoscut de ori. Pentru aceasta se utilizează __bucla cu contor__. Bucla cu contor are următoarea structură:
 
 ```cpp
-for(/* инициализация счетчика */; /* условие */; /* изменение счетчика */) {
-    // тело цикла
+for(/* initializator */; /* conditie */; /* iteratie */) {
+    // corpul buclei
 }
 ```
 
-_Инициализатор_ выполняется один раз при начале выполнения цикла и представляет установку начальных условий, как правило, это инициализация счетчиков - специальных переменных, которые используются для контроля за циклом.
-_Условие_ представляет условие, при соблюдении которого выполняется цикл. Как правило, в качестве условия используется операция сравнения, и если она возвращает ненулевое значение (то есть условие истинно), то выполняется тело цикла, а затем выполняется итерация.
-_Итерация_ выполняется после каждого завершения блока цикла и задает изменение параметров цикла. Обычно здесь происходит увеличение счетчиков цикла.
+_Inițializator_ se execută o singură dată la începutul buclei și inițializează contorul. De obicei, aici se inițializează variabilele contorului, care se utilizează pentru controlul buclei.
 
-#### Цикл с предусловием
+_Condiție_ reprezintă expresia logică, care se evaluează la fiecare iterație a buclei. Când condiția devine falsă, bucla se termină. De exemplu, condiție poate verifica dacă contorul a atins o anumită valoare.
 
-Цикл __while__ с предусловием позволяет выполнить одну и ту же последовательность действий пока проверяемое условие истинно. При этом условие записывается до тела цикла и проверяется до выполнения тела цикла.
+_Iteratie_ se execută după fiecare finalizare a blocului de comenzi și modifică contorul. De obicei, aici se incrementează sau decrementează contorul.
+
+#### Bucla cu precondiție
+
+Bucla cu precondiție permite executarea unui bloc de comenzi până când condiția devine falsă. Structura buclei cu precondiție este următoarea:
 
 ```cpp
-while (/* условие */) {
-    // тело цикла
+while (/* conditie */) {
+    // corpul buclei
 }
 ```
 
-#### Цикл с постусловием:
+#### Bucla cu postcondiție
 
-Цикл __while__ с постусловием отличается от цикла с предусловием тем, что сначала выполняется блок цикла, а потом проверяется условие. Если условие истинно, то цикл будет выполнен еще раз, и так до тех пор, пока условие будет истинно.
+Bucla __do...while__ este similară cu bucla cu precondiție, dar se execută cel puțin o dată, chiar dacă condiția este falsă. Structura buclei cu postcondiție este următoarea:
 
 ```cpp
 do {
-    // тело цикла
+    // corpul buclei
 }
-while (/* условие */);
+while (/* conditie */);
 
 ```
 
-### Функции
+### Funcții
 
-Во многих случаях возникает необходимость выполнить ряд команд несколько раз в разных участках кода. В этом случае эти команды можно выделить в отдельный блок, присвоить им имя и использовать по имени.
+În multe cazuri apare posibilitatea de a executa un bloc de comenzi de mai multe ori, în diferite locuri ale programului. În acest caz, comenzile pot fi selectate într-un bloc de comenzi separat, acest bloc poate fi numit și apelat de mai multe ori după nume. Acest bloc de comenzi cu nume se numește _funcție_. Funcția poate avea parametrii de intrare și poate returna un rezultat.
 
-Функция это именованный блок программного кода. Функция может иметь входные параметры, позволяющие при работе с функцией передавать аргументы (значения, для вычислений).
+Parametrii de intrare sunt valorile care se transmit funcției la apel și care sunt utilizate în blocul de comenzi al funcției. Rezultatul funcției este valoarea care se întoarce la apelul funcției.
 
-Имя функции должно отражать / описывать её назначение.
+Declarația funcției are următoarea structură:
 
 ```cpp
-/* тип возвращаемого значения */ /* имя функции */(/* параметры */) {
-   // тело функции
+/* тип de date întors */ /* nume funcție */(/* lista de parametrii */) {
+    // bloc de comenzi - corpul functiei
 }
 ```
 
-Функция может вызываться из любого количества мест в программе. Значения, передаваемые функции, являются аргументами, типы которых должны быть совместимы с типами параметров в определении функции.
+Tipul de date întors este tipul de date al rezultatului funcției. Dacă funcția nu returnează niciun rezultat, atunci tipul de date întors trebuie să fie `void`.
+
+Funcția poate fi apelată în orice loc al programului. 
+
+Valorile, care se transmit funcției, se numesc argumente, tipurile acestor valori trebuie să fie compatibile cu tipurile parametrilor funcției.
 
 ```cpp
 int sum (int a, int b) {
@@ -414,55 +432,22 @@ int sum (int a, int b) {
 int value = sum(5, 10);
 ```
 
-> Термин _аргумент_ относится к значению, которое используется при вызове функции. Переменная, которая принимает этот аргумент, называется _параметром_. Функции, которые принимают аргументы, называются _параметризованными функциями_. [Шилдт]
+> Notiune de _argument se referă la valoarea care se utilizează la apelul funcției. Variabila care primește acest argument se numește _parametru_. Funcțiile care primesc argumente se numesc _funcții parametrizate_. [Shildt][^3]
 
-## Управление памятью
+## Gestionarea memoriei
 
-Программы, при работе, используют два вида памяти: стек (__stack__) и куча (__heap__).
+Aplicații în timpul execuției utilizează diferite tipuri de memorie: memoria stivă (__stack__) și memoria dinamică (__heap__).
 
-Стек (__stack__) - фиксированная память, выделяемая при компиляции. В нее записываятся объявления переменных и изменение размещения переменных в памяти при работе программы невозможно.
+Memoria stivă este o zonă de memorie, care se utilizează pentru stocarea variabilelor locale și a adreselor de întoarcere. Memoria stivă este organizată într-o manieră LIFO (Last In First Out), adică ultimul element introdus în stivă este primul element care este eliminat.
 
-Куча (__heap__) - динамическая память, в которой можно выделять участки памяти в процессе работы программы.
+Memoria dinamică este o zonă de memorie, care se utilizează pentru stocarea datelor, care pot fi alocate și eliberate în timpul execuției.
 
-### Cсылки
+### Pointeri
 
-Объявление переменной выделяет память в стеке, в которую можно впоследствии записать некоторое значение. В некоторых случаях возникает необходимость вводить псевдонимы переменных. Данные псевдонимы называются ссылками и объявляются при помощи знака `&` (амперсант).
+Limbajele de programare C și C++ oferă posibilitatea de a lucra cu adresele de memorie. Adresa de memorie este un număr, care indică locația în memorie a unei variabile. Mărimea memoriei alocate la care se referă adresa depinde de tipul de date al variabilei.
 
-Пример объявления ссылки:
+Declarația variabilei de tip pointer se face prin specificarea tipului de date, urmat de simbolul `*` și numele variabilei[^4].
 
-```cpp
-int a = 10;
-int& another_ref_a = a;
-```
-
-__Ссылка всегда инициализируется, и инициализируется другой переменной.__
-
-```cpp
-#include <iostream>
-
-int main() {
-    int value = 10;
-    int &ref = value;
-
-    std::cout << "value: " << value << ", reference = " << ref << std::endl;
-    value = 12;
-    std::cout << "value: " << value << ", reference = " << ref << std::endl;
-    ref = 15;
-    std::cout << "value: " << value << ", reference = " << ref << std::endl;
-    return 0;
-}
-```
-
-Так как ссылка представляет собой псевдоним существующей переменной, то изменение значения переменной изменяет значение ссылки.
-
-Чаще всего ссылка используется при объявлении параметров функций.
-
-### Указатели
-
-Языки С / C++ предлагают специализированный тип данных: указатель на область памяти определённого типа.
-Значение переменной данного типа представляет собой целое число, которое представляет собой адрес памяти. Размер памяти, на которую указывает данный указатель, определяется прописанным типом данных.
-
-Объявление указателя выполняется указанием типа, потом пишется специальный знак `*`, после которого пишется имя переменной. 
 
 ```cpp
 // <type> * <pointer_name>;
@@ -470,11 +455,11 @@ int * sampleIntPointer;
 char * sampleCharPointer;
 ```
 
-В примере `sampleIntPointer` может содержать адрес участка памяти в 4 байта.
+În exemplul de mai sus, `sampleIntPointer` poate conține adresa unui bloc de memorie de 4 bytes (mărimea unui int).
 
-Чтобы проинициализировать указатель, в переменную необходимо записать адрес ячейки памяти. Взятие адреса переменной выполняется при помощи специального символа `&`.
+Initializarea pointerului se face cu ajutorul adresei variabilei sau cu ajutorul valorii `nullptr`. Luarea adresei variabilei se face cu ajutorul operatorului `&`.
 
-Пример работы с указателями:
+Un examplu de lucru cu pointeri:
 
 ```cpp
 #include <iostream>
@@ -499,8 +484,81 @@ int main() {
 }
 ```
 
-Поведение ссылки похоже на поведение константного указателя.
+### Referințe
 
-### Выделение и освобождение памяти
+Memoria pentru variabile locale se alocă în stivă, în această memorie alocată poate fi scrisă o valoare. Există situații când este necesar de introdus o variabilă, care să fie un pseudonim pentru o altă variabilă. Pseudonimul variabilei se numește _referință_ și se declară cu ajutorul simbolului `&`.
 
-### Массивы
+Exemplu de referință:
+
+```cpp
+int a = 10;
+int& another_ref_a = a;
+```
+
+> Variabilă de tip referință se inițializează la momentul declarării și numaidecât cu o variabilă deja existentă.
+
+```cpp
+#include <iostream>
+
+int main() {
+    int value = 10;
+    int &ref = value;
+
+    std::cout << "value: " << value << ", reference = " << ref << std::endl;
+    value = 12;
+    std::cout << "value: " << value << ", reference = " << ref << std::endl;
+    ref = 15;
+    std::cout << "value: " << value << ", reference = " << ref << std::endl;
+    return 0;
+}
+```
+
+Având în vedere exemplul de mai sus, referința este un pseudonim pentru variabila existentă, din ce reesă că modificarea valorii variabilei se va reflecta și în valoarea referinței.
+
+De obicei referințele se utilizează pentru definirea parametrilor funcțiilor, pentru a evita copierea valorilor.
+
+> Referința după comportament seamănă cu un pointer constant.
+
+### Alocarea și eliberarea memoriei
+
+În limbajul C++ pentru alocarea și eliberarea memoriei se utilizează operatorii `new` și `delete`.
+
+Operatorul `new` aloca memorie pentru un obiect și returnează adresa acestui obiect. Operatorul `delete` eliberează memoria alocată pentru obiect.
+
+```cpp
+int * intPtr = new int;
+*intPtr = 10;
+std::cout << *intPtr << std::endl;
+delete intPtr;
+```
+
+
+### Vectori
+
+Vectorii sunt structuri de date, care permit stocarea congruentă mai multor elemente de același tip. Vectorii se utilizează pentru stocarea unui număr mare de elemente de același tip.
+
+Definirea unui vector se face prin specificarea tipului de date, urmat de numele vectorului și de dimensiunea vectorului între paranteze drepte. Acces către elementele vectorului se face cu ajutorul indicelui elementului.
+
+```cpp
+int sampleArray[10];
+sampleArray[0] = 10;
+sampleArray[10] = 20; // eroare!!! indexul este mai mare sau egal decât dimensiunea vectorului
+```
+
+Vectorul poate fi alocat dinamic cu ajutorul operatorului `new`. Aceasta permite alocarea memoriei pentru vector în timpul execuției. După utilizarea vectorului, memoria trebuie eliberată corect cu ajutorul operatorului `delete`.
+
+```cpp
+int * sampleArray = new int[10];
+sampleArray[0] = 10;
+
+// delete[] se utilizează pentru eliberarea memoriei pentru vector
+// stergerea prin delete sampleArray va duce la eroare
+delete[] sampleArray;
+```
+
+## Bibliografie
+
+[^1]: [C++ Keywords](https://en.cppreference.com/w/cpp/keyword)
+[^2]: [Main function](https://en.cppreference.com/w/cpp/language/main_function)
+[^3]: [Shildt] Herbert Schildt. C++: The Complete Reference, 4th Edition. McGraw-Hill Education, 2003. ISBN: 978-0-07-223215-8
+[^4]: [Pointer declaration](https://en.cppreference.com/w/cpp/language/pointer)
