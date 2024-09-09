@@ -102,7 +102,7 @@ Limbajul C++ conține un set de cuvinte cheie, care sunt rezervate pentru a desc
 - __union__ - definește un tip de date care poate stoca mai multe tipuri de date în aceeași zonă de memorie
 - __unsigned__ - definește un tip de date ca fiind fără semn
 - __void__ - definește un tip de date pentru funcții care nu returnează valoare
-- __volatile__ - definește o variabilă ca fiind volatilă
+- __volatile__ - definește o variabilă ca fiind modificabilă, în mod neprezicător, de factorii externi. Ca rezultat, se suprimă anumite optimizări de citire/înscriere asupra variabilei
 - __while__ - definește o buclă cu precondiție
 
 În afară de cuvintele cheie din C, C++ conține și cuvinte cheie suplimentare:
