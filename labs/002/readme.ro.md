@@ -13,7 +13,7 @@ Sarcina se bazează pe lucrările anterioare de laborator. Efectuarea sarcinii s
 3. Creați un fișier `cmd` (sau `Makefile`) pentru a construi manual proiectul
 4. Creați un fișier `.gitignore` pentru a ignora fișierele obiect și fișierele executabile
 5. Modificati fișierul README.md pentru a reflecta metoda de construcție a proiectului
-6. Adăugați în repozitoriu GitHub codul sursa modificat  și fișierul de construcție în ramura `lab02`
+6. Adăugați în repozitoriu GitHub codul sursă modificat și fișierul de construcție în ramura `lab02`
 
 ## Prezentare
 
