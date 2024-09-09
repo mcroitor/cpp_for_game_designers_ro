@@ -305,7 +305,7 @@ make
 
 ### Fixarea modificărilor
 
-Fixați modificările în depozitul local și trimiteți-le pe GitHub:
+Fixați modificările în repozitoriul local și trimiteți-le pe GitHub:
 
 ```bash
 git add .
