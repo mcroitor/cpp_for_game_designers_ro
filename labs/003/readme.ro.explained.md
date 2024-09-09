@@ -4,7 +4,7 @@
 
 În cadrul acestei lucrări, studentul va învăța să redefinească operatori, precum și să se familiarizeze cu definiția și opțiunile de utilizare a constructorilor.
 
-În plus, această lucrare va pregăti proiectul pentru a utiliza biblioteca standard C++.
+În plus, această lucrare va pregăti proiectul pentru următoarea lucrare de laborator, unde se va cere de utilizat biblioteca standard C++.
 
 ## Sarcina
 
