@@ -170,7 +170,7 @@ Comentariile sunt utilizate pentru a explica codul sursă. Ele sunt ignorate de 
 
 Comentariu linear începe cu `//` și se termină la sfârșitul liniei.
 
-Comentarul multiline începe cu `/*` și se termină cu `*/`, între care se poate scrie orice număr de linii de text.
+Comentariul cu multe linii începe cu `/*` și se termină cu `*/`, între care se poate scrie orice număr de linii de text.
 
 Comentarii se utilizează nu numai pentru a explica codul, dar și pentru creația documentației tehnice. Există o serie de aplicații (Doxygen, JavaDoc etc.), care analizează comentariile și creează documentație în format HTML, PDF sau altul. De asemenea, IDE moderne utilizează comentariile pentru a genera pop-up-uri cu sugestii la cod.
 
