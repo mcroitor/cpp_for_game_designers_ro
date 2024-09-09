@@ -186,7 +186,7 @@ Tipul de date determină ce valori poate stoca variabila și ce operații se pot
 
 ### Numere întregi
 
-- __char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127` sau de la `0` pana la `255` in dependenta de platforma. Variabilele de tip char pot fi inițializate cu un singur caracter între ghilimele simple.
+- __char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127` sau de la `0` pana la `255` in dependenta de platforma. Variabilele de tip `char` pot fi inițializate cu un singur caracter între ghilimele simple.
 - __signed char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127`.
 - __unsigned char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `0` la `255`.
 - __short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la `-32768` la `32767`.
