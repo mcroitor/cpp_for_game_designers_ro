@@ -186,14 +186,17 @@ Tipul de date determină ce valori poate stoca variabila și ce operații se pot
 
 ### Numere întregi
 
-- __char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la -128 la 127. Variabilele de tip char pot fi inițializate cu un singur caracter între ghilimele simple.
-- __unsigned char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la 0 la 255.
-- __short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la -32768 la 32767.
-- __unsigned short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la 0 la 65535.
+- __char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127` sau de la `0` pana la `255` in dependenta de platforma. Variabilele de tip char pot fi inițializate cu un singur caracter între ghilimele simple.
+- __signed char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `-128` la `127`.
+- __unsigned char__ - tip de date pentru caractere, ocupă 1 byte în memorie. Poate stoca valori de la `0` la `255`.
+- __short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la `-32768` la `32767`.
+- __unsigned short__ - tip de date pentru numere întregi, ocupă 2 bytes în memorie. Poate stoca valori de la `0` la `65535`.
 - __int__ - tip de date pentru numere întregi, ocupă 2, 4 sau 8 bytes în memorie, în funcție de arhitectura procesorului.
-- __long long__ - tip de date pentru numere întregi, ocupă 8 bytes în memorie. Poate stoca valori de la -9223372036854775807 la 9223372036854775807.
+- __unsigned int__ - tip de date pentru numere întregi nenegative, ocupă 2, 4 sau 8 bytes în memorie, în funcție de arhitectura procesorului.
+- __long long__ - tip de date pentru numere întregi, ocupă 8 bytes în memorie. Poate stoca valori de la `-9223372036854775807` la `9223372036854775807`.
+- __unsigned long long__ - tip de date pentru numere întregi nenegative, ocupă 8 bytes în memorie.
 
-Fiecare număr întreg implicit se tratează ca o valoare de tip __int__, __long int__ și __long long int__, în dependența de valioarea numărului, și la atribuirea variabelelor de alt tip întreg va fi convertit implicit în alte tipuri de date întregi.
+Fiecare număr întreg implicit se tratează ca o valoare de tip __int__, __long int__ și __long long int__, în dependența de valoarea numărului, și la atribuirea variabilelor de alt tip întreg va fi convertit implicit în alte tipuri de date întregi.
 
 Pentru a defini tip de date implicit la numărul întreg, se adaugă la numărul întreg un sufix:
 
@@ -214,8 +217,6 @@ Tip da date `char` este un tip de date întreg specific, care de obicei se utili
 ### Tip de date logic
 
 În limbajul C++ pentru valorile logice se utilizează tipul de date `bool`. Acest tip de date poate avea doar două valori: `true` sau `false`, alte valori nu sunt permise.
-
-Variabilele de tip `bool` ocupă 1 byte în memorie.
 
 Tipul `bool` compatibil cu tipul `__int__` la atribuire în ambele direcții, în acest caz `true` se convertește în `1`, `false` în `0`.
 
