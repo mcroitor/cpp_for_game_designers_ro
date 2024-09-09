@@ -166,7 +166,7 @@ Unele simboluri speciale sunt utilizate pentru a defini operatori ale limbajului
 
 Comentariile sunt utilizate pentru a explica codul sursă. Ele sunt ignorate de compilator și nu sunt incluse în codul binar.
 
-În codul sursă pot fi incluse comentarii lineare și multiline.
+În codul sursă pot fi incluse comentarii lineare și cu multe linii.
 
 Comentariu linear începe cu `//` și se termină la sfârșitul liniei.
 
