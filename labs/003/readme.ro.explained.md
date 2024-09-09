@@ -313,7 +313,7 @@ git commit -m "feat(lab03): add constructors and operators"
 git push origin lab03
 ```
 
-Creați cerere de tragere a modificărilor (Pull Request) în ramura `main` a depozitului.
+Creați cerere de tragere a modificărilor (Pull Request) în ramura `main` a repozitoriului.
 
 ## Prezentare
 
