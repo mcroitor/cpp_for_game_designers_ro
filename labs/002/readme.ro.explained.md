@@ -35,9 +35,13 @@ Pentru fiecare fișier `hpp` creat anterior, creați un fișier `cpp` corespunz�
 ```cpp
 #include "apple.hpp"
 
-Apple::Apple() {/* ... */}
-Apple::Apple(const Point &position) {/* ... */}
-Point Apple::GetPosition() const {/* ... */}
+Apple::Apple() : _position(0, 0) {}
+Apple::Apple(const Point &position) : _position(position) {}
+
+Point Apple::GetPosition() const
+{
+    return _position;
+}
 ```
 
 2. `board.cpp`
@@ -45,9 +49,17 @@ Point Apple::GetPosition() const {/* ... */}
 ```cpp
 #include "board.hpp"
 
-Board::Board(int width, int height) {/* ... */}
-int Board::GetWidth() const {/* ... */}
-int Board::GetHeight() const {/* ... */}
+Board::Board(int width, int height) : _width(width), _height(height) {}
+
+int Board::GetWidth() const
+{
+    return _width;
+}
+
+int Board::GetHeight() const
+{
+    return _height;
+}
 ```
 
 3. `direction.cpp`
