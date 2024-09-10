@@ -88,7 +88,7 @@ enum struct direction_t {
 };
 ```
 
-Valoarea enumerarii se specifica prin `<nume tip>::<cume constanta>`.
+Valoarea enumerarii se specifica prin `<nume tip>::<nume constanta>`.
 
 Constantele enumerarilor implicit obtin valori intregi consecutive, incepand cu zero. Prin urmare, constanta `CURRENCY::MDL` va fi egala cu zero, `CURRENCY::USD` va fi egala cu unu, si asa mai departe. Cu toate acestea, nu este recomandat sa folositi valori numerice pentru a lucra cu enumerarile, ci numele lor.
 
