@@ -222,7 +222,7 @@ void GameCharacter::Attack(GameCharacter & gameCharacter)
     if(this->_attack >= gameCharacter._defence) {
         damage = this->_attack - gameCharacter._defence;
     }
-    if(gameCharacter._health >= damage) {
+    if(gameCharacter._health > damage) {
         gameCharacter._health -= gameCharacter._health - damage;
     }
     else {
