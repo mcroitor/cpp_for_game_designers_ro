@@ -193,7 +193,7 @@ La descrierea realizării metodelor clasei se folosește următoarea sintaxă:
 ```
 
 ```cpp
-GameCharacter::GameCharacter(std::string name): 
+GameCharacter::GameCharacter(const std::string& name): 
     _name(name), _attack(10), _health(100), _defence(2)
 {
 }
