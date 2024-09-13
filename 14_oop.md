@@ -125,7 +125,7 @@ public:
 }
 ```
 
-Avand in vedere faptul ca clasa derivata descrie o submulțime a elementelor clasei de bază, pointerul (sau referința) la obiectul clasei de bază poate referi și la obiectul clasei derivate. Expresie inversa nu este adevărată, adică pointerul (sau referința) la obiectul clasei derivate __nu poate__ referi la obiectul clasei de bază.
+Avand in vedere faptul ca clasa derivata descrie o submulțime a elementelor clasei de bază, pointerul (sau referința) la obiectul clasei de bază poate referi și la obiectul clasei derivate, dar nu vice versa. Pointerul (sau referința) la obiectul clasei derivate __nu poate__ referi la obiectul clasei de bază.
 
 Exemplu:
 
