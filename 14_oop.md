@@ -181,7 +181,7 @@ struct A {
 
 struct B:public A {
      B() {}
-     virtual void print() const { puts("B"); }
+     virtual void print() const { std::cout << "B"; }
 };
 
 int main(){
