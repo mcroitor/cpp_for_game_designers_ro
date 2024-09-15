@@ -236,7 +236,7 @@ Această proprietate poate fi utilizată pentru implementarea polimorfismului - 
 
 ```cpp
 // poly02.cpp
-#include <сstdio>
+#include <iostream>
 ​
 struct A{
      A() {}
