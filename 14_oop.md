@@ -240,7 +240,7 @@ Această proprietate poate fi utilizată pentru implementarea polimorfismului - 
 ​
 struct A{
      A() {}
-     virtual void print() const { puts("A"); }
+     virtual void print() const { std::cout << "A"; }
 };
 ​
 struct B:public A{
