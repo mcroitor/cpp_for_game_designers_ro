@@ -172,7 +172,7 @@ O metodă se numește __virtuală__ dacă poate fi redefinită într-o clasă de
 
 ```cpp
 // poly01.cpp
-#include <сstdio>
+#include <iostream>
 
 struct A {
      A() {}
