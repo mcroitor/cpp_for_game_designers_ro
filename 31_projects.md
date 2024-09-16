@@ -52,7 +52,7 @@ __Compilarea aplicatiei__ - este procesul de transformare a codului sursa al pro
 
 __Compilatorul__ - este programul care efectueaza transformarea codului sursa al programului în cod masina.
 
-__Fișierul obiect__ - este fișierul care conține codul mașină, echivalent codului sursă al programului.
+__Fișierul obiect__ - este fișierul care conține codul mașină, derivat de la codul sursă al programului.
 
 Proces de compilare a programului include următoarele etape:
 
