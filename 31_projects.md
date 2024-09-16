@@ -35,7 +35,7 @@ Organizarea codului sursă în proiect poate fi foarte diversă, dar ideea princ
 
 cu scopul de a simplifica lucrul cu proiectul.
 
-O structură posibilă a proiectului în stilul Linux:
+O structură posibilă a proiectului în stilul UNIX-like:
 
 - `bin` - conține rezultatul compilării proiectului
 - `include` - fișierele antet
