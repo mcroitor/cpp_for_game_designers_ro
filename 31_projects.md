@@ -21,7 +21,7 @@ Proiectul poate conține un singur fișier de proiect sau mai multe, pentru cons
 
 Proiectul poate conține mai multe subproiecte. Un subproiect este un ansamblu de fișiere sursă ale altui proiect, adăugate în structura de directoare a proiectului.
 
-Totoadă, proiectul poate conține și module terțe: dependențe externe (de exemplu, biblioteci).
+Totodată, proiectul poate conține și module terțe: dependențe externe (de exemplu, biblioteci).
 
 Organizarea codului sursă în proiect poate fi foarte diversă, dar ideea principală este împărțirea:
 
@@ -136,14 +136,14 @@ Cerințele cheie pentru instrumentele de automatizare sunt:
 - gestionarea dependențelor codului sursă,
 - asamblarea diferențială,
 - notificarea în cazul în care codul sursă (după asamblare) se potrivește cu fișierele binare existente,
-- furnizarea de rapoarte convenabile despre rezultatele compilă
+- furnizarea de rapoarte convenabile despre rezultatele compilării
 - executarea automată a testelor și executarea condiționată în funcție de rezultatele trecerii.
 
 Variantele de automatizare utilizate în diferite instrumente:
 
-- automatizare la cerere (on-demand automation): rularea unui scenariu de comandă de către utilizator,
-- automatizare programată (scheduled automation): integrare continuă care se desfășoară sub formă de compilații nocturne,
-- automatizare condiționată (triggered automation): integrare continuă care efectuează o compilație la fiecare confirmare a modificării codului (commit) în sistemul de control al versiunilor.
+- automatizare la cerere (en. _on-demand automation_): rularea unui scenariu de comandă de către utilizator,
+- automatizare programată (en. _scheduled automation_): integrare continuă care se desfășoară sub formă de compilații nocturne,
+- automatizare condiționată (en. _triggered automation_): integrare continuă care efectuează o compilație la fiecare confirmare a modificării codului (en. _commit_) în sistemul de control al versiunilor.
 
 ### make
 
@@ -171,7 +171,7 @@ Sistemul de construire `GNU Autotools` se utilizează larg în multe proiecte cu
 
 ### CMake
 
-`CMake` - este un sistem cross-platform de automatizare a procesului de construire a proiectelor software. Acest instrument de nivel înalt permite utilizatorilor să scrie fișiere de configurare `CMakeLists.txt` independente de platformă, care sunt apoi transformate în fișiere de configurare specifice platformei. Totorodată, `CMake` poate automatiza proces de instalare și configurarea a pachetelor software.
+`CMake` - este un sistem cross-platform de automatizare a procesului de construire a proiectelor software. Acest instrument de nivel înalt permite utilizatorilor să scrie fișiere de configurare `CMakeLists.txt` independente de platformă, care sunt apoi transformate în fișiere de configurare specifice platformei. Totodată, `CMake` poate automatiza proces de instalare și configurarea a pachetelor software.
 
 `CMake` se consideră o alternativă mai modernă și mai ușor de utilizat decât `Autotools`, utilizat în comunitatea GNU.
 
@@ -220,7 +220,7 @@ Definirea variabilelor în fișierul `Makefile` permite crearea unui `Makefile` 
 ```makefile
 CC = g++
 CXXFLAGS = -O2 -std=c++14
-LDFLAGS = -lstdc++ -love
+LDFLAGS = -love
 OUT = file
 
 all: file
@@ -243,7 +243,7 @@ Exemplu de `Makefile` cu reguli suplimentare:
 ```makefile
 CC = g++
 CXXFLAGS = -O2 -std=c++14
-LDFLAGS = -lstdc++ -love
+LDFLAGS = -love
 OUT = file
 
 BINDIR = bin
