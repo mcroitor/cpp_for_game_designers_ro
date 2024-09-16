@@ -192,7 +192,7 @@ Reguli de creare a fișierului `Makefile` sunt următoarele:
 ```
 
 - o regulă are orice număr de dependențe. Dacă există dependențe, atunci mai întâi acestea sunt executate, în ordinea în care sunt enumerate, iar apoi comanda regulei.
-- fiecare dependență este un alt regulă definită în fișierul `Makefile`.
+- fiecare dependență este o altă regulă definită în fișierul `Makefile`.
 - comenzile încep cu un tabulator.
 
 Există o practică larg răspândită de a numi regulile din `Makefile` în conformitate cu numele fișierelor pe care le creează. De exemplu, regula pentru crearea fișierului `file` va fi numită `file`.
