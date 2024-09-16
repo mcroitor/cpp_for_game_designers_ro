@@ -76,7 +76,7 @@ Pentru a compila un fișier sursă, trebuie să utilizați următoarea comandă:
 g++ main.cpp -o file -l filename
 ```
 
-În realitate pentru compilarea codului sursă în fișier executabil, la compilator poate fi transmis numai numele fișierului sursă, dar în acest caz compilarea va fi reușită numai dacă programul folosește doar biblioteca standard C/C++, iar fișierul executabil va fi numit `a[.exe]`. Prin urmare, cheia `-o` indică numele fișierului executabil, adică `file`. Cheia `-l` indică că la compilare trebuie să fie adăugată biblioteca de programare. Conform regulilor de conectare a bibliotecilor de programare în sistemul de operare Linux, dacă numele fișierului bibliotecii este `libfilename.a`, atunci pentru a o conecta este suficient să scrieți `-l filename`, sau să specificați numele complet al bibliotecii.
+În realitate pentru compilarea codului sursă în fișier executabil, la compilator poate fi transmis numai numele fișierului sursă, dar în acest caz compilarea va fi reușită numai dacă programul folosește doar biblioteca standard C/C++, iar fișierul executabil va fi numit `a[.exe]`. Prin urmare, cheia `-o` indică numele fișierului executabil, adică `file`. Cheia `-l` indică că la compilare trebuie să fie adăugată biblioteca de programare. Conform regulilor de conectare a bibliotecilor de programare în sistemul de operare UNIX-like, dacă numele fișierului bibliotecii este `libfilename.a`, atunci pentru a o conecta este suficient să scrieți `-l filename`, sau să specificați numele complet al bibliotecii.
 
 Dacă proiectul aplicației constă din mai multe fișiere sursă, atunci pentru pentru compilarea aplicației trebuie să specificați toate fișierele sursă.
 
