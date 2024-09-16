@@ -62,7 +62,7 @@ Proces de compilare a programului include următoarele etape:
 
 ## Compilarea din linia de comandă
 
-In realitate nu este necesar să știi cum să compilezi o aplicație din linia de comandă, deoarece mediile de programare moderne vin cu un compilator, iar întregul proces de compilare a aplicației este redus la selectarea unui element de meniu sau apăsarea unei combinații de taste. Cu toate acestea, pentru dezvoltarea generală, este util să știi cum se face acest lucru - cum se compilează o aplicație din fișiere sursă, mai ales că aceasta nu este o situație rară pentru utilizatorii sistemului de operare Linux.
+In realitate nu este necesar să știi cum să compilezi o aplicație din linia de comandă, deoarece mediile de programare moderne vin cu un compilator, iar întregul proces de compilare a aplicației este redus la selectarea unui element de meniu sau apăsarea unei combinații de taste. Cu toate acestea, pentru dezvoltarea generală, este util să știi cum se face acest lucru - cum se compilează o aplicație din fișiere sursă, mai ales că aceasta nu este o situație rară pentru utilizatorii sistemului de operare UNIX-like.
 
 Orice aplicație de tip consolă poate fi pornită cu un set de chei (parametri). Pentru a ști ce chei poate accepta această aplica ție, trebuie să o porniți cu cheia `--help` sau `-h`, în funcție de implementarea aplicației. De exemplu, despre utilizarea compilatorului `GNU C++` puteți afla rulând următoarea comandă:
 
