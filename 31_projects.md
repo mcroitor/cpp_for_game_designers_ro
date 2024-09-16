@@ -141,7 +141,7 @@ Cerințele cheie pentru instrumentele de automatizare sunt:
 
 Variantele de automatizare utilizate în diferite instrumente:
 
-- automatizare pe cerere (on-demand automation): rularea unui scenariu de comandă de către utilizator,
+- automatizare la cerere (on-demand automation): rularea unui scenariu de comandă de către utilizator,
 - automatizare programată (scheduled automation): integrare continuă care se desfășoară sub formă de compilații nocturne,
 - automatizare condiționată (triggered automation): integrare continuă care efectuează o compilație la fiecare confirmare a modificării codului (commit) în sistemul de control al versiunilor.
 
