@@ -203,16 +203,16 @@ Un exemplu `Makefile` pentru asamblarea proiectului din trei fișiere `first.cpp
 all: file
 
 file: first.o second.o main.o
-    g++first.o second.o main.o -o file -love
+    g++ first.o second.o main.o -o file -love
     
 first.o: first.cpp
-    g++-c first.cpp -O2 -std=c++14 -o first.o
+    g++ -c first.cpp -O2 -std=c++14 -o first.o
 
 second.o: second.cpp
-    g++-c second.cpp -O2 -std=c++14 -o second.o
+    g++ -c second.cpp -O2 -std=c++14 -o second.o
 
 main.o: main.cpp
-    g++-c main.cpp -O2 -std=c++14 -o main.o
+    g++ -c main.cpp -O2 -std=c++14 -o main.o
 ```
 
 Definirea variabilelor în fișierul `Makefile` permite crearea unui `Makefile` mai flexibil. De exemplu, în următorul exemplu, variabilele `CC`, `CXXFLAGS`, `LDFLAGS` și `OUT` sunt definite la începutul fișierului. Variabila `CC` conține numele compilatorului, `CXXFLAGS` - opțiunile de compilare, `LDFLAGS` - opțiunile de legare, `OUT` - numele fișierului executabil.
