@@ -153,7 +153,7 @@ Variantele de automatizare utilizate în diferite instrumente:
 
 ### Ninja
 
-`Ninja` este o utilitate de linie de comandă, un sistem de construire a proiectelor din fișiere sursă. Instrumentul Ninja a fost elaborat de Evan Martin, un angajat al companiei Google.
+`Ninja` este o utilitate de linie de comandă, un sistem de construire a proiectelor din fișiere sursă. Acest instrument a fost elaborat de Evan Martin, un angajat al companiei Google.
 
 Ninja prezintă o versiune îmbunătățită și optimizată a utilității `make`. Scopul principal al Ninja este automatizarea și accelerarea procesului de construire a proiectelor, precum și accelerarea recompilării ulterioare, pe baza fișierelor generate de utilitar și soluționarea problemelor tipice în dezvoltarea cross-platform.
 
