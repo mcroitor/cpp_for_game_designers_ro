@@ -93,7 +93,7 @@ De obicei în proiectele complexe fiecare fișier sursă se compilează în fiș
 g++ first.cpp -o first.o -O2 -c -std=c++14
 g++ second.cpp -o second.o -O2 -c -std=c++14
 g++ main.cpp -o main.o -O2 -c -std=c++14
-g++ first.o second.o main.o -o file -love
+g++ first.o second.o main.o -o file
 ```
 
 > [!TIP]
