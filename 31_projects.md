@@ -218,7 +218,7 @@ main.o: main.cpp
 Definirea variabilelor în fișierul `Makefile` permite crearea unui `Makefile` mai flexibil. De exemplu, în următorul exemplu, variabilele `CC`, `CXXFLAGS`, `LDFLAGS` și `OUT` sunt definite la începutul fișierului. Variabila `CC` conține numele compilatorului, `CXXFLAGS` - opțiunile de compilare, `LDFLAGS` - opțiunile de legare, `OUT` - numele fișierului executabil.
 
 ```makefile
-CC = gcc
+CC = g++
 CXXFLAGS = -O2 -std=c++14
 LDFLAGS = -lstdc++ -love
 OUT = file
