@@ -14,7 +14,7 @@ int main() {
     int number;
     std::vector<int> number2;
 
-    std::vector<int>::const_iterator it = number2.begin();
+    std::vector<int>::const_iterator it = number2.cbegin();
     auto it2 = number2.begin();
 
     const char* str = "";
