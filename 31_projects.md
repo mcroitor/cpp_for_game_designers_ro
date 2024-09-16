@@ -241,7 +241,7 @@ main.o: main.cpp
 Exemplu de `Makefile` cu reguli suplimentare:
 
 ```makefile
-CC = gcc
+CC = g++
 CXXFLAGS = -O2 -std=c++14
 LDFLAGS = -lstdc++ -love
 OUT = file
