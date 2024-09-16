@@ -173,7 +173,7 @@ Sistemul de construire `GNU Autotools` se utilizează larg în multe proiecte cu
 
 `CMake` - este un sistem cross-platform de automatizare a procesului de construire a proiectelor software. Acest instrument de nivel înalt permite utilizatorilor să scrie fișiere de configurare `CMakeLists.txt` independente de platformă, care sunt apoi transformate în fișiere de configurare specifice platformei. Totorodată, `CMake` poate automatiza proces de instalare și configurarea a pachetelor software.
 
-`CMake` se consideră o alternativă mai modernă și mai ușor de utilizat decât `Autotools`, utilizat în comuniteatea GNU.
+`CMake` se consideră o alternativă mai modernă și mai ușor de utilizat decât `Autotools`, utilizat în comunitatea GNU.
 
 ## Arhitectura fișierului Makefile
 
