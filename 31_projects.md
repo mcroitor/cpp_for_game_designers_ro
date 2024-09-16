@@ -163,7 +163,7 @@ Ninja prezintă o versiune îmbunătățită și optimizată a utilității `mak
 
 Migrarea codului de pe un sistem pe altul poate fi o sarcină dificilă. Diferite realizări ale compilatorului limbajului C pot diferi semnificativ: anumite funcții ale limbajului pot lipsi, pot avea un alt nume sau pot fi în biblioteci diferite. Programatorul poate rezolva această problemă folosind macro-uri și directive de preprocesor, cum ar fi `#if`, `#ifdef` și altele. Dar în acest caz, utilizatorul care compilează programul pe propriul sistem va trebui să definească toate aceste macro-uri, ceea ce nu este atât de simplu, deoarece există multe distribuții și variații ale sistemelor. Autotools sunt apelate printr-o secvență de comenzi `./configure && make && make install` și rezolvă aceste probleme automat.
 
-Sistem de construire `GNU Autotools` se utilizează larg în multe proiecte cu sursă deschisă. `GNU Autotools` include:
+Sistemul de construire `GNU Autotools` se utilizează larg în multe proiecte cu sursă deschisă. `GNU Autotools` include:
 
 - `Autoconf` - un istrument pentru generarea scripturilor de configurare `configure` pe baza fișierelor `configure.ac` (sau `configure.in`). Scriptul generat este apoi rulat de utilizator, iar scriptul verifică caracteristicile sistemului și creează un `Makefile`.
 - `Automake` - citeste fișierele `Makefile.am` și creează un `Makefile` portabil, adică `Makefile.in`, care apoi, după procesarea scriptului de configurare, devine `Makefile` și este utilizat de utilitarul `make`.
