@@ -191,7 +191,7 @@ Reguli de creare a fișierului `Makefile` sunt următoarele:
     [<comanda>]
 ```
 
-- regula poate avea mai multe dependențe sau deloc să nu aibă. Dacă regula are dependențe, atunci mai întâi acestea sunt executate, în ordinea în care sunt enumerate, iar apoi comanda / comenzile regulei.
+- o regulă are orice număr de dependențe. Dacă există dependențe, atunci mai întâi acestea sunt executate, în ordinea în care sunt enumerate, iar apoi comanda regulei.
 - fiecare dependență este un alt regulă definită în fișierul `Makefile`.
 - comenzile încep cu un tabulator.
 
