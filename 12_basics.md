@@ -133,7 +133,7 @@ Limbajul C++ conține un set de cuvinte cheie, care sunt rezervate pentru a desc
 - __throw__ - operator _throw_ generează o excepție
 - __true__ - constantă logică cu valoarea "adevărat"
 - __try__ - bloc de cod care conține partea programului care poate genera o excepție
-- __typeid__ - operator _typeid_ returnează o referință la un obiect _type_info_ care descrie tipul obiectului la care se referă operatorul _typeid_
+- __typeid__ - operator _typeid_ returnează o referință la un obiect _type\_info_ care descrie tipul obiectului la care se referă operatorul _typeid_
 - __typename__ - cuvânt cheie care poate fi utilizat în loc de cuvântul cheie _class_ în declarația unui șablon sau pentru a face referire la un tip nedeterminat
 - __using__ - transferă o variabilă dintr-un spațiu de nume definit în spațiul global al variabilelor
 - __virtual__ - specificator de tip care definește funcții virtuale
@@ -420,7 +420,7 @@ Declarația funcției are următoarea structură:
 
 Tipul de date întors este tipul de date al rezultatului funcției. Dacă funcția nu returnează niciun rezultat, atunci tipul de date întors trebuie să fie `void`.
 
-Funcția poate fi apelată în orice loc al programului. 
+Funcția poate fi apelată în orice loc al programului.
 
 Valorile, care se transmit funcției, se numesc argumente, tipurile acestor valori trebuie să fie compatibile cu tipurile parametrilor funcției.
 
@@ -447,7 +447,6 @@ Memoria dinamică este o zonă de memorie, care se utilizează pentru stocarea d
 Limbajele de programare C și C++ oferă posibilitatea de a lucra cu adresele de memorie. Adresa de memorie este un număr, care indică locația în memorie a unei variabile. Mărimea memoriei alocate la care se referă adresa depinde de tipul de date al variabilei.
 
 Declarația variabilei de tip pointer se face prin specificarea tipului de date, urmat de simbolul `*` și numele variabilei[^4].
-
 
 ```cpp
 // <type> * <pointer_name>;
@@ -531,7 +530,6 @@ int * intPtr = new int;
 std::cout << *intPtr << std::endl;
 delete intPtr;
 ```
-
 
 ### Vectori
 

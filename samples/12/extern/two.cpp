@@ -1,8 +1,8 @@
-#include <iostream>
+#include <cstdio>
 
 extern int a;
 
 int main() {
-    std::cout << a;
+    printf("%d", a);
     return 0;
 }
