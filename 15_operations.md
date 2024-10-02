@@ -191,7 +191,7 @@ Regulile operațiilor logice sunt prezentate în tabelul următor:
 
 Deseori, pentru comoditate, este util să se redefinească un operator pentru o clasă (de exemplu, `+` pentru vectori). În acest caz, programul devine mai compact și mai ușor de înțeles. Forma generală a definirii unui operator este următoarea:
 
-`<return_type> operator <operator_sign> (<operator_parametres>);`
+`<return_type> operator <operator_sign> (<operator_parameters>);`
 
 Operatorii pot fi unari (care lucrează cu un singur operand) și binari (care lucrează cu doi operanzi). Exemple de operatori unari: `++`, `--`, `*` (operator de dereferențiere). Exemple de operatori binari: `+`, `+=`, `*` (înmulțire), `==`.
 
