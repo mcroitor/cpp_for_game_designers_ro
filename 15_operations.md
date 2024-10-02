@@ -220,7 +220,7 @@ std::ostream& operator << (std::ostream& out, const int_pair& p) {
 }
 ```
 
-Operatoarele unare se declara ca parte a clasei. Operatoarele binare pot fi declarate atât în interiorul clasei, cât și în afara clasei. Operatorul binar declarat în interiorul clasei are doar un parametru de intrare (al doilea parametru al operatorului va fi obiectul, operatorul căruia este apelat). Operatorii binari declarați în afara clasei au doi parametri.
+Operatorii unari se declara ca parte a clasei. Operatorii binari pot fi declarate atât în interiorul clasei, cât și în afara clasei. Operatorul binar declarat în interiorul clasei are doar un parametru de intrare (al doilea parametru al operatorului va fi obiectul, operatorul căruia este apelat). Operatorii binari declarați în afara clasei au doi parametri.
 
 > __Recomandare:__ pentru determinarea locului potrivit pentru definirea operatorului - în interiorul clasei sau în afara ei - întrebați-vă dacă acest operator modifică operanzii săi. Dacă modifică - atunci acest operator este parte a clasei. Dacă nu modifică, atunci cel mai bine este să definiți operatorul în afara clasei. De exemplu, operația de atribuire modifică operandul din dreapta, deci este mai bine să o definiți în interiorul clasei; operația de adunare nu modifică operanzii săi, deci este mai bine să o definiți în afara clasei.
 
