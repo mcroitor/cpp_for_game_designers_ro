@@ -45,7 +45,7 @@ Operațiile `+` și `-` pot fi utilizate ca unare, pentru a schimba semnul expre
 
 Operația `%` este utilizată numai pentru tipuri de date întregi.
 
-Dacă în operația de împărțire operandele sunt de tip întreg, rezultatul va fi întreg.
+Dacă în operația de împărțire, operandele sunt de tip întreg, rezultatul tot va fi întreg.
 
 ## Operații pe biți
 
