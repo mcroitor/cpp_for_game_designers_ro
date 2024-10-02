@@ -86,7 +86,7 @@ Următorul exemplu arată operațiile pe biți pentru numerele 17 și 45:
 - operator `++` – incrementare;
 - operator `––`  – decrementare.
 
-Acestea operatori sunt unari, adică necesită un singur operand. Acești operatori pot fi plasați înainte și după operand.
+Acestea operatori sunt unari, adică necesită un singur operand. Acești operatori pot fi plasați înainte (prefixate) și după operand (postfixate).
 
 - `A++` - este echivalent cu `A = A + 1`. Returnează valoarea inițială a _A_;
 - `++A` - este echivalent cu `A = A + 1`. Returnează valoarea modificată a _A_;
