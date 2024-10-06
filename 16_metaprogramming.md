@@ -128,7 +128,7 @@ public:
 
 ## Instanțierea șabloanelor
 
-Terminul _instanțierea_ ( crearea unei instanțe) poate fi aplicat atât la declararea variabilelor, cât și la crearea implementărilor concrete ale funcțiilor sau claselor șablonice.
+Terminul _instanțierea_ (crearea unei instanțe) poate fi aplicat atât la declararea variabilelor, cât și la crearea implementărilor concrete ale funcțiilor sau claselor șablonice.
 
 _Instanțierea unui șablon_ este procesul de creare a unei clase sau a unei funcții concrete dintr-un șablon de clasă sau de funcție. Se diferențiază _instanțierea implicită_ care se produce automat la apelul funcției sau crearea obiectului clasei, și _instanțierea explicită_ care se produce prin specificarea tipului cu ajutorul cuvântului cheie `template`.
 
