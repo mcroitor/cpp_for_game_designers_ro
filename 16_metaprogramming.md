@@ -208,19 +208,21 @@ template<typename TYPE>
 void print(TYPE p) {
   std::cout << p.toString() << std::endl;
 }
+
 template<>
 void print(int p) {
   std::cout << p << std::endl;
 }
+
 template<>
 void print(float p) {
   std::cout << p << std::endl;
 }
+
 template<>
 void print(std::string p) {
   std::cout << p << std::endl;
 }
-```
 
 Exemplu de utilizare a specializării șabloanelor pentru calculul la etapa de compilare:
 
