@@ -51,7 +51,7 @@ void swap(TYPE& a, TYPE& b){
 
 Definirea unui șablon se începe cu construcția cheie `template<typename TYPE, ...>`, unde în parantezele unghiulare sunt specificate parametrii șablonului. Numărul de parametrii șablonului poate fi orice.
 
-> La definirea parametrilor tip ale sablonului În loc de cuvântul cheie `typename` se poate folosi cuvântul cheie `class`.
+> La definirea parametrilor tip ale sablonului, în loc de cuvântul cheie `typename` se poate folosi cuvântul cheie `class`.
 
 Până când nu este apelată funcția `_swap_` în program, la compilare ea nu este creată în codul binar (_nu este instanțiată_). Dacă se declară un grup de apeluri a funcției cu variabile de tipuri diferite, atunci pentru fiecare apel compilatorul va crea propria implementare pe baza șablonului.
 
