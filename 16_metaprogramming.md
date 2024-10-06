@@ -57,7 +57,7 @@ Până când nu este apelată funcția `_swap_` în program, la compilare ea nu 
 
 Parametrul șablonului de funcție poate fi orice tip de date, inclusiv unul definit de utilizator, sau o valoare de tip enumerabil (de exemplu, `int`, `char` sau enumerare).
 
-Apel unei funcții șablon, în general, este similar cu apelul unei funcții obișnuite. În acest caz, compilatorul va deduce tipul `TYPE` parametrilor funcției din tipul argumentelor efective. În cazul în care tipurile argumentelor efective sunt diferite, compilatorul nu va putea deduce tipul parametrilor funcției și va genera o eroare, de exemplu:
+Apelul unei funcții șablon, în general, este similar cu apelul unei funcții obișnuite. În acest caz, compilatorul va deduce tipul `TYPE` parametrilor funcției din tipul argumentelor efective. În cazul în care tipurile argumentelor efective sunt diferite, compilatorul nu va putea deduce tipul parametrilor funcției și va genera o eroare, de exemplu:
 
 ```cpp
 #include <iostream>
