@@ -49,7 +49,7 @@ void swap(TYPE& a, TYPE& b){
 }
 ```
 
-Definirea unui șablon se începe cu construcția cheie `template<typename TYPE, ...>`, unde în parantezele unghiulare sunt specificate parametrii șablonului. Parametrii șablonului pot fi orice număr de parametri.
+Definirea unui șablon se începe cu construcția cheie `template<typename TYPE, ...>`, unde în parantezele unghiulare sunt specificate parametrii șablonului. Numărul de parametrii șablonului poate fi orice.
 
 > La definirea parametrilor tip ale sablonului În loc de cuvântul cheie `typename` se poate folosi cuvântul cheie `class`.
 
