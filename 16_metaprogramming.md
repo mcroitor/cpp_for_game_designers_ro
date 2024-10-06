@@ -55,7 +55,7 @@ Definirea unui șablon se începe cu construcția cheie `template<typename TYPE,
 
 Până când nu este apelată funcția `_swap_` în program, la compilare ea nu este creată în codul binar (_nu este instanțiată_). Dacă se declară un grup de apeluri a funcției cu variabile de tipuri diferite, atunci pentru fiecare apel compilatorul va crea propria implementare pe baza șablonului.
 
-Parametrul șablonului de funcție poate fi orice tip de date, inclusiv un tip de date definit de utilizator, sau o valoare de tip enumerabil (de exemplu, `int`, `char` sau enumerare).
+Parametrul șablonului de funcție poate fi orice tip de date, inclusiv unul definit de utilizator, sau o valoare de tip enumerabil (de exemplu, `int`, `char` sau enumerare).
 
 Apel unei funcții șablon, în general, este similar cu apelul unei funcții obișnuite. În acest caz, compilatorul va deduce tipul `TYPE` parametrilor funcției din tipul argumentelor efective. În cazul în care tipurile argumentelor efective sunt diferite, compilatorul nu va putea deduce tipul parametrilor funcției și va genera o eroare, de exemplu:
 
