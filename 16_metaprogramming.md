@@ -101,7 +101,7 @@ __Când șablonul de funcție nu va funcționa?__
 
 La etapa de compilare a programului, compilatorul va înlocui tipul `TYPE` cu tipul efectiv al argumentelor. Dar întotdeauna funcția va funcționa corect? Evident, nu. Orice algoritm poate fi definit independent de tipul de date, dar el folosește proprietățile acestor date. În cazul funcției șablon _min_ este necesară definirea operatorului de ordonare (`<`).
 
-Fiecare șablon de funcție presupune existența unor anumite proprietăți ale tipului de date parametrizat, în dependența de realizare (de exemplu, operatorul de copiere, operatorul de comparare, existența unui anumit metoda etc.). În viitorul standard al limbajului C++ pentru aceasta vor fi responsabile _conceptele_ [^2].
+Fiecare șablon de funcție presupune existența unor anumite proprietăți ale tipului de date parametrizat, în dependența de realizare (de exemplu, operatorul de copiere, operatorul de comparare, existența unui anumit metoda etc.). În standardul C++20, pentru aceasta sunt responsabile _conceptele_ [^2].
 
 ## Șabloane de clase
 
