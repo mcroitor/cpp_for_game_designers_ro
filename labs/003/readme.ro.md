@@ -1,4 +1,4 @@
-# Constructtorii și operatorii
+# Constructorii și operatorii
 
 ## Scop
 

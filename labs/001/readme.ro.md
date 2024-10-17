@@ -1,4 +1,4 @@
-# Crearea unui proiect. Lucru cu GIT
+# Crearea unui proiect. Lucrul cu GIT
 
 ## Scop
 
