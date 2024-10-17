@@ -10,7 +10,20 @@ Acest repozitoriu conține materialele pentru cursul _Programare în limbajul С
 - utilizarea bibliotecilor;
 - crearea de aplicații complexe în С++.
 
-Cursul este structurat în 15 lecții teoretice și 15 laboratoare.
+Cursul este structurat în 15 lecții teoretice și 22 lecții practice.
+
+În procesul de învățare va obține următoarele cunoștințe și abilități:
+
+- cunoștințe în domeniul programării orientate pe obiecte în C++;
+- abilități în asamblarea aplicațiilor complexe;
+- capacitatea de a analiza și a rezolva problemele complexe de programare;
+- cunoștințe despre instrumente moderne de dezvoltare a aplicațiilor software.
+- capacitatea de a utiliza biblioteca standard C++;
+- abilități în lucru cu sisteme de gestionare a proiectelor;
+- abilități în scrierea documentației;
+- utilizarea bibliotecilor terțe.
+
+Totodată, studentul va crea propriul joc în limbajul C++.
 
 ## Temele lecțiilor
 
@@ -30,8 +43,8 @@ Cursul este structurat în 15 lecții teoretice și 15 laboratoare.
    1. [Proiect. Sisteme de construire a proiectelor.](./31_projects.md)
    2. [Utilizarea bibliotecilor externe.](./32_lib_usage.md)
    3. [Crearea bibliotecilor de programare](./33_lib_dev.md)
-   4. [Baze de date.](./34_db.md)
-   5. [Programare orientată pe evenimente.](./35_event_driven.md)
+   4. [Programare orientată pe evenimente.](./34_event_driven.md)
+   5. [Practici bune.](./35_best_practices.md)
 
 ## Temele lucrărilor de laborator
 
@@ -39,5 +52,5 @@ Cursul este structurat în 15 lecții teoretice și 15 laboratoare.
 2. Crearea și utilizarea claselor. Proiecte cu mai multe fișiere. Compilarea proiectului.
 3. Compoziția. Moștenirea. Polimorfismul.
 4. Utilizarea bibliotecii standard С++.
-5. Întreținerea proiectului. Scrierea documentației.
-6. Crearea și utilizarea modulelor / bibliotecilor.
+5. Crearea și utilizarea modulelor / bibliotecilor.
+6. Întreținerea proiectului. Scrierea documentației.
