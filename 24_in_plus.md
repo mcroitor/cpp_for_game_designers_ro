@@ -7,7 +7,7 @@
   - [interval (ranges)](#interval-ranges)
   - [smart-pointeri](#smart-pointeri)
   - [valarray](#valarray)
-  - [varian, optional, any](#varian-optional-any)
+  - [variant, optional, any](#variant-optional-any)
   - [expresii regulate](#expresii-regulate)
   - [Bibliografie](#bibliografie)
 
@@ -23,7 +23,7 @@
 
 ## valarray
 
-## varian, optional, any
+## variant, optional, any
 
 ## expresii regulate
 
