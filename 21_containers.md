@@ -354,5 +354,5 @@ Dicționarul cu repetări (en. _multimap_) este similar cu dicționarul, dar per
 
 ## Bibliografie
 
-1. [Возвращение к С++ - современный С++, Microsoft](https://learn.microsoft.com/ru-ru/cpp/cpp/welcome-back-to-cpp-modern-cpp?view=msvc-170)
+1. [Welcome back to C++ - Modern C++, Microsoft](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp)
 2. [Containers library, CPP Reference](https://en.cppreference.com/w/cpp/container)
