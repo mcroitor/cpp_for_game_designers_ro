@@ -238,7 +238,7 @@ __Lista__ (en. _list_) este un container care păstrează elementele în ordine 
 | acces la element      | `a.front()`       | returnează o referință la primul element din listă |
 |                      | `a.back()`        | returnează o referință la ultimul element din listă |
 
-### Rând
+### Coadă bidirecțională
 
 __Rând__ (en. deque) este un container care păstrează elementele în ordine liniară. Rând suportă operațiile de inserare, ștergere și căutare a elementelor. Inserarea și ștergerea elementelor din rând se realizează în timpul O(1), unde n este numărul de elemente din rând.
 
