@@ -242,7 +242,7 @@ __Lista__ (en. _list_) este un container care păstrează elementele în ordine 
 
 __Coada bidirecțională__ (en. deque) este un container care păstrează elementele în ordine liniară. Acest container suportă operațiile de inserare, ștergere și căutare a elementelor. Inserarea și ștergerea elementelor din coadă se realizează în timpul O(1), unde n este numărul de elemente din coadă.
 
-În afară de proprietățile obligatorii ale containerelor secvențiale, rând are următoarele proprietăți:
+În afară de proprietățile obligatorii ale containerelor secvențiale, coada bidirecțională are următoarele proprietăți:
 
 | proprietate      | expresie         | observații                                   |
 | ---------------- | ---------------- | -------------------------------------------- |
