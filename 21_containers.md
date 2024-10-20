@@ -132,7 +132,7 @@ Iteratorii de acces aleator (en. _Random access iterators_) are toate proprietă
 
 ## Containere
 
-Sub __container__ se înțelege un obiect care conține un grup de alte obiecte (de obicei de același tip). Biblioteca standard C++ oferă o serie de containere tipice, cum ar fi: _vector_, _list_, _queue_, _map_, _set_ etc. Accesul la elementele containerelor se realizează prin iteratori.
+Sub __container__ se înțelege un obiect care conține un grup de alte obiecte (de obicei de același tip). Biblioteca standard C++ oferă o serie de containere tipice, cum ar fi: _`vector`_, _`list`_, _`queue`_, _`map`_, _`set`_ etc. Accesul la elementele containerelor se realizează prin iteratori.
 
 Către containere se aplică o serie de cerințe comune. Acestea sunt necesare pentru a asigura utilizarea uniformă a containerelor, indiferent de implementare. Prin urmare, containerele sunt adesea interschimbabile.
 
