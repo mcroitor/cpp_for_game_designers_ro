@@ -246,13 +246,13 @@ __Coada bidirecțională__ (en. deque) este un container care păstrează elemen
 
 | proprietate      | expresie         | observații                                   |
 | ---------------- | ---------------- | -------------------------------------------- |
-| adăugare element | `a.push_back(t)` | adaugă elementul `t` la sfârșitul rând      |
-|                  | `a.push_front(t)` | adaugă elementul `t` la începutul rând     |
-| ștergere element | `a.pop_front()`  | elimină primul element din rând             |
-|                  | `a.pop_back()`   | elimină ultimul element din rând            |
-| acces la element | `a.front()`      | returnează o referință la primul element din rând |
-|                  | `a.back()`       | returnează o referință la ultimul element din rând |
-|                 | `a[n]`           | returnează o referință la elementul cu indexul `n` din rând |
+| adăugare element | `a.push_back(t)` | adaugă elementul `t` la sfârșitul cozii     |
+|                  | `a.push_front(t)` | adaugă elementul `t` la începutul cozii     |
+| ștergere element | `a.pop_front()`  | elimină primul element din coadă             |
+|                  | `a.pop_back()`   | elimină ultimul element din coadă            |
+| acces la element | `a.front()`      | returnează o referință la primul element din coadă |
+|                  | `a.back()`       | returnează o referință la ultimul element din coadă |
+|                 | `a[n]`           | returnează o referință la elementul cu indexul `n` din coadă |
 
 ## Containere asociative
 
