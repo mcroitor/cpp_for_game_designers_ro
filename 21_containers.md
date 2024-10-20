@@ -302,7 +302,7 @@ int main() {
 }
 ```
 
-Mulțimea cu repetări (en. _multiset_) este similară cu mulțimea, dar permite stocarea elementelor cu chei identice.
+Mulțimea cu repetări (en. _multiset_) este similară cu mulțimea, dar permite stocarea elementelor duplicate.
 
 ### Dicționar
 
