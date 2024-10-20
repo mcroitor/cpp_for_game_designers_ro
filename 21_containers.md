@@ -12,7 +12,7 @@
   - [Containere secvențiale](#containere-secvențiale)
     - [Vector](#vector)
     - [Lista](#lista)
-    - [Rând](#rând)
+    - [Coadă bidirecțională](#coadă-bidirecțională)
   - [Containere asociative](#containere-asociative)
     - [Set](#set)
     - [Dicționar](#dicționar)
