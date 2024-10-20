@@ -38,7 +38,7 @@ Biblioeca Standard C++ este împărțită în mai multe părți:
 - managementul firelor de execuție;
 - alte biblioteci.
 
-Fișierele antet ale bibliotecii standard urmează următoarele reguli: fișierul antet este scris fără extensie; bibliotecile limbajului C încep cu litera `c` (de exemplu, în loc de `math.h` se folosește `cmath`). Biblioteca standard C++ este declarată în spațiul de nume __std__.
+Fișierele antet ale bibliotecii standard urmează următoarele reguli: fișierul antet este scris fără extensie; bibliotecile limbajului C încep cu litera `c` (de exemplu, în loc de `math.h` se folosește `cmath`). Biblioteca standard C++ este declarată în spațiul de nume __`std`__.
 
 Cea mai mare parte a bibliotecii standard C++ este reprezentată de biblioteca STL (Standard Template Library). Biblioteca STL conține cinci tipuri principale de componente:
 
