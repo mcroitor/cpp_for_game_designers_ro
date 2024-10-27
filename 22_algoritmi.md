@@ -361,6 +361,6 @@ int main() {
 
 ## Bibliografie
 
-1. [cppreference.com](https://en.cppreference.com/w/cpp/algorithm)
+1. [Algorithms library, cppreference.com](https://en.cppreference.com/w/cpp/algorithm)
 2. [C++ Standard Library reference (STL), Microsoft](https://learn.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-reference)
 3. [Scott Meyers. Effective STL](https://www.google.com/search?q=Scott+Meyers+effective+stl)
