@@ -77,7 +77,7 @@ int main() {
 > [!TIP]
 > Un predicat este o funcție care întoarce o valoare logică.
 
-Algorigmii STL folosesc predicat pentru a determina dacă un element îndeplinește o anumită condiție. Algoritmii operează cu predicate binare și unare.
+Algoritmii STL folosesc predicat pentru a determina dacă un element îndeplinește o anumită condiție. Algoritmii operează cu predicate binare și unare.
 
 Exemplu de predicat care determină dacă un număr este par:
 
