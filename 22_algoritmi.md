@@ -30,7 +30,7 @@
 > [!TIP]
 > __Algoritmul__ este o secvență finită de instrucțiuni care aduce la un rezultat dorit într-un număr finit de pași.
 
-Realizări ale algoritmilor din biblioteca standard C++ sunt foarte simple și eficiente. De aceea ar fi util să alocați timp pentru a citi codul sursă.
+Realizările algoritmice din biblioteca standard C++ sunt foarte simple și eficiente. De aceea ar fi util să alocați timp pentru a citi codul sursă.
 
 Toate algoritmii din biblioteca standard C++ sunt separate de la detalii de implementare a structurilor de date și utilizează iteratori ca parametri. De aceea aceștia pot lucra cu structuri de date definite de utilizator, atunci când aceste structuri de date au tipuri de iteratori care satisfac condițiilor presupuse în algoritmi.
 
