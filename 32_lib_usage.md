@@ -83,7 +83,7 @@ __Legarea dinamică a bibliotecii__ cu aplicația se realizează la momentul con
 
 În timpul compilării a programului care utilizează biblioteca dinamică codul binar al aplicației crește cu câteva byte, deoarece în locul codului binar al funcțiilor din bibliotecă este inclusă doar o instrucțiune de apel a funcției din bibliotecă, care este definită în biblioteca de import.
 
-### dynamic loading
+### Dynamic loading
 
 Totodată bibliotecile dinamice pot fi încărcate și utilizate nu numai la pornirea aplicației, ci și, după necesitate, în timpul execuției acesteia.
 
