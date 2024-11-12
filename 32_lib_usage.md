@@ -18,7 +18,7 @@ Bibliotecile de programare statice sunt prezentate prin două fișiere:
 1. Fișierul antet cu extensia `h` (`hxx`, `hpp`), care descrie interfața bibliotecii;
 2. Arhiva binară cu extensia `lib` (în Windows) sau `a` (în sistemele compatibile Unix), care stochează toate resursele de programare sub formă de cod obiect.
 
-Biblioteci dinamice sunt prezentate prin trei fișiere:
+Bibliotecile de programare dinamice sunt prezentate prin trei fișiere:
 
 1. Fișierul antet cu extensia `h` (`hxx`, `hpp`), care descrie interfața bibliotecii;
 2. Arhiva binară cu extensia `dll` (în Windows) sau `so` (în sistemele compatibile Unix), numită bibliotecă dinamică (în sistemele Unix - partajată), care stochează toate resursele de programare sub formă de cod binar;
