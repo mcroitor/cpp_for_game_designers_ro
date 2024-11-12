@@ -9,7 +9,7 @@
     - [Dynamic loading](#dynamic-loading)
   - [Bibliografie](#bibliografie)
 
-## biblioteci de programare
+## Biblioteci de programare
 
 __Biblioteca de programare__ este un set de resurse de programare așa cum sunt funcții, clase, obiecte, constante și variabile. În special, constantele pot fi date grafice sau multimedia. Bibliotecile de programare sunt împărțite în trei tipuri: __biblioteci statice__, __biblioteci dinamice__ și __biblioteci de șabloane__.
 
