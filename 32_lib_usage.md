@@ -24,7 +24,7 @@ Bibliotecile de programare dinamice sunt prezentate prin trei fișiere:
 2. Arhiva binară cu extensia `dll` (în Windows) sau `so` (în sistemele compatibile Unix), numită bibliotecă dinamică (în sistemele Unix - partajată), care stochează toate resursele de programare sub formă de cod binar;
 3. Fișierul cu extensia `lib` (în Windows) sau `a` (în sistemele compatibile Unix), numit bibliotecă de import, care stochează locațiile resurselor de programare în biblioteca dinamică. În sistemele Unix, biblioteca de import nu este utilizată.
 
-Există și biblioteci care nu pot fi reprezentate altfel decât sub formă de cod sursă - acestea sunt bibliotecile care conțin șabloane de clase și funcții. Aceste biblioteci sunt furnizate în fișiere antet.
+Există și biblioteci de programare care nu pot fi reprezentate altfel decât sub formă de cod sursă - acestea sunt bibliotecile care conțin șabloane de clase și funcții. Aceste biblioteci sunt furnizate în fișiere antet.
 
 Numirea bibliotecilor de programare pentru compilatorul Gnu C++ (g++) are următoarea formă:
 
