@@ -77,7 +77,7 @@ Bibliotecile dinamice pot fi utilizate în două moduri diferite:
 - legare la timpul de încărcare a programului - __legare dinamică__ (en. __dynamic linking__);
 - legare la timpul de execuție a programului - __încărcare dinamică__ (en. __dynamic loading__).
 
-### dynamic linking
+### Dynamic linking
 
 __Legarea dinamică a bibliotecii__ cu aplicația se realizează la momentul conectării fișierului antet al bibliotecii, precum și la indicarea în proprietățile proiectului utilizarea bibliotecii. În acest caz, biblioteca va fi încărcată în memoria operațională înainte de pornirea aplicației. La pornirea aplicației, sistemul de operare verifică existența bibliotecilor dinamice legate de program, pe căile sistemului, în directorul curent sau în memoria operațională. Numai după aceea programul este executat. Dacă cel puțin o bibliotecă nu a fost găsită, aplicația se încheie cu o eroare corespunzătoare.
 
