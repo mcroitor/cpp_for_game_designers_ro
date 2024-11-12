@@ -32,7 +32,7 @@ Numirea bibliotecilor de programare pentru compilatorul Gnu C++ (g++) are următ
 - biblioteca statică: `lib<nume bibliotecă>.a` (în sistemele Unix) sau `<nume bibliotecă>.lib` (în Windows);
 - biblioteca dinamică: `<nume bibliotecă>.so` (în sistemele Unix) sau `<nume bibliotecă>.dll` (în Windows).
 
-Fișierele antet de obicei sunt plăsate în directorul `include` a compilatorului, bibliotecile statice și de import - în directorul `lib`, iar bibliotecile dinamice sunt plasate în directoarele sistemului (`c:\\Windows\System32` sau `/usr/bin`). Aceste căi pot fi redefinite în program sau în timpul compilării.
+Fișierele antet de obicei sunt plăsate în directorul `include` a compilatorului, bibliotecile statice și de import - în directorul `lib`, iar bibliotecile dinamice sunt plasate în directoarele sistemului (`C:\Windows\System32` sau `/usr/bin`). Aceste căi pot fi redefinite în program sau în timpul compilării.
 
 Fiecare tip de bibliotecă de programare are avantaje și dezavantaje. De exemplu, utilizarea bibliotecilor statice crește portabilitatea programelor datorită faptului că acestea nu depind de niciun modul (biblioteci dinamice), dar codul programului crește. Utilizarea bibliotecilor dinamice permite crearea de programe mici ca dimensiune, dar în timpul execuției acestea vor ocupa în memorie locul bibliotecii dinamice.
 
