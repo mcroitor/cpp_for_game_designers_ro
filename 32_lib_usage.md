@@ -1,12 +1,12 @@
 # Utilizarea bibliotecilor externe
 
 - [Utilizarea bibliotecilor externe](#utilizarea-bibliotecilor-externe)
-  - [biblioteci de programare](#biblioteci-de-programare)
-  - [utilizarea bibliotecilor statice](#utilizarea-bibliotecilor-statice)
+  - [Biblioteci de programare](#biblioteci-de-programare)
+  - [Utilizarea bibliotecilor statice](#utilizarea-bibliotecilor-statice)
     - [Exemplu de utilizare a bibliotecii statice](#exemplu-de-utilizare-a-bibliotecii-statice)
-  - [utilizarea bibliotecilor dinamice](#utilizarea-bibliotecilor-dinamice)
-    - [dynamic linking](#dynamic-linking)
-    - [dynamic loading](#dynamic-loading)
+  - [Utilizarea bibliotecilor dinamice](#utilizarea-bibliotecilor-dinamice)
+    - [Dynamic linking](#dynamic-linking)
+    - [Dynamic loading](#dynamic-loading)
   - [Bibliografie](#bibliografie)
 
 ## biblioteci de programare
