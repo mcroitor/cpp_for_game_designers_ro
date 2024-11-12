@@ -36,7 +36,7 @@ Fișierele antet de obicei sunt plăsate în directorul `include` a compilatorul
 
 Fiecare tip de bibliotecă de programare are avantaje și dezavantaje. De exemplu, utilizarea bibliotecilor statice crește portabilitatea programelor datorită faptului că acestea nu depind de niciun modul (biblioteci dinamice), dar codul programului crește. Utilizarea bibliotecilor dinamice permite crearea de programe mici ca dimensiune, dar în timpul execuției acestea vor ocupa în memorie locul bibliotecii dinamice.
 
-## utilizarea bibliotecilor statice
+## Utilizarea bibliotecilor statice
 
 La utilizarea funcțiilor (claselor sau altor resurse programatice) din bibliotecile statice, la etapa de compilare a programului din bibliotecă compilatorul ia doar codurile obiect ale resurselor utilizate. Prin urmare, la dimensiunea bibliotecii statice de câteva megaocteți, programul crește în dimensiune cu câteva zeci de kiloocteți (în funcție de dimensiunea funcțiilor utilizate).
 
