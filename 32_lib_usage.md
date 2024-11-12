@@ -70,7 +70,7 @@ g++ -o MyProgram.exe MyProgram.cpp -IC:\\MyLibs\\MyMath -LC:\\MyLibs\\MyMath -lM
 
 În acest caz, cheia de compilare `-I` indică calea către fișierul antet al bibliotecii, cheia `-L` indică calea către biblioteca de programare, iar cheia `-l` indică numele bibliotecii. Cărțile pot fi atât absolute, cât și relative.
 
-## utilizarea bibliotecilor dinamice
+## Utilizarea bibliotecilor dinamice
 
 Bibliotecile dinamice pot fi utilizate în două moduri diferite:
 
