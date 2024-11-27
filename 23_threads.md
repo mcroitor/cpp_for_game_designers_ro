@@ -149,7 +149,7 @@ O operație este __atomică__ dacă nu poate fi îndeplinită parțial: fie se r
 
 Atomicitatea poate fi realizată sau prin hardware sau prin software. În primul caz, sunt utilizate instrucțiuni speciale ale procesorului, iar în al doilea caz, sunt utilizate mecanisme de sincronizare care blochează resursa partajată pentru a efectua operația asupra acesteia. _Blocarea este o operație atomică_.
 
-Tip de date se numește __atomic__ dacă operațiile cu acest tip de date sunt atomice. 
+Tip de date se numește __atomic__ dacă operațiile cu acest tip de date sunt atomice.
 
 Definiția tipului atomic este dată în antetul `<atomic>`.
 
