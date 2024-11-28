@@ -39,7 +39,7 @@ Implicit expresiile lambda nu au acces la variabilele externe, dar în paranteze
 ```cpp
 int a = 10;
 
-std::cout << [a]{ return a;}();
+std::cout << [a]{ return a; }();
 ```
 
 Expresiile lambda pot fi generice (generic lambda function) dacă cel puțin unul dintre parametrii este declarat ca `auto`.
