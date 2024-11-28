@@ -27,7 +27,7 @@ Exemplu de definire / utilizare a unei expresii lambda:
 
 ```cpp
 // expresie lambda cu nume
-auto sum = [](int a, int b) {return a + b;};
+auto sum = [](int a, int b) { return a + b; };
 auto result = sum(a, b);
 
 // definirea expresiei lambda în locul utilizării
