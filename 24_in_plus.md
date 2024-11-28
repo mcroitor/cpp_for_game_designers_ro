@@ -31,7 +31,7 @@ auto sum = [](int a, int b) { return a + b; };
 auto result = sum(a, b);
 
 // definirea expresiei lambda în locul utilizării
-std::cout << [](int a, int b) {return a + b;}(10, 15);
+std::cout << [](int a, int b) { return a + b; }(10, 15);
 ```
 
 Implicit expresiile lambda nu au acces la variabilele externe, dar în paranteze pătrate se pot enumera toate variabilele care trebuie să fie accesibile în expresia lambda.
