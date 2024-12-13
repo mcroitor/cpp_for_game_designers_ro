@@ -17,6 +17,7 @@
     - [Set](#set)
     - [Dicționar](#dicționar)
   - [Bibliografie](#bibliografie)
+  - [Întrebări de repetiție](#întrebări-de-repetiție)
 
 ## Biblioteca standard C++
 
@@ -356,3 +357,99 @@ Dicționarul cu repetări (en. _multimap_) este similar cu dicționarul, dar per
 
 1. [Welcome back to C++ - Modern C++, Microsoft](https://learn.microsoft.com/en-us/cpp/cpp/welcome-back-to-cpp-modern-cpp)
 2. [Containers library, CPP Reference](https://en.cppreference.com/w/cpp/container)
+
+## Întrebări de repetiție
+
+1. Obiect special care permite parcurgerea elementelor a unei colecții se numește
+   - [ ] iterator
+   - [ ] functor
+   - [ ] adaptor
+   - [ ] predicat
+2. Obiect care conține alte obiecte (de obicei de același tip) se numește
+   - [ ] container
+   - [ ] iterator
+   - [ ] functor
+   - [ ] predicat
+3. Iteratorul este
+   - [ ] Obiect special care permite parcurgerea elementelor a unei colecții
+   - [ ] Obiectul clasei în care este definit operatorul "paranteze rotunde"
+   - [ ] Funcția care returnează doar valorile `true` sau `false`
+   - [ ] Obiect care conține alte obiecte (de obicei de același tip)
+4. Containerul este
+   - [ ] Obiect special care permite parcurgerea elementelor a unei colecții
+   - [ ] Obiectul clasei în care este definit operatorul "paranteze rotunde"
+   - [ ] Funcția care returnează doar valorile `true` sau `false`
+   - [ ] Obiect care conține alte obiecte (de obicei de același tip)
+5. Specificați containere secvențiale standarde
+   - [ ] vector
+   - [ ] list
+   - [ ] deque
+   - [ ] array
+   - [ ] map
+   - [ ] set
+   - [ ] multiset
+   - [ ] multimap
+6. Specificați containere asociative standarde
+   - [ ] set
+   - [ ] multiset
+   - [ ] map
+   - [ ] multimap
+   - [ ] array
+   - [ ] deque
+   - [ ] list
+   - [ ] vector
+7. Dimensiunea containerului se poate obține cu ajutorul metodei
+   - [ ] `size()`
+   - [ ] `count()`
+   - [ ] `length()`
+   - [ ] `getLength()`
+8. Pentru a elimina un element din containerul secvențial, la care se referă iteratorul `q`, se folosește metoda
+   - [ ] `a.erase(q);`
+   - [ ] `a.delete(q);`
+   - [ ] `a.remove(q);`
+   - [ ] `a.clear(q);`
+9. În containere expresia `a.push_back(t);` echivalează cu
+    - [ ] `a.insert(a.end(), t);`
+    - [ ] `a.insert(--a.end(), t);`
+    - [ ] `a.push(a.end(), t);`
+    - [ ] `a.push(--a.end(), t);`
+10. Iteratorul care indică la primul element al containerului se obține cu ajutorul metodei
+    - [ ] `begin()`
+    - [ ] `front()`
+    - [ ] `pull()`
+    - [ ] `start()`
+11. Iteratorul care indică după ultimul element al containerului se obține cu ajutorul metodei
+    - [ ] `end()`
+    - [ ] `back()`
+    - [ ] `push()`
+    - [ ] `final()`
+12. Pentru a obține acces la elementul cu indexul `index` din containerul `deque`, se folosește
+    - [ ] `at()`
+    - [ ] `get()`
+    - [ ] `deque` nu are acces la elementul după index
+    - [ ] `operator()`
+13. Pentru a obține acces la elementul cu indexul `index` din containerul `list`, se folosește
+    - [ ] `list` nu are acces la elementul după index
+    - [ ] `at()`
+    - [ ] `get()`
+    - [ ] `operator()`
+14. Care metoda nu este implementată în iteratorul de citire?
+    - [ ] `operator--()`
+    - [ ] `operator++()`
+    - [ ] `operator*()`
+    - [ ] `operator==()`
+15. Care metoda nu este implementată în iteratorul de scriere?
+    - [ ] `operator--()`
+    - [ ] `operator++()`
+    - [ ] `operator*()`
+    - [ ] `operator==()`
+16. Care metoda nu este implementată în containerul `vector`?
+    - [ ] `push_front()`
+    - [ ] `push_back()`
+    - [ ] `erase()`
+    - [ ] `operator[]()`
+17. Care metoda nu este implementată în containerul `list`?
+    - [ ] `operator[]()`
+    - [ ] `push_front()`
+    - [ ] `push_back()`
+    - [ ] `erase()`
