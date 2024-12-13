@@ -1,0 +1,5 @@
+mihail;croitor;10
+mihai;gutu;9
+mihaela;caminschi;4
+miguel;sofronie;6
+mikki;liu;2
