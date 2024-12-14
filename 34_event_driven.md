@@ -130,6 +130,7 @@ Utilizatorul poate interacționa cu motanul virtual, generând următoarele even
 
 ```cpp
 enum class EventType {
+    NoEvent,
     CatHungry,
     CatWantsToPlay,
     CatSleepy,
