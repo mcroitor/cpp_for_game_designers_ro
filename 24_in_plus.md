@@ -111,7 +111,7 @@ int main()
 }
 ```
 
-## Literals
+## Literale
 
 În programare __literalul__ este o reprezentare a unei valori constante. În limbajul de programare C++ există șase tipuri de literal:
 
