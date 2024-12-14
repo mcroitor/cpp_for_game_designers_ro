@@ -186,7 +186,7 @@ Deja cunoscutul ciclu de evenimente extrage evenimente din coada de evenimente È
 ```cpp
 void EventLoop() {
     while (true) {
-        Event event = eventQueue.Pop();
+        EventType event = eventQueue.Pop();
         eventHandlers[event.type]->operator()(event.type);
     }
 }
