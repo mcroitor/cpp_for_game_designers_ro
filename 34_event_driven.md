@@ -76,7 +76,7 @@ struct EventHandler {
 
 Altfel procesoare de eveniment pot fi implementate ca metode ale clasei, în acest caz obiectul clasei trebuie să verifice periodic coada de evenimente și să apeleze procesorul de evenimente corespunzător, destinat obiectului respectiv.
 
-- __Dispatcher de evenimente__ (en. _event dispatcher_) — componentă a programului care generează evenimente și le adaugă în coada de evenimente. Dispatcher-ul de evenimente este responsabil pentru asocierea surselor de evenimente cu procesorii de evenimente corespunzători.
+- __Dispecer de evenimente__ (en. _event dispatcher_) — componentă a programului care generează evenimente și le adaugă în coada de evenimente. Dispecerul de evenimente este responsabil pentru asocierea surselor de evenimente cu procesorii de evenimente corespunzători.
 
 Cea mai simplă implementare a dispecerului de evenimente se realizează ca o hartă (map) care asociază tipul de eveniment cu procesorul de eveniment corespunzător. Totodată, dispecerul de evenimente poate fi implementat ca o un `switch`.
 
