@@ -56,7 +56,7 @@ public:
         events.push_back(event);
     }
 
-    Event Pop() {
+    EventType Pop() {
         Event event = events.front();
         events.pop_front();
         return event;
