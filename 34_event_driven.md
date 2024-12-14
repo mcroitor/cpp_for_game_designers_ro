@@ -182,6 +182,7 @@ Uneori dispecerul de evenimente este implementat ca o hartÄƒ (map) care asociazÄ
 
 ```cpp
 std::map<EventType, std::shared_ptr<EventHandler>> eventHandlers = {
+    {EventType::NoEvent, std::make_shared<NoEventHandler>()},
     {EventType::CatHungry, std::make_shared<CatHungryHandler>()},
     {EventType::CatWantsToPlay, std::make_shared<CatWantsToPlayHandler>()},
     {EventType::CatSleepy, std::make_shared<CatSleepyHandler>()},
