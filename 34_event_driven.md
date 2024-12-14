@@ -103,7 +103,7 @@ De obicei ciclul de evenimente este implementat ca o buclă infinită care extra
 ```cpp
 void EventLoop() {
     while (true) {
-        Event event = eventQueue.Pop();
+        EventType event = eventQueue.Pop();
         DispatchEvent(event);
     }
 }
