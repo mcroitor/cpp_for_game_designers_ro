@@ -3,7 +3,7 @@
 - [Instrumente adiționale ale limbajului C++](#instrumente-adiționale-ale-limbajului-c)
   - [Expresii lambda](#expresii-lambda)
   - [Formatarea textului](#formatarea-textului)
-  - [Literals](#literals)
+  - [Literale](#literale)
   - [Semantica move](#semantica-move)
   - [Tupluri](#tupluri)
   - [Interval (ranges)](#interval-ranges)
