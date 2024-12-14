@@ -113,7 +113,7 @@ int main()
 
 ## Literale
 
-În programare __literalul__ este o reprezentare a unei valori constante. În limbajul de programare C++ există șase tipuri de literal:
+În programare, un  __literal__ reprezintă o valoare constantă. În limbajul de programare C++ există șase tipuri de literal:
 
 - numere întregi: `312`, `-1ll`
 - numere reale: `12.29`
