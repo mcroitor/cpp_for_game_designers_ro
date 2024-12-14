@@ -9,7 +9,7 @@
 
 ## Noțiuni de bază
 
-Un sistem informațional poate fi considerat ca un obiect care are un anumit stadiu și comportament. Stadiul unui sistem informațional este determinat de un set de valori care descriu sistemul respectiv (atribute). Comportamentul sistemului este determinat de un set de acțiuni care pot fi efectuate asupra sistemului.
+Un sistem informațional poate fi considerat ca un obiect care are un anumit stare și comportament. Starea unui sistem informațional este determinat de un set de valori care descriu sistemul respectiv (atribute). Comportamentul sistemului este determinat de un set de acțiuni care pot fi efectuate asupra sistemului.
 
 Modificarea stării unui obiect se numește __eveniment__. În urma evenimentului se creează un mesaj care conține informații despre evenimentul care a avut loc și care poate fi procesat de sistem. Deseori evenimentul și mesajul creat în urma evenimentului sunt folosite interschimbabil.
 
