@@ -81,8 +81,8 @@ Altfel procesoare de eveniment pot fi implementate ca metode ale clasei, în ace
 Cea simpla implementare a dispatcher-ului de evenimente se realizează ca o hartă (map) care asociază tipul de eveniment cu procesorul de eveniment corespunzător. Totodată dispatcher-ul de evenimente poate fi implementat ca o un `switch`.
 
 ```cpp
-void DispatchEvent(const Event& event) {
-    switch (event.type) {
+void DispatchEvent(const EventType& event) {
+    switch (event) {
         case EventType::ButtonClick:
             buttonClickHandler(event);
             break;
@@ -122,7 +122,6 @@ Utilizatorul poate interacționa cu motanul virtual, generând următoarele even
 - __a hrăni__ — utilizatorul hrănește motanul.
 - __a mângâia__ — utilizatorul mângâie motanul.
 - __a ieși din sistem__ — utilizatorul iese din sistem.
-
 
 ```cpp
 enum class EventType {
