@@ -35,6 +35,7 @@ Arhitectura generică a aplicației bazate pe evenimente constă din următoarel
 
 ```cpp
 enum class EventType {
+    NoEvent,
     ButtonClick,
     MouseMove,
     KeyPress
