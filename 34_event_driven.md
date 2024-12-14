@@ -149,6 +149,10 @@ struct EventHandler {
     virtual void operator()(const EventType& event) = 0;
 };
 
+struct NoEventHandler : public EventHandler {
+    void operator()(const EventType&) override {}
+};
+
 struct CatHungryHandler : public EventHandler {
     void operator()(const EventType& event) override { /* prelucrarea evenimentului */ }
 };
