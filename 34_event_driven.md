@@ -187,7 +187,7 @@ Deja cunoscutul ciclu de evenimente extrage evenimente din coada de evenimente È
 void EventLoop() {
     while (true) {
         EventType event = eventQueue.Pop();
-        eventHandlers[event.type]->operator()(event.type);
+        (*eventHandlers[event.type])(event.type);
     }
 }
 ```
