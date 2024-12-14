@@ -51,7 +51,7 @@ Coada de evenimente poate fi implementată sub formă de coadă FIFO (First-In-F
 
 ```cpp
 class EventQueue {
-    std::deque<Event> events;
+    std::deque<EventType> events;
 public:
     void Push(const EventType& event) {
         events.push_back(event);
