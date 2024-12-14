@@ -58,7 +58,11 @@ public:
     }
 
     EventType Pop() {
-        Event event = events.front();
+        if (events.size() == 0) {
+            return EventType::NoEvent;
+        }
+        
+        EventType event = events.front();
         events.pop_front();
         return event;
     }
