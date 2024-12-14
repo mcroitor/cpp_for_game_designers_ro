@@ -32,7 +32,7 @@ struct Student : Human {
     }
 };
 
-struct Lecturer: Human {
+struct Lecturer : Human {
     void print() const {
         std::cout << "Lecturer" << std::endl;
     }
