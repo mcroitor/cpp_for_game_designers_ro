@@ -101,7 +101,7 @@ Pentru lucrul efectiv cu sistem de operare este necesară cunoașterea configura
 `std::thread::hardware_concurrency();
 ```
 
-Aceasta funcție returnează numărul de nuclee ale procesorului, care determină numărul de fire de execuție care pot fi create. Dacă numărul de nuclee nu este cunoscut, funcția returnează 0.
+Aceasta funcție returnează numărul fizic de fire de execuție ale procesorului. Dacă numărul actual de fire nu este cunoscut, atunci funcția returnează 0.
 
 Totodată pentru gestionarea firelor de execuție în C++ sunt utilizate următoarele metode:
 
