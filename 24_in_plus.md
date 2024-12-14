@@ -164,7 +164,7 @@ volume_t volume = 12.2_l + 2.1_m3 - 300.0_ml;
 
 ## Semantica move
 
-Sub semantica __move__ se înțelege un set de mijloace specializate ale limbajului C++, care permit evitarea costurilor de copiere a obiectelor la crearea unui obiect nou. Elementele de bază ale semanticii de mutare sunt constructorul de mutare și operatorul de atribuire de mutare.
+Sub semantica __move__, se înțelege un set de mijloace specializate ale limbajului C++, care permit evitarea costurilor de copiere a obiectelor la crearea unui obiect nou. Elementele de bază ale semanticii de mutare sunt constructorul de mutare și operatorul de atribuire de mutare.
 
 Semantica de mutare este folosită pentru a evita copierea obiectelor temporare, ce permite creșterea eficienței programelor.
 
