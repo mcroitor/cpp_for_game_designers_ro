@@ -98,7 +98,7 @@ void DispatchEvent(const EventType& event) {
 
 - __Ciclu de evenimente__ (en. _event loop_) — este o buclă care extrage evenimente din coada de evenimente și le trimite la procesare procesorilor de evenimente corespunzători. Ciclul de evenimente este responsabil pentru procesarea evenimentelor în ordinea în care acestea au fost generate.
 
-De obicei ciclul de evenimente este implementat ca o buclă infinită care extrage evenimente din coada de evenimente și le trimite la procesare procesorilor de evenimente corespunzători (apelând dispatcher-ul de evenimente).
+De obicei ciclul de evenimente este implementat ca o buclă infinită care extrage evenimente din coada de evenimente și le trimite la procesare procesorilor de evenimente corespunzători (apelând dispecerul de evenimente).
 
 ```cpp
 void EventLoop() {
