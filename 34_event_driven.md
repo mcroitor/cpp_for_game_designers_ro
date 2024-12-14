@@ -168,7 +168,7 @@ struct SystemExitHandler : public EventHandler {
 };
 ```
 
-Uneori dispatcher-ul de evenimente este implementat ca o hartă (map) care asociază tipul de eveniment cu procesorul de eveniment corespunzător:
+Uneori dispecerul de evenimente este implementat ca o hartă (map) care asociază tipul de eveniment cu procesorul de eveniment corespunzător:
 
 ```cpp
 std::map<EventType, std::shared_ptr<EventHandler>> eventHandlers = {
