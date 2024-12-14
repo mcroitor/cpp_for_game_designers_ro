@@ -41,7 +41,7 @@ enum class EventType {
 };
 ```
 
-Tip de eveniment mai complex poate conține date adiționale, de exemplu, despre obiectul care a generat evenimentul.
+Un tip de eveniment mai complex conține date adiționale, de exemplu, despre obiectul care a generat evenimentul.
 
 - __Sursa de eveniment__ (en. _event source_) — obiect care generează evenimente. Sursa de eveniment poate fi reprezentată de un element al interfeței grafice (de exemplu, buton, câmp de introducere) sau de altă parte a programului (de exemplu, socket de rețea, descriptor de fișier).
 - __Coada de evenimente__ (en. _event queue_) — structură de date care stochează evenimentele în așteptare. Coada de evenimente permite separarea procesului de generare a evenimentelor de procesul de procesare a evenimentelor.
