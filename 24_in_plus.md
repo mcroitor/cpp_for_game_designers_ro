@@ -379,7 +379,7 @@ int main()
 
 ## Expresii regulate
 
-> __Expresie regulată__ este un limbaj formal care descrie șabloane șirurilor de caractere. Acestea sunt folosite pentru a căuta, înlocui și valida șiruri de caractere.
+> O __expresie regulată__ este un limbaj formal care descrie șabloane șirurilor de caractere. Acestea sunt folosite pentru a căuta, înlocui și valida șiruri de caractere.
 
 Totodată biblioteca standard C++ oferă posibilitatea de a lucra cu expresii regulate. Pentru aceasta se folosește clasa `std::regex`. Pentru a lucra cu expresii regulate este necesar să se includă fișierul antet `<regex>`.
 
