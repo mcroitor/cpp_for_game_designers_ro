@@ -4,125 +4,254 @@
 #include <random>
 #include <chrono>
 #include <map>
+#include <algorithm>
+#include <iterator>
+#include <mutex>
+#include <string>
+#include <memory>
 
-enum class event_t
+class Cat;
+/**
+ * @brief event type
+ */
+struct Event
 {
-    no_event = 0,
-    sys_exit = 1,
-    ai_angry,
-    ai_full,
-    player_feed,
+    enum Type
+    {
+        NO_EVENT,
+        SYSTEM_EXIT,
+        ANIMAL_HUNGRY,
+        ANIMAL_VERY_HUNGRY,
+        ANIMAL_FULL,
+        PLAYER_FEED
+    };
+    Type type;
+    Cat *cat;
 };
 
-using event_queue_t = std::deque<event_t>;
-
-class AI
+std::ostream &operator<<(std::ostream &out, const Event &evt)
 {
-    std::mt19937_64 gen;
-    bool is_angry;
+    switch (evt.type)
+    {
+    case Event::Type::NO_EVENT:
+        out << "NO_EVENT";
+        break;
+    case Event::Type::SYSTEM_EXIT:
+        out << "SYSTEM_EXIT";
+        break;
+    case Event::Type::ANIMAL_HUNGRY:
+        out << "ANIMAL_HUNGRY";
+        break;
+    case Event::Type::ANIMAL_VERY_HUNGRY:
+        out << "ANIMAL_VERY_HUNGRY";
+        break;
+    case Event::Type::ANIMAL_FULL:
+        out << "ANIMAL_FULL";
+        break;
+    case Event::Type::PLAYER_FEED:
+        out << "PLAYER_FEED";
+        break;
+    }
+    return out;
+}
+
+/**
+ * @brief event queue type
+ */
+
+class EventQueue
+{
+    std::deque<Event> events;
+    std::mutex mutex;
 
 public:
-    AI() : gen{std::chrono::system_clock::now().time_since_epoch().count()}, is_angry{false} {}
-    event_t generate_event()
+    void Push(Event evt)
     {
-        int tmp = gen() % 100;
-        if (tmp == 0)
-        {
-            is_angry = true;
-            return event_t::ai_angry;
-        }
-        return event_t::ai_full;
+        std::lock_guard<std::mutex> lock(mutex);
+        events.push_back(evt);
     }
-    void eat()
+    Event Pop()
     {
-        is_angry = false;
+        std::lock_guard<std::mutex> lock(mutex);
+        Event evt = events.front();
+        events.pop_front();
+        return evt;
+    }
+    bool IsEmpty()
+    {
+        std::lock_guard<std::mutex> lock(mutex);
+        return events.empty();
     }
 };
 
-event_queue_t event_queue;
-AI cat;
+/**
+ * @brief Cat class
+ */
+class Cat
+{
+    const int hungry_threshold = 5;
+    std::mt19937_64 gen;
+    int is_hungry;
+    std::string name;
+
+public:
+    Cat(std::string_view name) : gen(std::chrono::system_clock::now().time_since_epoch().count()),
+                                 is_hungry{0},
+                                 name{name}
+    {
+    }
+    Event GenerateEvent()
+    {
+        int tmp = gen() % 100 + 1;
+
+        if (tmp > 70 - is_hungry * 10)
+        {
+            ++is_hungry;
+        }
+        if (is_hungry == 0)
+        {
+            return Event{.type = Event::Type::ANIMAL_FULL, .cat = this};
+        }
+        if (is_hungry < hungry_threshold)
+        {
+            return Event{.type = Event::Type::ANIMAL_HUNGRY, .cat = this};
+        }
+        return Event{.type = Event::Type::ANIMAL_VERY_HUNGRY, .cat = this};
+    }
+    void Eat()
+    {
+        is_hungry = 0;
+    }
+
+    std::string_view GetName() const
+    {
+        return name;
+    }
+
+    int GetHungryLevel() const
+    {
+        return is_hungry;
+    }
+};
+
+/**
+ * @brief event queue
+ */
+EventQueue eventQueue;
+std::deque <std::shared_ptr<Cat>> cats;
 
 // --------- event handlers --------------------------------
 
 struct abstract_handler
 {
-    virtual void operator()() = 0;
+    virtual void operator()(const Event &event) = 0;
 };
 
-struct sys_exit_handler : abstract_handler
+struct SYSTEM_EXIT_handler : abstract_handler
 {
-    virtual void operator()()
+    virtual void operator()(const Event &event)
     {
         exit(0);
     }
 };
 
-struct ai_angry_handler : abstract_handler
+struct ai_hungry_handler : abstract_handler
 {
-    virtual void operator()()
+    virtual void operator()(const Event &event)
     {
-        std::cout << "Cat is angry\n";
+        std::cout << event.cat->GetName()
+                  << " is hungry, hungry level: "
+                  << event.cat->GetHungryLevel()
+                  << std::endl;
+    }
+};
+
+struct ai_very_hungry_handler : abstract_handler
+{
+    virtual void operator()(const Event &event)
+    {
+        std::cout << event.cat->GetName()
+                  << " is very hungry, he goes to find another Master]"
+                  << std::endl;
+        eventQueue.Push(Event{.type = Event::Type::SYSTEM_EXIT});
     }
 };
 
 struct ai_full_handler : abstract_handler
 {
-    virtual void operator()()
+    virtual void operator()(const Event &event)
     {
-        std::cout << "Cat is full\n";
+        std::cout << event.cat->GetName()
+                  << " is full, goes to sleep."
+                  << std::endl;
     }
 };
-struct player_feed_handler : abstract_handler
+struct PLAYER_FEED_handler : abstract_handler
 {
-    virtual void operator()()
+    virtual void operator()(const Event &event)
     {
-        cat.eat();
-        event_queue.push_back(event_t::ai_full);
+        event.cat->Eat();
+        std::cout << event.cat->GetName()
+                  << " is fed"
+                  << std::endl;
+        eventQueue.Push(Event{.type = Event::Type::ANIMAL_FULL, .cat = event.cat});
     }
 };
 
 // --------- end event handlers ----------------------------
-std::map<event_t, abstract_handler*> handler_map = {
-    {event_t::sys_exit, new sys_exit_handler()},
-    {event_t::ai_angry, new ai_angry_handler()},
-    {event_t::ai_full, new ai_full_handler()},
-    {event_t::player_feed, new player_feed_handler()},
+
+std::map<Event::Type, abstract_handler *> handler_map = {
+    {Event::Type::SYSTEM_EXIT, new SYSTEM_EXIT_handler()},
+    {Event::Type::ANIMAL_HUNGRY, new ai_hungry_handler()},
+    {Event::Type::ANIMAL_FULL, new ai_full_handler()},
+    {Event::Type::ANIMAL_VERY_HUNGRY, new ai_very_hungry_handler()},
+    {Event::Type::PLAYER_FEED, new PLAYER_FEED_handler()},
 };
 
-event_t get_event()
+Event get_event()
 {
-    auto it = event_queue.begin();
-    while (it == event_queue.end())
+    if (eventQueue.IsEmpty())
     {
+        return Event{.type = Event::Type::NO_EVENT};
     }
-    event_t evt = event_queue.front();
-    event_queue.pop_front();
-    return evt;
+    return eventQueue.Pop();
 }
 
 void event_loop()
 {
-    int feed;
     while (true)
     {
-        event_t evt = get_event();
-        if (handler_map.find(evt) != handler_map.end())
+        Event evt = get_event();
+        // std::cout << "Event: " << evt << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        if (handler_map.find(evt.type) != handler_map.end())
         {
-            (*handler_map.at(evt))();
+            (*handler_map.at(evt.type))(evt);
         }
     }
 }
 
-void born()
+void bornTom()
 {
+    auto cat = std::make_shared<Cat>("Tom");
+    cats.push_back(cat);
     while (true)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
-        event_t event = cat.generate_event();
-        if (event == event_t::ai_angry)
-        {
-            event_queue.push_back(event);
-        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        Event event = cat->GenerateEvent();
+        eventQueue.Push(event);
+    }
+}
+
+void bornGarfield()
+{
+    auto cat = std::make_shared<Cat>("Garfield");
+    cats.push_back(cat);
+    while (true)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        Event event = cat->GenerateEvent();
+        eventQueue.Push(event);
     }
 }
 
@@ -133,24 +262,37 @@ void user()
     {
         std::cout << "enter smth" << std::endl;
         std::cin >> data;
-        if (data == "mouse")
+        if (data == "exit")
         {
-            event_queue.push_back(event_t::player_feed);
+            eventQueue.Push(Event {.type = Event::Type::SYSTEM_EXIT});
         }
-        else if (data == "exit")
+        else
         {
-            event_queue.push_back(event_t::sys_exit);
+            auto it = std::find_if(
+                cats.begin(), 
+                cats.end(), [&data](std::shared_ptr<Cat> cat) {
+                return cat->GetName() == data;
+            });
+
+            if (it == cats.end())
+            {
+                std::cout << "No such cat: "
+                    << data
+                    << std::endl;
+                continue;
+            }
+
+            eventQueue.Push(Event{.type = Event::Type::PLAYER_FEED, .cat = (*it).get()});
         }
     }
 }
 
 int main()
 {
-    std::thread thread(born);
-    std::thread event_loop_thread(event_loop);
-    std::thread user_thread(user);
-    thread.join();
-    event_loop_thread.join();
-    user_thread.join();
+    std::jthread threadTom(bornTom);
+    std::jthread threadGarfield(bornGarfield);
+    std::jthread user_thread(user);
+    std::jthread event_loop_thread(event_loop);
+
     return 0;
 }

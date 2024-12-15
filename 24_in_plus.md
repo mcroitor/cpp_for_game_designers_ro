@@ -1,19 +1,19 @@
 # Instrumente adiționale ale limbajului C++
 
 - [Instrumente adiționale ale limbajului C++](#instrumente-adiționale-ale-limbajului-c)
-  - [expresii lambda](#expresii-lambda)
-  - [formatarea textului](#formatarea-textului)
-  - [literals](#literals)
-  - [semantica move](#semantica-move)
+  - [Expresii lambda](#expresii-lambda)
+  - [Formatarea textului](#formatarea-textului)
+  - [Literale](#literale)
+  - [Semantica move](#semantica-move)
   - [Tupluri](#tupluri)
-  - [interval (ranges)](#interval-ranges)
-  - [smart-pointeri](#smart-pointeri)
+  - [Interval (ranges)](#interval-ranges)
+  - [Smart-pointeri](#smart-pointeri)
   - [valarray](#valarray)
   - [variant, optional, any](#variant-optional-any)
-  - [expresii regulate](#expresii-regulate)
+  - [Expresii regulate](#expresii-regulate)
   - [Bibliografie](#bibliografie)
 
-## expresii lambda
+## Expresii lambda
 
 Începând cu standardul `C++11` în limbaj a fost introdusă posibilitatea de a scrie calcule într-o formă compactă - sub forma __expresiilor lambda__.
 
@@ -50,7 +50,7 @@ int arr[] {1, 2, 3, 4, 5, 6};
 std::for_each(arr, arr + 6, [](auto el){ std::cout << el << " ";});
 ```
 
-## formatarea textului
+## Formatarea textului
 
 Începând cu standardul `C++20` în biblioteca standard a fost introdusă posibilitatea de a formata textul cu ajutorul funcției `std::format`. Funcția `std::format` primește ca argumente un șir de formatare și argumentele care vor fi plasate în șir. Șirul de formatare conține specificatori de format care încep cu caracterul `{` și se termină cu caracterul `}`.
 
@@ -72,9 +72,10 @@ int main()
 Specificatorii de format pot avea următoarele elemente, în ordinea apariției lor:
 
 ```text
-[[fill]align][sign][#][0][width][.precision][type]
+[index]:[[fill]align][sign][#][0][width][.precision][type]
 ```
 
+- `index` - indexul argumentului care va fi plasat în șir;
 - `fill` - simbolul care va fi utilizat pentru umplerea spațiilor goale;
 - `align` - alinierea: `<` - la stânga, `>` - la dreapta, `^` - în centru;
 - `sign` - semnul numărului: `+` - întotdeauna, `-` - doar pentru numere negative, ` ` - spațiu pentru numere pozitive;
@@ -110,9 +111,9 @@ int main()
 }
 ```
 
-## literals
+## Literale
 
-În programare __literalul__ este o reprezentare a unei valori constante. În limbajul de programare C++ există șase tipuri de literal:
+În programare, un  __literal__ reprezintă o valoare constantă. În limbajul de programare C++ există șase tipuri de literal:
 
 - numere întregi: `312`, `-1ll`
 - numere reale: `12.29`
@@ -161,9 +162,9 @@ constexpr volume_t operator "" _m3(long double volume){
 volume_t volume = 12.2_l + 2.1_m3 - 300.0_ml;
 ```
 
-## semantica move
+## Semantica move
 
-Sub semantica __move__ se înțelege un set de mijloace specializate ale limbajului C++, care permit evitarea costurilor de copiere a obiectelor la crearea unui obiect nou. Elementele de bază ale semanticii de mutare sunt constructorul de mutare și operatorul de atribuire de mutare.
+Sub semantica __move__, se înțelege un set de mijloace specializate ale limbajului C++, care permit evitarea costurilor de copiere a obiectelor la crearea unui obiect nou. Elementele de bază ale semanticii de mutare sunt constructorul de mutare și operatorul de atribuire de mutare.
 
 Semantica de mutare este folosită pentru a evita copierea obiectelor temporare, ce permite creșterea eficienței programelor.
 
@@ -242,7 +243,7 @@ int main()
 }
 ```
 
-## interval (ranges)
+## Interval (ranges)
 
 Majoritatea algoritmelor STL operează cu intervale de containere definite ca perechi de iteratori. De aceea în biblioteca standard, începând cu standardul `C++20`, este prezentată generalizarea intervalelor ca perechi de iteratori.
 
@@ -310,7 +311,7 @@ int main()
 }
 ```
 
-## smart-pointeri
+## Smart-pointeri
 
 Începând cu standardul `C++11` biblioteca standardă propune o abstractizare (înveliș) peste pointeri, care eliberează automat memoria la terminarea utilizării variabilelor.
 
@@ -376,9 +377,9 @@ int main()
 }
 ```
 
-## expresii regulate
+## Expresii regulate
 
-> __Expresie regulată__ este un limbaj formal care descrie șabloane șirurilor de caractere. Acestea sunt folosite pentru a căuta, înlocui și valida șiruri de caractere.
+> O __expresie regulată__ este un limbaj formal care descrie șabloane șirurilor de caractere. Acestea sunt folosite pentru a căuta, înlocui și valida șiruri de caractere.
 
 Totodată biblioteca standard C++ oferă posibilitatea de a lucra cu expresii regulate. Pentru aceasta se folosește clasa `std::regex`. Pentru a lucra cu expresii regulate este necesar să se includă fișierul antet `<regex>`.
 

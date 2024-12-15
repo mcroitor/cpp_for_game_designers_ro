@@ -26,7 +26,7 @@ Biblioteca Standard de Șabloane oferă un set de componente generice bine const
 
 O altă considerație importantă este eficiența. Limbajul C++ este popular pentru că combină puterea expresivă cu eficiența. S-a depus mult efort pentru a asigura că fiecare componentă din bibliotecă are o implementare generală care oferă eficiență de execuție comparabilă cu implementarea manuală.
 
-Biblioeca Standard C++ este împărțită în mai multe părți:
+Biblioteca Standard C++ este împărțită în mai multe părți:
 
 - biblioteca standard limbajului C;
 - biblioteca de support pentru limbajul C++;

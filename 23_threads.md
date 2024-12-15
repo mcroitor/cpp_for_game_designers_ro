@@ -3,6 +3,7 @@
 - [Programare multi-threading](#programare-multi-threading)
   - [Noțiuni de bază ale programării multi-threading](#noțiuni-de-bază-ale-programării-multi-threading)
   - [Fire de execuție](#fire-de-execuție)
+  - [Lucrul cu sistem și fire de execuție](#lucrul-cu-sistem-și-fire-de-execuție)
   - [Problema partajării resurselor dintre firele de execuție](#problema-partajării-resurselor-dintre-firele-de-execuție)
     - [Mutex](#mutex)
     - [Variabile și operații atomice](#variabile-și-operații-atomice)
@@ -88,6 +89,53 @@ void hello() {
 
 int main() {
     std::jthread t(hello);
+    return 0;
+}
+```
+
+## Lucrul cu sistem și fire de execuție
+
+Pentru lucrul efectiv cu sistem de operare este necesară cunoașterea configurației sistemului și a resurselor disponibile. În caz particular este necesar să se cunoască numărul de nuclee ale procesorului, care determină numărul de fire de execuție care efectiv pot fi create. Biblioteca standard C++ pentru obținerea informației despre sistem și firele de execuție oferă funcția:
+
+```cpp
+`std::thread::hardware_concurrency();
+```
+
+Aceasta funcție returnează numărul fizic de fire de execuție ale procesorului. Dacă numărul actual de fire nu este cunoscut, atunci funcția returnează 0.
+
+Totodată pentru gestionarea firelor de execuție în C++ sunt utilizate următoarele metode:
+
+- `std::this_thread::get_id()` returnează identificatorul firului de execuție curent;
+- `std::this_thread::sleep_for(<time duration>)` suspendă execuția firului de execuție curent pentru `<time duration>` timp. Timpul este specificat sub formă de obiect al clasei `std::chrono::duration`;
+- `std::this_thread::sleep_until(<time point>)` suspendă execuția firului de execuție curent până la momentul `<time point>`. Timpul este specificat sub formă de obiect al clasei `std::chrono::time_point`.
+
+Un exemplu de utilizare a metodelor este prezentat mai jos:
+
+```cpp
+#include <iostream>
+#include <thread>
+#include <chrono>
+
+int main() {
+    int threads = std::thread::hardware_concurrency();
+    std::cout << "threads: " << threads << std::endl;
+    if(threads == 0) {
+        std::cout << "unknown number of threads, exit" << std::endl;
+        return 1;
+    }
+
+    std::cout << "main thread id: " << std::this_thread::get_id() << std::endl;
+
+    for(int i = 0; i < threads; ++i) {
+        std::thread t([i]() {
+            std::cout << "thread id: " << std::this_thread::get_id() 
+                    << " started" << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(i));
+            std::cout << "thread id: " << std::this_thread::get_id() 
+                    << " finished" << std::endl;
+        });
+        t.join();
+    }
     return 0;
 }
 ```
