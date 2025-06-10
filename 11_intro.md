@@ -143,7 +143,7 @@ Istoria standardelor și principalele noutăți:
 
 [GCC (GNU Compiler Collection)](https://gcc.gnu.org) este o suită de compilatoare pentru diverse limbaje de programare, dezvoltată în cadrul proiectului GNU. GCC este software liber, distribuit inclusiv de Free Software Foundation (FSF) sub licențele GNU GPL și GNU LGPL și reprezintă un element cheie al GNU toolchain. Este folosit ca compilator standard pentru sistemele de operare UNIX-like libere.
 
-Inițial numit GNU C Compiler, suporta doar limbajul C. Ulterior, GCC a fost extins pentru a compila cod sursă în limbaje precum C++, Objective-C, Java, Fortran, Ada, Go, GAS și D.
+Inițial numit GNU C Compiler, suportă doar limbajul C. Ulterior, GCC a fost extins pentru a compila cod sursă în limbaje precum C++, Objective-C, Java, Fortran, Ada, Go, GAS și D.
 
 În prezent, GCC este întreținut de o comunitate globală de programatori. GCC este lider în ceea ce privește numărul de procesoare și sisteme de operare suportate.
 
