@@ -126,7 +126,7 @@ Istoria standardelor și principalele noutăți:
   - corectarea erorilor din standardul _C++17_
   - module
   - corutine
-  - operatorul de comparație spațială (nava spațială)
+  - operatorul `<=>`, numit comparatie in trei sensuri (_spaceship_ operator).
   - concepte
   - constante de tip șir ca parametri de șablon
   - inițializare nominală a structurilor
