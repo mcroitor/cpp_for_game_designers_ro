@@ -121,7 +121,7 @@ Istoria standardelor și principalele noutăți:
   - eliminarea operatorului `++` pentru tipul `bool`
   - bibliotecă pentru lucrul cu sistemul de fișiere
   - tip variadic `std::any`
-  - versiuni paralele pentru unele algoritmi
+  - versiuni paralele pentru unor algoritmi
 - __C++20__
   - corectarea erorilor din standardul _C++17_
   - module
