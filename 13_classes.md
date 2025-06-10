@@ -186,7 +186,7 @@ class GameCharacter {
   point_t     _position;
 
 public:
-  GameCharacter(std::string); // constructor
+  GameCharacter(const std::string&); // constructor
   void Move(direction_t);
 
   void Attack(GameCharacter&);
