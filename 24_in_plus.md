@@ -1,13 +1,13 @@
-# Instrumente adiționale ale limbajului C++
+# Funcționalități suplimentare ale bibliotecii standard C++
 
-- [Instrumente adiționale ale limbajului C++](#instrumente-adiționale-ale-limbajului-c)
+- [Funcționalități suplimentare ale bibliotecii standard C++](#funcționalități-suplimentare-ale-bibliotecii-standard-c)
   - [Expresii lambda](#expresii-lambda)
-  - [Formatarea textului](#formatarea-textului)
-  - [Literale](#literale)
-  - [Semantica move](#semantica-move)
-  - [Tupluri](#tupluri)
-  - [Interval (ranges)](#interval-ranges)
-  - [Smart-pointeri](#smart-pointeri)
+  - [Formatarea șirurilor de caractere](#formatarea-șirurilor-de-caractere)
+  - [Literele definite de utilizator](#literele-definite-de-utilizator)
+  - [Semantica mutării](#semantica-mutării)
+  - [Tupluri (tuples)](#tupluri-tuples)
+  - [Intervale (ranges)](#intervale-ranges)
+  - [Pointeri inteligenți](#pointeri-inteligenți)
   - [valarray](#valarray)
   - [variant, optional, any](#variant-optional-any)
   - [Expresii regulate](#expresii-regulate)
@@ -15,34 +15,32 @@
 
 ## Expresii lambda
 
-Începând cu standardul `C++11` în limbaj a fost introdusă posibilitatea de a scrie calcule într-o formă compactă - sub forma __expresiilor lambda__.
+Începând cu standardul `C++11`, limbajul permite scrierea calculelor într-o formă compactă – sub forma __expresiilor lambda__.
 
-Sintaxa expresiilor lambda:
+Sintaxă:
 
 ```cpp
-[/*capture*/](/*params*/) -> /*type*/ { /*code*/; }
+[/*captură*/](/*parametri*/) -> /*tip*/ { /*cod*/; }
 ```
 
-Exemplu de definire / utilizare a unei expresii lambda:
-
 ```cpp
-// expresie lambda cu nume
-auto sum = [](int a, int b) { return a + b; };
+// Expresie lambda denumită
+auto sum = [](int a, int b) {return a + b;};
 auto result = sum(a, b);
 
-// definirea expresiei lambda în locul utilizării
-std::cout << [](int a, int b) { return a + b; }(10, 15);
+// Expresie lambda anonimă, folosită direct
+std::cout << [](int a, int b) {return a + b;}(10, 15);
 ```
 
-Implicit expresiile lambda nu au acces la variabilele externe, dar în paranteze pătrate se pot enumera toate variabilele care trebuie să fie accesibile în expresia lambda.
+Implicit, expresiile lambda nu au acces la variabilele din exterior (cu excepția variabilelor globale și statice), însă în parantezele pătrate pot fi enumerate, separate prin virgulă, variabilele care trebuie să fie accesibile în lambda.
 
 ```cpp
 int a = 10;
 
-std::cout << [a]{ return a; }();
+std::cout << [a]{ return a;}();
 ```
 
-Expresiile lambda pot fi generice (generic lambda function) dacă cel puțin unul dintre parametrii este declarat ca `auto`.
+Expresiile lambda pot fi generice (generic lambda) dacă cel puțin un parametru este declarat ca `auto`.
 
 ```cpp
 int arr[] {1, 2, 3, 4, 5, 6};
@@ -50,11 +48,16 @@ int arr[] {1, 2, 3, 4, 5, 6};
 std::for_each(arr, arr + 6, [](auto el){ std::cout << el << " ";});
 ```
 
-## Formatarea textului
+## Formatarea șirurilor de caractere
 
-Începând cu standardul `C++20` în biblioteca standard a fost introdusă posibilitatea de a formata textul cu ajutorul funcției `std::format`. Funcția `std::format` primește ca argumente un șir de formatare și argumentele care vor fi plasate în șir. Șirul de formatare conține specificatori de format care încep cu caracterul `{` și se termină cu caracterul `}`.
+Începând cu standardul `C++20`, biblioteca standard oferă posibilitatea de a formata șiruri de caractere folosind funcția `std::format`. Aceasta primește un șablon de format și argumente care vor fi inserate în șir. Șablonul de format conține specificatori de format care încep cu `{` și se termină cu `}`.
 
 ```cpp
+/**
+ * @file format.cpp
+ * @brief Exemplu de utilizare a funcției std::format
+ * @details g++ -std=c++20 format.cpp -o format
+ */
 #include <format>
 #include <iostream>
 
@@ -69,25 +72,29 @@ int main()
 }
 ```
 
-Specificatorii de format pot avea următoarele elemente, în ordinea apariției lor:
+Specificatorii de format pot conține următoarele elemente, în ordinea apariției:
 
 ```text
-[index]:[[fill]align][sign][#][0][width][.precision][type]
+[[fill]align][sign][#][0][width][.precision][type]
 ```
 
-- `index` - indexul argumentului care va fi plasat în șir;
-- `fill` - simbolul care va fi utilizat pentru umplerea spațiilor goale;
-- `align` - alinierea: `<` - la stânga, `>` - la dreapta, `^` - în centru;
-- `sign` - semnul numărului: `+` - întotdeauna, `-` - doar pentru numere negative, ` ` - spațiu pentru numere pozitive;
-- `#` - forma alternativă de afișare;
-- `0` - umplere cu zerouri;
-- `width` - lățimea minimă a câmpului;
-- `precision` - numărul de zecimale;
-- `type` - tipul de date: `f` - număr real, `g` - format general, `e` - format exponențial, `x` - număr hexazecimal etc.
+- `fill` – caracterul folosit pentru completarea spațiului gol;
+- `align` – aliniere: `<` – la stânga, `>` – la dreapta, `^` – centrat;
+- `sign` – semnul numerelor: `+` – mereu, `-` – doar pentru negative, ` ` – spațiu pentru pozitive;
+- `#` – formă alternativă de afișare;
+- `0` – completare cu zerouri;
+- `width` – lățimea minimă a câmpului;
+- `precision` – numărul de zecimale;
+- `type` – tipul datelor: `f` – număr real, `g` – format general, `e` – format exponențial, `x` – hexazecimal etc.
 
-Mai jos este prezentat un exemplu de utilizare a funcției `std::format` pentru afișarea unui tabel:
+Exemplu de formatare a unui tabel:
 
 ```cpp
+/**
+ * @file format_table.cpp
+ * @brief Exemplu de formatare a unui tabel cu std::format
+ * @details g++ -std=c++20 format_table.cpp -o format_table
+ */
 #include <format>
 #include <iostream>
 #include <vector>
@@ -111,40 +118,40 @@ int main()
 }
 ```
 
-## Literale
+## Literele definite de utilizator
 
-În programare, un  __literal__ reprezintă o valoare constantă. În limbajul de programare C++ există șase tipuri de literal:
+__Literalul__ este o constantă fără nume. În C++ există 6 tipuri de litere:
 
 - numere întregi: `312`, `-1ll`
 - numere reale: `12.29`
 - caractere: `'a'`
 - șiruri de caractere: `"sample"`
-- valori logice: `true` și `false`
+- valori logice: `true` sau `false`
 - pointeri: `nullptr`
 
-Începând cu standardul `C++11` a fost introdusă posibilitatea de a defini literal-uri personalizate. Literal-urile personalizate sunt folosite pentru a crea obiecte de tipuri de date definite de utilizator.
+Începând cu `C++11`, utilizatorul poate defini propriile litere (user-defined literals), care permit crearea de obiecte de tipuri personalizate.
 
 ```cpp
-ReturnType operator "" _a(unsigned long long int);   // Literal operator for user-defined INTEGRAL literal
-ReturnType operator "" _b(long double);              // Literal operator for user-defined FLOATING literal
-ReturnType operator "" _c(char);                     // Literal operator for user-defined CHARACTER literal
-ReturnType operator "" _d(wchar_t);                  // Literal operator for user-defined CHARACTER literal
-ReturnType operator "" _e(char16_t);                 // Literal operator for user-defined CHARACTER literal
-ReturnType operator "" _f(char32_t);                 // Literal operator for user-defined CHARACTER literal
-ReturnType operator "" _g(const char*, size_t);      // Literal operator for user-defined STRING literal
-ReturnType operator "" _h(const wchar_t*, size_t);   // Literal operator for user-defined STRING literal
-ReturnType operator "" _i(const char16_t*, size_t);  // Literal operator for user-defined STRING literal
-ReturnType operator "" _g(const char32_t*, size_t);  // Literal operator for user-defined STRING literal
-ReturnType operator "" _r(const char*);              // Raw literal operator
-template<char...> ReturnType operator "" _t();       // Literal operator template
+ReturnType operator "" _a(unsigned long long int);   // Literal pentru tip integral definit de utilizator
+ReturnType operator "" _b(long double);              // Literal pentru tip real definit de utilizator
+ReturnType operator "" _c(char);                     // Literal pentru caracter definit de utilizator
+ReturnType operator "" _d(wchar_t);                  // Literal pentru caracter larg definit de utilizator
+ReturnType operator "" _e(char16_t);                 // Literal pentru caracter UTF-16 definit de utilizator
+ReturnType operator "" _f(char32_t);                 // Literal pentru caracter UTF-32 definit de utilizator
+ReturnType operator "" _g(const char*, size_t);      // Literal pentru șir definit de utilizator
+ReturnType operator "" _h(const wchar_t*, size_t);   // Literal pentru șir larg definit de utilizator
+ReturnType operator "" _i(const char16_t*, size_t);  // Literal pentru șir UTF-16 definit de utilizator
+ReturnType operator "" _j(const char32_t*, size_t);  // Literal pentru șir UTF-32 definit de utilizator
+ReturnType operator "" _r(const char*);              // Literal raw
+template<char...> ReturnType operator "" _t();       // Literal template
 ```
 
-Nume de sufixe pentru literal-uri personalizate pot fi orice secvență de caractere permise (se aplică regula de numirea variabilelor).
+Sufixul literalului poate fi orice identificator valid.
 
-Exemple:
+Exemplu:
 
 ```cpp
-// volume in liters
+// volum în litri
 using volume_t = long double;
 
 constexpr volume_t operator "" _l(long double volume){
@@ -162,18 +169,18 @@ constexpr volume_t operator "" _m3(long double volume){
 volume_t volume = 12.2_l + 2.1_m3 - 300.0_ml;
 ```
 
-## Semantica move
+## Semantica mutării
 
-Sub semantica __move__, se înțelege un set de mijloace specializate ale limbajului C++, care permit evitarea costurilor de copiere a obiectelor la crearea unui obiect nou. Elementele de bază ale semanticii de mutare sunt constructorul de mutare și operatorul de atribuire de mutare.
+Prin semantica mutării se înțelege un set de mecanisme ale limbajului C++ care permit evitarea costurilor de copiere la crearea de noi obiecte. Elementele principale ale semanticii mutării sunt: constructorul de mutare și operatorul de atribuire prin mutare.
 
-Semantica de mutare este folosită pentru a evita copierea obiectelor temporare, ce permite creșterea eficienței programelor.
+Semantica mutării permite scrierea unui cod mai eficient.
 
 ```cpp
 my_string a = "hell", b = "o";
 my_string result = a + b;
 ```
 
-În exemplu dat în rezultatul adunării a două obiecte de tip `my_string` va fi creat un obiect temporar, care va fi copiat în variabila `result`. După aceasta obiectul temporar va fi distrus. Pentru a evita copierea obiectului temporar, se poate folosi semantica de mutare. Operatorul de copiere va avea în acest caz următoarea sintaxă:
+În exemplul de mai sus, în urma adunării a două șiruri, se creează un obiect temporar care este copiat în variabila `result` și apoi distrus. Se poate evita copierea inutilă și distrugerea obiectului dacă obiectul temporar este mutat în `result`. Acest lucru se realizează cu operatorul de atribuire prin mutare. Sintaxa operatorului:
 
 ```cpp
 T& operator = (T&& other);
@@ -198,12 +205,14 @@ private:
 };
 ```
 
-Această realizare poate fi simplificată prin utilizarea funcției standard `std::move`, care realizează semantica de mutare a obiectului:
+Implementarea poate fi simplificată folosind funcția standard `std::move`, care realizează mutarea obiectului:
 
 ```cpp
 class my_string {
 public:
-  my_string(my_string&& other): _data(std::move(other)){}
+  my_string(my_string&& other): _data(std::move(other._data)){
+    other._data = nullptr;
+  }
 
   my_string& operator=(my_string&& other) {
     _data = std::move(other._data);
@@ -215,15 +224,21 @@ private:
 };
 ```
 
-## Tupluri
+## Tupluri (tuples)
 
-Tupluri sunt structuri de date care permit păstrarea mai multor elemente de tipuri diferite. Tuplurile sunt definite în fișierul antet `<tuple>`. Tuplurile pot fi folosite pentru a returna mai multe valori dintr-o funcție.
+Tuplurile sunt structuri de date care permit stocarea mai multor elemente de tipuri diferite. Tuplurile sunt definite în antetul `<tuple>`. Pot fi folosite pentru a returna mai multe valori dintr-o funcție.
 
-Un exemplu de utilizare a tuplurilor:
+Exemplu de utilizare a tuplurilor:
 
 ```cpp
+/**
+ * @file tuple.cpp
+ * @brief Exemplu de utilizare a tuplurilor
+ * @details g++ -std=c++20 tuple.cpp -o tuple
+ */
 #include <tuple>
 #include <iostream>
+#include <string>
 
 std::tuple<int, double, std::string> get_data()
 {
@@ -243,20 +258,26 @@ int main()
 }
 ```
 
-## Interval (ranges)
+## Intervale (ranges)
 
-Majoritatea algoritmelor STL operează cu intervale de containere definite ca perechi de iteratori. De aceea în biblioteca standard, începând cu standardul `C++20`, este prezentată generalizarea intervalelor ca perechi de iteratori.
+Majoritatea algoritmilor STL operează cu intervale de containere, definite ca perechi de iteratori. Începând cu standardul `C++20`, biblioteca standard generalizează intervalele ca perechi de iteratori.
 
-Biblioteca de intervale (`ranges`) definește următoarele concepte:
+În biblioteca de intervale sunt definite următoarele concepte:
 
-- `range` - interval, care este o pereche de iteratori: început și sfârșit. Definit în spațiul de nume `std::ranges`.
-- `view` - adaptor de interval, care oferă posibilitatea de a transforma și filtra elementele intervalului. Definit în spațiul de nume `std::ranges::views`.
-- `algorithm` - algoritmi care primesc intervale ca argumente. Definiți în spațiul de nume `std::ranges::algorithm`.
+- `range` – interval, adică o pereche de iteratori: început și sfârșit. Definit în spațiul de nume `std::ranges`.
+- `view` – adaptor de interval, care permite transformarea și filtrarea elementelor. Definit în `std::ranges::views`.
+- `algorithm` – algoritmi care primesc intervale ca argumente. Definiți în `std::ranges::algorithm`.
 
 Exemplu de utilizare a intervalelor:
 
 ```cpp
+/**
+ * @file ranges.cpp
+ * @brief Exemplu de utilizare a intervalelor
+ * @details g++ -std=c++20 ranges.cpp -o ranges
+ */
 #include <ranges>
+#include <numeric>
 #include <iostream>
 #include <vector>
 
@@ -264,68 +285,76 @@ int main()
 {
     std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    auto result = std::ranges::accumulate(numbers, 0);
+    auto reverse_numbers = numbers | std::views::reverse;
 
-    std::cout << "Sum: " << result << std::endl;
+    std::ranges::for_each(reverse_numbers, [](int el){ std::cout << el << " "; });
+    std::cout << std::endl;
+
     return 0;
 }
 ```
 
-Utilizarea adaptatoarelor de intervale se bazează pe ideile programării funcționale, care permit procesarea în cascada a datelor. Pentru a implementa procesarea în cascada a datelor se folosește suprascrierea operatorului `|` pentru a transmite date între adaptatoare.
+Utilizarea adaptoarelor de intervale se bazează pe idei din programarea funcțională, permițând procesarea în lanț a datelor. Pentru aceasta, operatorul `|` este suprascris pentru a transmite datele între adaptoare.
 
-Unele adaptere de intervale interesante:
+Câțiva adaptoare utile pentru intervale:
 
-- `views::all` - transformarea unui container într-un interval
-- `views::filter` - selectarea elementelor în funcție de o proprietate
-- `views::transform` - transformarea fiecărui element
-- `views::take` - selectarea primelor _N_ elemente
-- `views::take_while` - selectarea elementelor până la îndeplinirea unei condiții
-- `views::drop` - eliminarea primelor _N_ elemente
-- `views::drop_while` - eliminarea elementelor până la îndeplinirea unei condiții
-- `views::for_each` - aplicarea unei funcții fiecărui element
-- `views::reverse` - ordinea inversă a elementelor
-- `views::join` - unirea secvențelor
-- `views::split` - divizarea secvenței în subsecvențe
-- `views::keys` - selectarea cheilor dintr-o pereche, tuplu sau container asociativ
-- `views::values` - selectarea valorilor dintr-o pereche, tuplu sau container asociativ
-- `views::zip` - unirea a mai multor secvențe într-una, elementele cu aceleași indici sunt unite într-un tuplu
+- `views::all` – transformă un container într-un interval
+- `views::filter` – selectează elemente după o proprietate
+- `views::transform` – modifică fiecare element
+- `views::take` – selectează primele _N_ elemente
+- `views::take_while` – selectează elemente cât timp condiția este adevărată
+- `views::drop` – elimină primele _N_ elemente
+- `views::drop_while` – elimină elemente cât timp condiția este adevărată
+- `views::reverse` – inversează ordinea elementelor
+- `views::join` – concatenează secvențe
+- `views::split` – împarte secvența în subsevențe
+- `views::keys` – selectează cheile dintr-o pereche, tuplu sau container asociativ
+- `views::values` – selectează valorile dintr-o pereche, tuplu sau container asociativ
+- `views::zip` – combină mai multe secvențe într-una, elementele cu același index fiind grupate într-un tuplu
 
-Un exemplu de utilizare a adaptatoarelor de intervale:
+Exemplu de utilizare:
 
 ```cpp
+/**
+ * @file ranges_pipeline.cpp
+ * @brief Exemplu de procesare în lanț cu intervale
+ * @details g++ -std=c++20 ranges_pipeline.cpp -o ranges_pipeline
+ */
 #include <ranges>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 int main()
 {
     std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    // select even numbers, multiply by 2 and print them
+    // Selectăm numerele pare și le înmulțim cu 2
     auto result = numbers | std::views::filter([](int el){ return el % 2 == 0; })
             | std::views::transform([](int el){ return el * 2; });
     
-    result | std::views::for_each([](int el){ std::cout << el << " "; });
+    // Afișăm rezultatul
+    std::ranges::for_each(result, [](int el){ std::cout << el << " "; });
 
     return 0;
 }
 ```
 
-## Smart-pointeri
+## Pointeri inteligenți
 
-Începând cu standardul `C++11` biblioteca standardă propune o abstractizare (înveliș) peste pointeri, care eliberează automat memoria la terminarea utilizării variabilelor.
+Începând cu standardul `C++11`, biblioteca standard C++ oferă o abstracție (wrapper) peste pointeri, care eliberează automat memoria la finalul utilizării variabilei.
 
-Există următoarele tipuri de smart-pointer:
+Sunt disponibile următoarele tipuri de pointeri inteligenți:
 
-- `unique_ptr` - la copierea obiectului smart-pointer `Ptr1` în `Ptr2` memoria devine proprietatea `Ptr2`, iar `Ptr1` referă la `nullptr`.
-- `shared_ptr` - la copierea obiectului smart-pointer `Ptr1` în `Ptr2` ambele variabile referă la aceeași memorie; eliberarea memoriei se face la ștergerea ambelor variabile.
-- `weak_ptr` - referință _slabă_ la memoria alocată: nu poate șterge / modifica memoria și întotdeauna referă la memoria creată de `shared_ptr`.
+- `unique_ptr` – la atribuirea unui obiect pointer inteligent `Ptr1` către `Ptr2`, proprietarul memoriei devine `Ptr2` (pointerul este mutat), iar `Ptr1` devine `nullptr`.
+- `shared_ptr` – la copierea unui pointer inteligent `Ptr1` către `Ptr2`, ambele variabile indică aceeași zonă de memorie; memoria este eliberată când ambele variabile sunt distruse.
+- `weak_ptr` – referință slabă la memorie: nu poate elibera/modifica memoria și indică întotdeauna către o zonă creată de un `shared_ptr`.
 
 ## valarray
 
-Clasa generică `std::valarray` este definită în fișer antet `valarray`. Această clasă permite efectuarea operațiilor aritmetice asupra vectorilor.
+Clasa șablon `std::valarray` este declarată în antetul `valarray`. Permite efectuarea de operații aritmetice pe vectori.
 
-Un exemplu de utilizare:
+Exemplu de utilizare:
 
 ```cpp
 std::valarray<int> a{1, 2, 3};
@@ -340,15 +369,20 @@ for (auto element : result)
 
 ## variant, optional, any
 
-Containerele speciale `std::variant`, `std::optional`, `std::any` permit stocarea valorilor de diferite tipuri într-un singur obiect.
+Containerele speciale `std::variant`, `std::optional`, `std::any` permit stocarea valorilor de tipuri diferite într-un singur obiect.
 
-- `std::variant` - permite stocarea a mai multe tipuri de date, dar în același timp permite accesul la un singur tip de date.
-- `std::optional` - permite stocarea unui singur tip de date sau a unui tip de date nul.
-- `std::any` - permite stocarea a orice tip de date.
+- `std::variant` – alternativă la pointeri și referințe pentru stocarea valorilor de tipuri diferite.
+- `std::optional` – container care poate conține o valoare sau poate fi gol.
+- `std::any` – container care poate conține valori de orice tip.
 
 Exemplu de utilizare:
 
 ```cpp
+/**
+ * @file variant.cpp
+ * @brief Exemplu de utilizare a std::variant
+ * @details g++ -std=c++17 variant.cpp -o variant
+ */
 #include <optional>
 #include <iostream>
 
@@ -379,19 +413,24 @@ int main()
 
 ## Expresii regulate
 
-> O __expresie regulată__ este un limbaj formal care descrie șabloane șirurilor de caractere. Acestea sunt folosite pentru a căuta, înlocui și valida șiruri de caractere.
+> __Expresiile regulate__ sunt un limbaj formal care descrie șabloane de șiruri de caractere. Sunt folosite pentru căutare, înlocuire și validare de text.
 
-Totodată biblioteca standard C++ oferă posibilitatea de a lucra cu expresii regulate. Pentru aceasta se folosește clasa `std::regex`. Pentru a lucra cu expresii regulate este necesar să se includă fișierul antet `<regex>`.
+Biblioteca standard C++ oferă suport pentru expresii regulate prin clasa `std::regex` (antetul `<regex>`).
 
-Următorul exemplu verifică dacă șirul este un email valid:
+Exemplu: verificarea dacă un șir este un email valid:
 
 ```cpp
+/**
+ * @file regex_email.cpp
+ * @brief Exemplu de verificare a unui email cu expresii regulate
+ * @details g++ -std=c++11 regex_email.cpp -o regex_email
+ */
 #include <regex>
 #include <iostream>
 
 int main()
 {
-    std::string email = "an@email.example";
+    std::string email = "i@love.you";
     std::regex pattern(R"((\w+)(\.|_)?(\w*)@(\w+)(\.(\w+))+)");
 
     if (std::regex_match(email, pattern))
@@ -405,6 +444,15 @@ int main()
     return 0;
 }
 ```
+
+Expresia regulată `(\w+)(\.|_)?(\w*)@(\w+)(\.(\w+))+` verifică dacă șirul respectă formatul unui email:
+
+- `(\w+)` – unul sau mai multe caractere alfanumerice
+- `(\.|_)?` – punct sau underscore, opțional
+- `(\w*)` – zero sau mai multe caractere alfanumerice
+- `@` – simbolul @
+- `(\w+)` – unul sau mai multe caractere alfanumerice
+- `(\.(\w+))+` – una sau mai multe secvențe: punct urmat de unul sau mai multe caractere alfanumerice
 
 ## Bibliografie
 

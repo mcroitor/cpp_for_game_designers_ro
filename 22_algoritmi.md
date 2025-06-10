@@ -1,57 +1,57 @@
 # Algoritmi
 
 - [Algoritmi](#algoritmi)
-  - [Noțiune de algoritm](#noțiune-de-algoritm)
-    - [Functor](#functor)
+  - [Noțiunea de algoritm](#noțiunea-de-algoritm)
+    - [Functor (obiect funcțional)](#functor-obiect-funcțional)
     - [Predicat](#predicat)
-    - [Reguli de denumire a algoritmilor din STL](#reguli-de-denumire-a-algoritmilor-din-stl)
-  - [Algoritmi care nu modifică containerul](#algoritmi-care-nu-modifică-containerul)
-    - [Cautare](#cautare)
-    - [Verificare](#verificare)
-  - [Algoritmi care modifică containerul](#algoritmi-care-modifică-containerul)
+    - [Reguli de denumire a algoritmilor STL](#reguli-de-denumire-a-algoritmilor-stl)
+  - [Algoritmi care nu modifică datele](#algoritmi-care-nu-modifică-datele)
+    - [Operații de căutare](#operații-de-căutare)
+  - [Algoritmi care modifică datele](#algoritmi-care-modifică-datele)
     - [Copiere](#copiere)
-    - [Completare](#completare)
+    - [Umplere](#umplere)
     - [Transformare](#transformare)
-    - [Eliminare](#eliminare)
-    - [Ordonare](#ordonare)
+    - [Ștergere](#ștergere)
+    - [Reordonare](#reordonare)
     - [Sortare](#sortare)
-  - [Construcția algoritmilor](#construcția-algoritmilor)
-    - [Căutarea elementului în colecție](#căutarea-elementului-în-colecție)
-    - [Căutarea elementului care satisface un predicat](#căutarea-elementului-care-satisface-un-predicat)
-    - [Copierea elementelor care satisfac unui predicat](#copierea-elementelor-care-satisfac-unui-predicat)
-  - [Exemple de utilizare a algoritmilor](#exemple-de-utilizare-a-algoritmilor)
-    - [Citirea și afișarea a datelor](#citirea-și-afișarea-a-datelor)
-    - [Căutarea primului element par în vector](#căutarea-primului-element-par-în-vector)
-    - [Citirea, sortarea și căutarea](#citirea-sortarea-și-căutarea)
+  - [Structura algoritmilor](#structura-algoritmilor)
+    - [Căutarea unui element într-o colecție](#căutarea-unui-element-într-o-colecție)
+    - [Căutarea unui element care satisface o condiție](#căutarea-unui-element-care-satisface-o-condiție)
+    - [Copierea elementelor care satisfac o condiție](#copierea-elementelor-care-satisfac-o-condiție)
+  - [Exemple de utilizare](#exemple-de-utilizare)
+    - [Citirea și afișarea datelor](#citirea-și-afișarea-datelor)
+    - [Căutarea primului număr par într-un vector](#căutarea-primului-număr-par-într-un-vector)
+    - [Citire, sortare și căutare](#citire-sortare-și-căutare)
   - [Bibliografie](#bibliografie)
 
-## Noțiune de algoritm
+## Noțiunea de algoritm
 
-> [!TIP]
-> __Algoritmul__ este o secvență finită de instrucțiuni care aduce la un rezultat dorit într-un număr finit de pași.
+> Algoritmul este o succesiune finită de acțiuni care conduc la un rezultat dorit.
 
-Realizările algoritmice din biblioteca standard C++ sunt foarte simple și eficiente. De aceea ar fi util să alocați timp pentru a citi codul sursă.
+Implementările algoritmilor din biblioteca standard C++ sunt foarte simple și eficiente. De aceea, este util să acordați timp pentru a studia sursele acestora.
 
-Toate algoritmii din biblioteca standard C++ sunt separate de la detalii de implementare a structurilor de date și utilizează iteratori ca parametri. De aceea aceștia pot lucra cu structuri de date definite de utilizator, atunci când aceste structuri de date au tipuri de iteratori care satisfac condițiilor presupuse în algoritmi.
+Toți algoritmii din biblioteca standard de șabloane sunt separați de detaliile de implementare ale structurilor de date și folosesc ca parametri tipuri de iteratori. Astfel, pot funcționa cu structuri de date definite de utilizator, atâta timp cât acestea oferă tipuri de iteratori care respectă cerințele algoritmilor.
 
-Algoritmii STL de obicei lucrează cu containere STL și folosesc iteratori pentru a accesa elementele acestora.
+Algoritmii STL operează în principal cu containere și folosesc ca parametri intervale semi-deschise de iteratori.
 
-Toate algoritmii din biblioteca standard C++ sunt definite în fișierul de antet `<algorithm>`.
+### Functor (obiect funcțional)
 
-### Functor
+> Un functor este un obiect al unei clase pentru care operatorul de apelare a funcției `()` este suprascris.
 
-> [!TIP]
-> __Functor__ este un obiect al unei clase care are definit operatorul `()`.
+În declarația unei clase se poate suprascrie operatorul `()`. Dacă acest operator este definit, obiectele clasei pot fi folosite ca funcții. Astfel de obiecte se numesc obiecte funcționale sau functori. Functorii sunt utili atunci când funcția trebuie să aibă "memorie" sau ca alternativă la pointerii către funcții.
 
-În cadrul unei clase poate fi redefinit operatorul `()`. Dacă acest operator este redefinit, atunci obiectele acestei clase pot fi folosite ca funcții. Aceste obiecte se numesc __obiecte funcționale__ sau functori. Functori sunt utile atunci când o funcție trebuie să aibă "memorie", precum și ca înlocuirea pointerilor la funcții.
-
-> În unele cazuri pointer la funcție tot poate fi numit obiect funcțional.
+> Uneori, prin obiect funcțional se înțelege și un pointer la funcție.
 
 Exemplu de functor care schimbă valorile a două variabile întregi și numără apelurile:
 
 ```cpp
+/**
+ * @file swap_functor.cpp
+ * @brief Exemplu de utilizare a unui obiect funcțional
+ * @details g++ -std=c++20 -o swap_functor swap_functor.cpp
+ */
 class _swap{
-    static size_t counter = 0;
+    static size_t counter;
     static void increment() { ++counter; }
 public:
     _swap(){}
@@ -61,8 +61,10 @@ public:
         b = tmp;
         increment();
     }
-    int getNrCalls() {return counter; }
+    static size_t getNrCalls() {return counter; }
 };
+
+size_t _swap::counter = 0;
 
 int main() {
     _swap swap;
@@ -74,120 +76,118 @@ int main() {
 
 ### Predicat
 
-> [!TIP]
-> Un predicat este o funcție care întoarce o valoare logică.
+> Un predicat este o funcție care returnează o valoare logică (bool).
 
-Algoritmii STL folosesc predicat pentru a determina dacă un element îndeplinește o anumită condiție. Algoritmii operează cu predicate binare și unare.
+Algoritmii STL folosesc predicați unari și binari.
 
-Exemplu de predicat care determină dacă un număr este par:
+Exemplu de predicat pentru verificarea parității unui număr:
 
 ```cpp
-bool isOdd(int value) {
-   return value % 2 == 0;
+bool esteImpar(int value) {
+   return value % 2 == 1;
 }
 ```
 
-### Reguli de denumire a algoritmilor din STL
+### Reguli de denumire a algoritmilor STL
 
-Unele algoritmi au cât versiuni operative (rezultatul algoritmului se păstrează în segmentul indicat de iterații), cât și versiuni de copiere. Decizia de a include sau nu o versiune de copiere a algoritmului în bibliotecă a fost luată pe baza eficienței algoritmului. Atunci când costul efectuării operației domină costul copierii, versiunea de copiere nu este inclusă. De exemplu, `sort_copy` nu este inclus, deoarece costul sortării este mult mai semnificativ și utilizatorii ar putea face `copy` înainte de `sort`.
+Pentru unii algoritmi există atât versiuni operative (rezultatul este salvat în segmentul indicat de iteratori), cât și versiuni de copiere. Decizia de a include sau nu o versiune de copiere a fost bazată pe eficiența algoritmului. Când costul operației este dominant față de costul copiei, versiunea de copiere nu este inclusă. De exemplu, `sort_copy` nu există, deoarece sortarea este mult mai costisitoare, iar utilizatorul poate apela `copy` înainte de `sort`.
 
-Versiunea de copiere a algoritmului `algorithm` se numește `algorithm_copy` (adică se adaugă sufixul `_copy`). În algoritmii de copiere nu se specifică sfârșitul celui de-al doilea interval, deoarece acesta poate fi calculat pe baza lungimii primului interval.
+Versiunea de copiere a unui algoritm se numește `algorithm_copy` (se adaugă sufixul `_copy`). În algoritmii de copiere nu se specifică sfârșitul celui de-al doilea interval, deoarece acesta poate fi calculat din lungimea primului interval.
 
-Totodată, o parte de algoritmi are versiuni care lucrează cu predicat. Algoritmii care iau predicat ca parametru se termină cu sufixul `_if` (care urmează după sufixul `_copy` în cazul algoritmului de copiere).
+Pentru unii algoritmi există și versiuni predicate. Algoritmii care primesc predicați au sufixul `_if` (care urmează după `_copy` în cazul algoritmilor de copiere).
 
-Parametrul șablonului `Predicate` se utilizează fiecare dată când algoritmul așteaptă un obiect funcțional, care, aplicat la rezultatul dereferențierii iteratorului corespunzător, întoarce o valoare convertibilă la `bool`. Cu alte cuvinte, dacă algoritmul ia `Predicate pred` ca parametru și `first` ca parametru al iteratorului, el trebuie să funcționeze corect în construcția `if (pred(*first)) {...}`. Se presupune că obiectul funcțional `pred` nu aplică nicio funcție non-const la iteratorul dereferențiat.
+Clasa `Predicate` este folosită ori de câte ori algoritmul așteaptă un obiect funcțional care, aplicat rezultatului dereferențierii iteratorului, returnează o valoare convertibilă la `bool`. Cu alte cuvinte, dacă algoritmul primește `Predicate pred` și un iterator `first`, trebuie să funcționeze corect în construcția `if (pred(*first)) {...}`. Se presupune că obiectul funcțional `pred` nu modifică elementul la care face referire iteratorul.
 
-Parametrul șablonului `BinaryPredicate` se utilizează de fiecare dată când algoritmul așteaptă un obiect funcțional care, aplicat la rezultatul dereferențierii a două iteratori corespunzători sau la dereferențierea unui iterator și a unui tip `T`, când `T` este parte a semnăturii, întoarce o valoare convertibilă la `bool`. Cu alte cuvinte, dacă algoritmul ia `BinaryPredicate binary_pred` ca parametru și `first1` și `first2` ca parametri ai iteratorilor, el trebuie să funcționeze corect în construcția `if (binary_pred(*first1, *first2)) {...}`.
+Clasa `BinaryPredicate` este folosită când algoritmul așteaptă un obiect funcțional care, aplicat la rezultatele dereferențierii a doi iteratori sau a unui iterator și a unui tip `T`, returnează o valoare convertibilă la `bool`. Cu alte cuvinte, dacă algoritmul primește `BinaryPredicate binary_pred` și doi iteratori `first1` și `first2`, trebuie să funcționeze corect în construcția `if (binary_pred(*first1, *first2)) {...}`.
 
-## Algoritmi care nu modifică containerul
+`BinaryPredicate` ia întotdeauna tipul primului iterator ca prim parametru; dacă `T value` face parte din semnătură, trebuie să funcționeze în contextul `if (binary_pred(*first, value)) {...}`. Se presupune că `binary_pred` nu modifică elementele la care fac referire iteratorii.
 
-Acest tip de algoritmi nu modifică containerul cu care lucrează.
+## Algoritmi care nu modifică datele
 
-### Cautare
+Acești algoritmi nu modifică colecțiile cu care lucrează.
 
-Acestea algoritmi sunt folosiți pentru a căuta elemente într-o colecție.
+### Operații de căutare
 
-- `find` - găsește prima apariție a unui element într-o colecție.
-- `find_if` - găsește prima apariție a unui element care satisface un predicat.
-- `find_if_not` - găsește prima apariție a unui element care nu satisface un predicat.
-- `find_end` - găsește ultima apariție a unei subsecvențe într-o colecție.
-- `find_first_of` - găsește prima apariție a unui element dintr-o colecție într-o altă colecție.
-- `adjacent_find` - găsește două elemente consecutive egale.
-- `search` - găsește prima apariție a unei subsecvențe într-o colecție.
+Algoritmii de căutare caută elemente în colecții și returnează iteratori către elementele găsite. Dacă elementul nu este găsit, se returnează iteratorul de sfârșit al colecției.
 
-### Verificare
+- `find` – caută prima apariție a unui element în colecție.
+- `find_if` – caută primul element care satisface predicatul.
+- `find_if_not` – caută primul element care nu satisface predicatul.
+- `find_end` – caută ultima apariție a unei subsecvențe în colecție.
+- `find_first_of` – caută prima apariție a oricărui element dintr-o colecție în alta.
+- `adjacent_find` – caută două elemente adiacente egale.
+- `search` – caută prima apariție a unei subsecvențe în colecție.
+- `all_of` – verifică dacă toate elementele satisfac predicatul.
+- `any_of` – verifică dacă cel puțin un element satisface predicatul.
+- `none_of` – verifică dacă niciun element nu satisface predicatul.
+- `count` – numără elementele care satisfac predicatul.
+- `count_if` – numără elementele care satisfac predicatul.
+- `mismatch` – caută prima nepotrivire între două colecții.
+- `equal` – verifică egalitatea a două colecții.
 
-- `all_of` - verifică dacă toate elementele dintr-o colecție satisfac un predicat.
-- `any_of` - verifică dacă cel puțin un element dintr-o colecție satisface un predicat.
-- `none_of` - verifică dacă niciun element dintr-o colecție nu satisface un predicat.
-- `count` - numără elementele dintr-o colecție care satisfac un predicat.
-- `count_if` - numără elementele dintr-o colecție care satisfac un predicat.
-- `mismatch` - găsește prima pereche de elemente care nu sunt egale.
-- `equal` - verifică dacă două colecții sunt egale.
+## Algoritmi care modifică datele
 
-## Algoritmi care modifică containerul
-
-Acești algoritmi modifică colecțiile cu care lucrează într-un fel sau altul, de exemplu, adaugă elemente, elimină, schimbă locul.
+Acești algoritmi modifică colecțiile cu care lucrează, de exemplu, inserând, ștergând sau reordonând elemente.
 
 ### Copiere
 
-- `copy` - copiază elementele dintr-o colecție în alta.
-- `copy_if` - copiază elementele care satisfac un predicat.
-- `copy_n` - copiază primele `n` elemente.
-- `copy_backward` - copiază elementele dintr-o colecție în alta în ordine inversă.
-- `move` - mută elementele dintr-o colecție în alta.
-- `move_backward` - mută elementele dintr-o colecție în alta în ordine inversă.
+- `copy` – copiază elemente dintr-o colecție în alta.
+- `copy_if` – copiază elementele care satisfac predicatul.
+- `copy_n` – copiază primele `n` elemente.
+- `copy_backward` – copiază elementele în ordine inversă.
+- `move` – mută elemente dintr-o colecție în alta.
+- `move_backward` – mută elemente în ordine inversă.
 
-### Completare
+### Umplere
 
-- `fill` - umple colecția cu un singur element.
-- `fill_n` - umple primele `n` elemente cu un singur element.
-- `generate` - umple colecția cu valori returnate de un obiect funcțional.
-- `generate_n` - umple primele `n` elemente cu valori returnate de un obiect funcțional.
+- `fill` – umple colecția cu o valoare.
+- `fill_n` – umple primele `n` elemente cu o valoare.
+- `generate` – umple colecția cu valori generate de un obiect funcțional.
+- `generate_n` – umple primele `n` elemente cu valori generate de un obiect funcțional.
 
 ### Transformare
 
-- `transform` - aplică o funcție la fiecare element al colecției.
-- `replace` - înlocuiește toate aparițiile unei valori cu alta.
-- `replace_if` - înlocuiește toate aparițiile elementelor care satisfac un predicat cu alta valoare.
-- `replace_copy` - copiază elementele dintr-o colecție în alta, înlocuind toate aparițiile unei valori cu alta.
-- `replace_copy_if` - copiază elementele dintr-o colecție în alta, înlocuind toate aparițiile elementelor care satisfac un predicat cu alta valoare.
+- `transform` – aplică o funcție fiecărui element al colecției.
+- `replace` – înlocuiește toate aparițiile unei valori cu alta.
+- `replace_if` – înlocuiește toate elementele care satisfac predicatul cu o altă valoare.
+- `replace_copy` – copiază elementele, înlocuind toate aparițiile unei valori cu alta.
+- `replace_copy_if` – copiază elementele, înlocuind toate elementele care satisfac predicatul cu o altă valoare.
 
-### Eliminare
+### Ștergere
 
-- `remove` - șterge toate aparițiile unui element din colecție.
-- `remove_if` - șterge toate aparițiile elementelor care satisfac un predicat.
-- `remove_copy` - copiază elementele dintr-o colecție în alta, ștergând toate aparițiile unui element.
-- `remove_copy_if` - copiază elementele dintr-o colecție în alta, ștergând toate aparițiile elementelor care satisfac un predicat.
-- `unique` - șterge toate aparițiile duplicate ale unui element.
-- `unique_copy` - copiază elementele dintr-o colecție în alta, ștergând toate aparițiile duplicate ale unui element.
+- `remove` – șterge toate aparițiile unei valori din colecție.
+- `remove_if` – șterge toate elementele care satisfac predicatul.
+- `remove_copy` – copiază elementele, ștergând toate aparițiile unei valori.
+- `remove_copy_if` – copiază elementele, ștergând toate elementele care satisfac predicatul.
+- `unique` – șterge duplicatele consecutive.
+- `unique_copy` – copiază elementele, ștergând duplicatele consecutive.
 
-### Ordonare
+### Reordonare
 
-- `reverse` - inversează ordinea elementelor.
-- `rotate` - deplasează elementele colecției din stânga în dreapta. Elementele care ies din colecție sunt mutate la început.
-- `rotate_copy` - copiază elementele dintr-o colecție în alta, deplasându-le din stânga în dreapta. Elementele care ies din colecție sunt mutate la început.
-- `random_shuffle` - amestecă elementele colecției în mod aleatoriu.
-- `shuffle` - amestecă elementele colecției în mod aleatoriu, folosind un generator de numere aleatorii specificat.
-- `shift_left` - deplasează elementele colecției la stânga.
-- `shift_right` - deplasează elementele colecției la dreapta.
+- `reverse` – inversează ordinea elementelor.
+- `rotate` – rotește elementele spre stânga; cele care ies din colecție sunt mutate la început.
+- `rotate_copy` – copiază elementele, rotindu-le spre stânga.
+- `random_shuffle` – amestecă elementele aleatoriu.
+- `shuffle` – amestecă elementele aleatoriu, folosind un generator dat.
+- `shift_left` – deplasează elementele spre stânga.
+- `shift_right` – deplasează elementele spre dreapta.
 
 ### Sortare
 
-- `sort` - sortează colecția.
-- `stable_sort` - sortează colecția, păstrând ordinea elementelor egale.
-- `partial_sort` - sortează primele `n` elemente.
-- `is_sorted` - verifică dacă colecția este sortată.
-- `is_sorted_until` - găsește primul element care nu respectă ordinea sortării.
-- `nth_element` - mută elementul `n` pe poziția sa într-o colecție sortată.
+- `sort` – sortează colecția.
+- `stable_sort` – sortează colecția, păstrând ordinea elementelor egale.
+- `partial_sort` – sortează parțial colecția.
+- `is_sorted` – verifică dacă colecția este sortată.
+- `is_sorted_until` – găsește primul element care nu respectă ordinea.
+- `nth_element` – mută al n-lea element pe poziția corectă într-o colecție sortată.
 
-## Construcția algoritmilor
+## Structura algoritmilor
 
-Algoritmii STL sunt realizate ca funcții generice, care primesc iteratori ca parametri. Realizarea algoritmilor STL este simplă și eficientă. Următoarele exemple arată structura unor algoritmi.
+Algoritmii STL sunt implementați ca funcții șablon care primesc iteratori ca parametri. Implementările sunt de obicei foarte simple și eficiente. Următoarele exemple arată structura unor algoritmi.
 
-### Căutarea elementului în colecție
+### Căutarea unui element într-o colecție
 
-Se parcurg elementele colecției de la primul la ultimul element. Dacă elementul este găsit, se returnează iteratorul pe acest element, altfel se returnează iteratorul pe ultimul element.
+Se parcurg toate elementele de la iteratorul de început la cel de sfârșit. Dacă elementul este găsit, se returnează iteratorul către acesta, altfel iteratorul de sfârșit.
 
 ```cpp
 template <class InputIterator, class Type>
@@ -202,9 +202,9 @@ InputIterator find(InputIterator first, InputIterator last, const Type& value) {
 }
 ```
 
-### Căutarea elementului care satisface un predicat
+### Căutarea unui element care satisface o condiție
 
-Se parcurg elementele colecției de la primul la ultimul element. Dacă elementul care satisface predicatului specificat este găsit, se returnează iteratorul pe acest element, altfel se returnează iteratorul pe ultimul element.
+Se parcurg toate elementele de la iteratorul de început la cel de sfârșit. Dacă se găsește un element care satisface predicatul, se returnează iteratorul către acesta, altfel iteratorul de sfârșit.
 
 ```cpp
 template <class InputIterator, class Predicate>
@@ -219,31 +219,37 @@ InputIterator find_if(InputIterator first, InputIterator last, Predicate pred) {
 }
 ```
 
-### Copierea elementelor care satisfac unui predicat
+### Copierea elementelor care satisfac o condiție
 
-Se parcurg elementele colecției de la primul la ultimul element. Dacă elementul care satisface predicatului specificat este găsit, el se copie într-o altă colecție.
+Se parcurg toate elementele de la iteratorul de început la cel de sfârșit. Dacă un element satisface predicatul, acesta este copiat într-o altă colecție.
 
 ```cpp
 template <class InputIterator, class OutputIterator, class Predicate>
-void copy_if( InputIterator first1, InputIterator last1,
+OutputIterator copy_if( InputIterator first1, InputIterator last1,
   OutputIterator first2, Predicate predicate) {
     while(first1 != last1){
-      if(predicate(*first1)){
-        *first2 = *first1;
-        ++ first2;
-      }
-      ++first1;
+        if(predicate(*first1)){
+            *first2 = *first1;
+            ++ first2;
+        }
+        ++first1;
     }
-  }
+    return first2;
+}
 ```
 
-## Exemple de utilizare a algoritmilor
+## Exemple de utilizare
 
-### Citirea și afișarea a datelor
+### Citirea și afișarea datelor
 
-Citirea unui vector de numere întregi din fluxul de intrare standard și afișarea acestora pe ecran.
+Citirea unui vector de numere întregi de la intrarea standard și afișarea acestuia pe ecran.
 
 ```cpp
+/**
+ * @file read_write_vector.cpp
+ * @brief Exemplu de citire și afișare a datelor
+ * @details g++ -std=c++20 -o read_write_vector read_write_vector.cpp
+ */
 #include <iostream>
 #include <vector>
 #include <iterator>
@@ -264,11 +270,16 @@ int main() {
 }
 ```
 
-### Căutarea primului element par în vector
+### Căutarea primului număr par într-un vector
 
-Este dat un vector de numere întregi. Găsiți primul element par.
+Se dă un vector de numere întregi. Să se găsească primul număr par.
 
 ```cpp
+/**
+ * @file find_even_number.cpp
+ * @brief Exemplu de căutare a primului număr par într-un vector
+ * @details g++ -std=c++20 -o find_even_number find_even_number.cpp
+ */
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -283,16 +294,21 @@ int main() {
 }
 ```
 
-### Citirea, sortarea și căutarea
+### Citire, sortare și căutare
 
-În fișierul `students.txt` sunt stocate date despre studenți în următorul format:
+Fișierul conține o listă de studenți în următorul format:
 
 - fiecare linie reprezintă un student;
-- în linie, separate de punct și virgulă, sunt stocate numele studentului, prenumele studentului, nota pentru test.
+- pe linie se află numele, prenumele și nota la test, separate prin punct și virgulă.
 
-Citiți datele din fișier, selectați toți studenții care au trecut testul (nota mai mare de `5`) și afișați-le pe ecran într-un format tabular, în ordinea descrescătoare a notei.
+Citiți datele din fișier, selectați toți studenții cu nota mai mare de 5 și afișați-i pe ecran, ordonați descrescător după notă.
 
 ```cpp
+/**
+ * @file read_sort_search.cpp
+ * @brief Exemplu de citire, sortare și căutare
+ * @details g++ -std=c++20 -o read_sort_search read_sort_search.cpp
+ */
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -317,11 +333,14 @@ std::ostream& operator<<(std::ostream& os, const TestInfo& ti) {
 
 std::istream& operator>>(std::istream& is, TestInfo& ti) {
     std::string line;
+    ti.name.clear();
+    ti.surname.clear();
+    ti.grade = 0;
     if (std::getline(is, line)) {
         std::istringstream iss(line);
         std::getline(iss, ti.name, ';');
         std::getline(iss, ti.surname, ';');
-        iss >> ti.grade;
+        iss >> std::ws >> ti.grade;
     }
     return is;
 }
@@ -329,7 +348,7 @@ std::istream& operator>>(std::istream& is, TestInfo& ti) {
 int main() {
     std::ifstream file("students.txt");
     if (!file.is_open()) {
-        std::cerr << "Error: file not found\n";
+        std::cerr << "Eroare: fișierul nu a fost găsit\n";
         return 1;
     }
 
@@ -339,7 +358,7 @@ int main() {
         std::istream_iterator<TestInfo>(),
         std::back_inserter(students));
 
-    std::cout << std::format(LINE_FORMAT, "Name", "Surname", "Grade") << '\n';
+    std::cout << std::format(LINE_FORMAT, "Nume", "Prenume", "Nota") << '\n';
 
     std::sort(
         students.begin(),
@@ -361,6 +380,6 @@ int main() {
 
 ## Bibliografie
 
-1. [Algorithms library, cppreference.com](https://en.cppreference.com/w/cpp/algorithm)
-2. [C++ Standard Library reference (STL), Microsoft](https://learn.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-reference)
-3. [Scott Meyers. Effective STL](https://www.google.com/search?q=Scott+Meyers+effective+stl)
+1. [cppreference.com](https://en.cppreference.com/w/cpp/algorithm)
+2. [Referință pentru biblioteca standard C++ (STL), Microsoft](https://learn.microsoft.com/ro-ro/cpp/standard-library/cpp-standard-library-reference)
+3. [Scott Meyers. Effective STL](https://www.google.com/search?q=Scott+Meyers+Effective+STL)
