@@ -3,7 +3,7 @@
 - [Algoritmi](#algoritmi)
   - [Noțiunea de algoritm](#noțiunea-de-algoritm)
     - [Functor (obiect funcțional)](#functor-obiect-funcțional)
-    - [Predicați](#predicați)
+    - [Predicat](#predicat)
     - [Reguli de denumire a algoritmilor STL](#reguli-de-denumire-a-algoritmilor-stl)
   - [Algoritmi care nu modifică datele](#algoritmi-care-nu-modifică-datele)
     - [Operații de căutare](#operații-de-căutare)
@@ -74,7 +74,7 @@ int main() {
 }
 ```
 
-### Predicați
+### Predicat
 
 > Un predicat este o funcție care returnează o valoare logică (bool).
 

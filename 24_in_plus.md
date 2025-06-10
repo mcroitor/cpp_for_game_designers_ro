@@ -126,7 +126,7 @@ __Literalul__ este o constantă fără nume. În C++ există 6 tipuri de litere:
 - numere reale: `12.29`
 - caractere: `'a'`
 - șiruri de caractere: `"sample"`
-- valori logice: `true`
+- valori logice: `true` sau `false`
 - pointeri: `nullptr`
 
 Începând cu `C++11`, utilizatorul poate defini propriile litere (user-defined literals), care permit crearea de obiecte de tipuri personalizate.
