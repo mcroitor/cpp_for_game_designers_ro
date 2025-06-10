@@ -1,28 +1,28 @@
-# Tipuri de date derivate
+# Tipuri de date definite de utilizator
 
-- [Tipuri de date derivate](#tipuri-de-date-derivate)
-  - [pseudonime](#pseudonime)
-  - [enumerări](#enumerări)
-  - [structuri](#structuri)
-  - [clase](#clase)
-    - [Cuvântul cheie this](#cuvântul-cheie-this)
+- [Tipuri de date definite de utilizator](#tipuri-de-date-definite-de-utilizator)
+  - [Pseudonime de tip](#pseudonime-de-tip)
+  - [Enumerații](#enumerații)
+  - [Structuri](#structuri)
+  - [Clase](#clase)
+    - [Cuvântul cheie this](#cuvântul-cheie-this)
   - [Bibliografie](#bibliografie)
 
-## pseudonime
+## Pseudonime de tip
 
-Pentru a reduce codul și a îmbunătăți citirea codului sursă, se pot defini pseudonime tipurilor. În plus, definirea pseudonimelor facilitează lucrul cu pointeri la funcții.
+Pentru a îmbunătăți lizibilitatea programelor, se pot defini pseudonime pentru tipuri de date. De asemenea, definirea pseudonimelor simplifică lucrul cu pointeri la funcții și permite scurtarea tipurilor lungi, de exemplu la utilizarea containerelor STL.
 
-Pseudonimele tipurilor se definesc cu ajutorul cuvântului cheie __typedef__.
+Un pseudonim de tip se definește cu ajutorul cuvântului cheie __typedef__.
 
 ```cpp
-// imbunatatim citirea codului
+// îmbunătățim lizibilitatea codului
 typedef unsigned char age_type;
 
-// comod pentru crearea pointerilor la functii.
-// [pointer la functie](https://sweethome.gitbook.io/advanced-cpp/particularities/function_pointers)
+// util pentru crearea pointerilor la funcții.
+// [Pointer la funcție](https://sweethome.gitbook.io/advanced-cpp/particularities/function_pointers)
 typedef void (*pfunc_type)(void);
 
-// reducem numele tipului lung
+// scurtăm un tip lung
 typedef std::vector<unsigned int>::const_iterator const_iterator;
 
 age_type age;
@@ -30,12 +30,12 @@ pfunc_type handlers[10];
 const_iterator it;
 ```
 
-Totodata, in C++11 a fost introdus un nou mod de a defini pseudonimele tipurilor, care este mai flexibil si mai puternic decat __typedef__. Acesta se numeste __aliasuri de tipuri__ (type aliases) care se definesc cu ajutorul cuvintului cheie __using__.
+De asemenea, pseudonimele de tip pot fi definite cu ajutorul cuvântului cheie __using__.
 
-Sintaxa:
+Sintaxă:
 
 ```cpp
-using <nume nou al tipului> = <tip>;
+using <nume_nou_tip> = <tip>;
 ```
 
 Exemple:
@@ -48,25 +48,36 @@ BYTE byte;
 WORD word;
 ```
 
-## enumerări
+## Enumerații
 
-Enumerările sunt un tip de date personalizat definit ca un set de constante întregi. O variabilă de enumerare poate lua valori doar din setul de valori specificat.
+O enumerație este un tip de date definit de utilizator, reprezentat ca o listă de constante întregi. O variabilă de tip enumerație poate avea doar valorile definite în acea enumerație.
 
-Sintaxa:
+Sintaxă:
 
 ```cpp
-enum class <nume tip> {
-  <constanta_1>,
-  <constanta_2>,
+enum <nume_tip> {
+  <constantă_1>,
+  <constantă_2>,
   ...
-  <constanta_n>
+  <constantă_n>
 };
 ```
 
-Exemple de declarații a enumerărilor:
+sau
 
 ```cpp
-enum class CURRENCY {
+enum class <nume_tip> {
+  <constantă_1>,
+  <constantă_2>,
+  ...
+  <constantă_n>
+};
+```
+
+Exemple de declarare a enumerațiilor:
+
+```cpp
+enum CURRENCY {
   MDL,
   USD,
   EUR
@@ -80,7 +91,7 @@ enum class color_type {
   black,
 };
 
-enum struct direction_t {
+enum class direction_t {
   north,
   south,
   east,
@@ -88,11 +99,11 @@ enum struct direction_t {
 };
 ```
 
-Valoarea enumerarii se specifica prin `<nume tip>::<nume constanta>`.
+Constantele enumerațiilor primesc valori întregi consecutive, începând de la zero. Astfel, `CURRENCY::MDL` va avea valoarea zero, `CURRENCY::USD` valoarea unu etc. Totuși, este recomandat să se folosească numele constantelor definite în enumerație, nu valorile lor numerice.
 
-Constantele enumerarilor implicit obtin valori intregi consecutive, incepand cu zero. Prin urmare, constanta `CURRENCY::MDL` va fi egala cu zero, `CURRENCY::USD` va fi egala cu unu, si asa mai departe. Cu toate acestea, nu este recomandat sa folositi valori numerice pentru a lucra cu enumerarile, ci numele lor.
+Numele unei constante de enumerație se scrie ca `<nume_tip>::<nume_constantă>`.
 
-Exemplu de utilizare a enumerarilor:
+Exemple de declarare și inițializare a variabilelor de tip enumerație:
 
 ```cpp
 CURRENCY valuta = CURRENCY::MDL;
@@ -100,20 +111,20 @@ color_type backgroundColor = color_type::white;
 direction_t direction = direction_t::east;
 ```
 
-## structuri
+## Structuri
 
-Structura este un tip de date derivat care combina valorile altor tipuri de date de baza sau structuri. Exemple de structuri includ numere complexe, puncte pe plan sau vectori planare ca o combinatie a doua variabile reale.
+O structură este un tip de date definit de utilizator care grupează logic valori ale unor tipuri de bază sau ale altor structuri. Exemple de structuri pot fi un număr complex, un punct în plan sau un vector plan, ca reuniune a două variabile reale.
 
 ```cpp
-struct <nume tip> {
-  /* tip_1 */ /* camp_1 */;
-  /* tip_2 */ /* camp_2 */;
+struct <nume_structură> {
+  /* tip_1 */ /* proprietate_1 */;
+  /* tip_2 */ /* proprietate_2 */;
   // ...
-  /* tip_n */ /* camp_n */;
+  /* tip_n */ /* proprietate_n */;
 };
 ```
 
-Exemplu de declarare a structurii _punct pe plan_:
+Exemplu de declarare a structurii _punct în plan_:
 
 ```cpp
 struct point_t {
@@ -122,7 +133,7 @@ struct point_t {
 };
 ```
 
-Declararea unui obiect de structură este echivalentă cu declararea unei variabile. Inițializarea obiectului poate fi efectuată prin enumerarea valorilor câmpurilor obiectului separate prin virgulă și încadrate în acolade:
+Declararea unui obiect de tip structură este echivalentă cu declararea unei variabile. Inițializarea obiectului se poate face prin enumerarea valorilor câmpurilor între acolade:
 
 ```cpp
 point_t pt {1., 0.};
@@ -130,39 +141,39 @@ pt.x = -3.7;
 pt.y = 12.2;
 ```
 
-Acces la câmpurile structurii se realizează cu ajutorul operatorului `.`. De exemplu, pentru a accesa coordonata x a punctului `pt` se folosește `pt.x`.
+Accesul la câmpurile structurii se face cu operatorul `.`.
 
-## clase
+## Clase
 
-Clasele reprezintă o extensie a structurilor. Ele permit gruparea nu numai a datelor sub un singur nume, ci și a funcțiilor care operează cu aceste date.
+Clasele reprezintă o extensie a conceptului de structură. Ele permit gruparea nu doar a datelor sub un singur nume, ci și a funcțiilor care operează asupra acestor date.
 
-Formal, _clasa este un tip de date personalizat care descrie o abstractizare a obiectelor din lumea reală_. O instanță a clasei (adică o variabilă a acestui tip) se numește _obiect_ (în general, orice variabilă poate fi numită obiect a unui tip).
+Formal, _o clasă este un tip de date definit de utilizator care descrie o abstractizare a obiectelor din lumea reală_. Instanța unei clase (adică o variabilă de acest tip) se numește _obiect_ (în general, orice variabilă poate fi numită obiect al unui tip).
 
-Sintaxa de declarare a clasei:
+Sintaxa declarării unei clase:
 
 ```cpp
-class <nume clasa> {
+class <nume_clasă> {
 private:
-  /* tip_1 */ /* camp_1 */;
-  /* tip_2 */ /* camp_2 */;
+  /* tip_1 */ /* proprietate_1 */;
+  /* tip_2 */ /* proprietate_2 */;
   // ...
-  /* tip_n */ /* camp_n */;
+  /* tip_n */ /* proprietate_n */;
 
 public:
-  /* tip_1 */ /* metoda_1 */;
-  /* tip_2 */ /* metoda_2 */;
+  /* tip_1 */ /* metodă_1 */;
+  /* tip_2 */ /* metodă_2 */;
   // ...
-  /* tip_n */ /* metoda_n */;
+  /* tip_n */ /* metodă_n */;
 };
 ```
 
-Variabile definite in clasa se numesc __date-membru__ (member data), __atribute__ (attributes) sau __câmpuri__ (fields), funcțiile definite în clasă se numesc __funcții-membru__ (member functions) sau __metode__ (methods).
+Variabilele declarate într-o clasă se numesc __membri-date__ (member data), __proprietăți__ (atribute) sau __câmpuri__ (fields), iar funcțiile declarate într-o clasă se numesc __membri-funcții__ (member functions) sau __metode__ (methods).
 
-In cadrul clasei se poate controla accesul la datele si functiile declarate, facandu-le disponibile pentru utilizator sau ascunzandu-le. Acest lucru se realizeaza cu ajutorul cuvintelor cheie __public__, __private__ si __protected__, care definesc accesul imediat pentru un grup de membri ai clasei.
+Într-o clasă se poate controla accesul la variabile și funcții, făcându-le publice sau ascunse. Acest lucru se realizează cu ajutorul cuvintelor cheie __public__, __private__ și __protected__, care stabilesc accesul pentru grupuri de membri ai clasei.
 
-Implicit, toate datele-membru și metodele clasei sunt private.
+Implicit, accesul la membrii unei clase este privat.
 
-> In limbajul C++ structurile se deosebesc de clase doar prin acces: in structuri accesul la elemente este deschis implicit, in clase accesul la elemente este inchis implicit.
+> În C++, structurile diferă de clase doar prin accesul implicit: în structuri accesul la membri este public, iar în clase este privat.
 
 Exemplu de declarare a clasei _personaj de joc_:
 
@@ -175,25 +186,25 @@ class GameCharacter {
   point_t     _position;
 
 public:
-  GameCharacter(const string&); // constructor
+  GameCharacter(const std::string&); // constructor
   void Move(direction_t);
 
   void Attack(GameCharacter&);
+};
+```
+
+În C++ este obișnuit să se separe declarația clasei (și nu numai) de implementare. O bună practică este crearea pentru fiecare clasă a două fișiere: în _fișierul header_ se descrie clasa, iar în _fișierul sursă_ se scrie implementarea metodelor.
+
+Pentru implementarea metodelor unei clase se folosește următoarea sintaxă:
+
+```cpp
+<tip_returnat> <nume_clasă>::<nume_metodă>(<parametri>) {
+  <corp_functie>
 }
 ```
 
-De obicei în C++ se separă declarația clasei (și nu numai) de implementare. O practică bună este de a crea pentru fiecare clasă două fișiere: în _fișierul header_ se descrie clasa, în _fișierul sursă_ se implementează metodele.
-
-La descrierea realizării metodelor clasei se folosește următoarea sintaxă:
-
 ```cpp
-<tip date returnabil> <nume clasa>::<nume metoda>(<parametri>) {
-  <corpul functiei>
-}
-```
-
-```cpp
-GameCharacter::GameCharacter(const std::string& name): 
+GameCharacter::GameCharacter(std::string name): 
     _name(name), _attack(10), _health(100), _defence(2)
 {
 }
@@ -201,16 +212,16 @@ GameCharacter::GameCharacter(const std::string& name):
 void GameCharacter::Move(direction_t direction)
 {
     switch (direction) {
-        case direction_t::north: // top
+        case direction_t::north: // sus
             _position.x -= 1;
             break;
-        case direction_t::south: // bottom
+        case direction_t::south: // jos
             _position.x += 1;
             break;
-        case direction_t::east: // right
+        case direction_t::east: // dreapta
             _position.y += 1;
             break;
-        case direction_t::west: // left
+        case direction_t::west: // stânga
             _position.y -= 1;
             break;
     }
@@ -222,8 +233,8 @@ void GameCharacter::Attack(GameCharacter & gameCharacter)
     if(this->_attack >= gameCharacter._defence) {
         damage = this->_attack - gameCharacter._defence;
     }
-    if(gameCharacter._health > damage) {
-        gameCharacter._health -= gameCharacter._health - damage;
+    if(gameCharacter._health >= damage) {
+        gameCharacter._health -= damage;
     }
     else {
         gameCharacter._health = 0;
@@ -231,11 +242,11 @@ void GameCharacter::Attack(GameCharacter & gameCharacter)
 }
 ```
 
-### Cuvântul cheie this
+### Cuvântul cheie this
 
-Clasa descrie un set de obiecte cu aceleași proprietăți și comportament, însă comportamentul (adică utilizarea metodelor) se referă la un obiect specific. Pentru a indica că acțiunea se referă la obiect, se folosește cuvântul cheie __this__. Acest cuvânt cheie reprezintă un pointer la (obiectul curent) care oferă acces la proprietățile și metodele obiectului prin operatorul săgeată `->`.
+O clasă descrie o mulțime de obiecte cu aceleași proprietăți și comportamente, însă comportamentul (adică utilizarea metodelor) se referă la un anumit obiect. Pentru a indica faptul că acțiunea se referă la obiectul curent, se folosește cuvântul cheie __this__. Acest cuvânt cheie reprezintă un pointer la obiectul curent, oferind acces la proprietățile și metodele obiectului prin operatorul _săgeată_ `->`.
 
-Cuvântul cheie __this__ poate fi folosit numai în metodele clasei.
+Cuvântul cheie __this__ se folosește doar în contextul metodelor clasei.
 
 Exemplu de utilizare:
 
@@ -243,23 +254,23 @@ Exemplu de utilizare:
 void GameCharacter::Move(direction_t direction)
 {
     switch (direction) {
-        case direction_t::north: // top
+        case direction_t::north: // sus
             this->_position.x -= 1;
             break;
-        case direction_t::south: // bottom
+        case direction_t::south: // jos
             this->_position.x += 1;
             break;
-        case direction_t::east: // right
+        case direction_t::east: // dreapta
             this->_position.y += 1;
             break;
-        case direction_t::west: // left
+        case direction_t::west: // stânga
             this->_position.y -= 1;
             break;
     }
 }
 ```
 
-Mai detaliat clasele sunt discutate în contextul [programării orientate pe obiecte](./14_oop.md).
+Mai detaliat, clasele sunt analizate în contextul [programării orientate pe obiect](./14_oop.md).
 
 ## Bibliografie
 
