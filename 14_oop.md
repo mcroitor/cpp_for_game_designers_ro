@@ -241,14 +241,14 @@ __Metoda abstractă__ (funcție membră abstractă, funcție virtuală pură) es
 ```cpp
 struct Comparable {
     // funcție virtuală pură!
-    virtual bool equal(Comparable*) = 0; 
+    virtual bool equal(const Comparable&) const = 0; 
 };
 
 class Complex: public Comparable {
     double real;
     double imaginary;
 public:
-    bool equal(Comparable*) override; 
+    bool equal(const Comparable&) const override; 
 };
 ```
 
