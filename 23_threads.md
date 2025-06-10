@@ -1,67 +1,72 @@
-# Programare multi-threading
+# Programare multithreading
 
-- [Programare multi-threading](#programare-multi-threading)
-  - [Noțiuni de bază ale programării multi-threading](#noțiuni-de-bază-ale-programării-multi-threading)
+- [Programare multithreading](#programare-multithreading)
+  - [Noțiuni de bază](#noțiuni-de-bază)
   - [Fire de execuție](#fire-de-execuție)
-  - [Lucrul cu sistem și fire de execuție](#lucrul-cu-sistem-și-fire-de-execuție)
-  - [Problema partajării resurselor dintre firele de execuție](#problema-partajării-resurselor-dintre-firele-de-execuție)
+  - [Lucrul cu sistemul și firele](#lucrul-cu-sistemul-și-firele)
+  - [Problema partajării datelor între fire](#problema-partajării-datelor-între-fire)
     - [Mutex](#mutex)
     - [Variabile și operații atomice](#variabile-și-operații-atomice)
   - [Programare asincronă](#programare-asincronă)
   - [Algoritmi paraleli](#algoritmi-paraleli)
   - [Bibliografie](#bibliografie)
 
-## Noțiuni de bază ale programării multi-threading
+## Noțiuni de bază
 
-Un __program__ este o secvență de instrucțiuni salvate într-un fișier, executabil sau interpretabil. Un __proces__ este executarea efectivă a unui program (a instrucțiunilor sale). De asemenea, un proces poate fi definit ca fiind programul împreună cu resursele sale asociate: spațiul de adresare, variabilele globale, fișierele deschise etc. În cadrul unui proces poate funcționa unul sau mai multe _fire de execuție_.
+__Programul__ este o succesiune de instrucțiuni stocate într-un fișier executabil sau interpretat. __Procesul__ reprezintă execuția efectivă a unui program (instrucțiunile sale). Uneori, procesul este definit ca ansamblul programului executat împreună cu resursele asociate: spațiu de adrese, variabile globale, fișiere deschise etc. În cadrul unui proces pot exista unul sau mai multe __fire de execuție__ (en. _threads_).
 
-__Fir de execuție__ (en. __thread__) este o unitate minimă care poate fi executată de sistem de operare. Realizarea firelor de execuție și proceselor este diferită în funcție de sistemul de operare, dar în general un fir de execuție se află în cadrul unui proces. Mai multe fire de execuție pot exista în cadrul aceluiași proces și pot partaja resurse, cum ar fi memoria, în timp ce procesele nu partajează aceste resurse. În special, firele de execuție partajează secvența de instrucțiuni a procesului (codul său) și contextul său - valorile variabilelor (registrele procesorului și stiva de apeluri) pe care le au în orice moment.
+__Firul de execuție__ (sau __thread__) este cea mai mică unitate de execuție gestionată de sistemul de operare. Implementarea firelor și a proceselor diferă între sistemele de operare, dar, de regulă, un fir există în interiorul unui proces. Mai multe fire pot coexista în același proces și pot partaja resurse precum memoria, în timp ce procesele nu partajează aceste resurse. Firele partajează codul procesului și contextul acestuia – valorile variabilelor (registrele procesorului și stiva de apeluri) pe care le au la un moment dat.
 
-Posibilitatea sistemei de operare (și a procesorului) de a executa mai multe fire de execuție în același timp se numește __multithreading__. Calculatoarele moderne permit executarea mai multor operații simultan datorită mai multor nuclee ale procesorului.
+Capacitatea sistemului de operare (și a procesorului) de a executa mai multe fire simultan se numește __multithreading__. Calculatoarele moderne permit rularea mai multor operații în paralel datorită existenței mai multor nuclee de procesare.
 
-Un __algoritm paralel__ este un algoritm care poate realizat în bucăți pe mai multe dispozitive de calcul, cu rezultatele obținute ulterior combinate pentru a obține rezultatul corect. Un exemplu de algoritm paralel este adunarea și înmulțirea matricelor.
+__Algoritmul paralel__ este un algoritm care poate fi implementat pe mai multe dispozitive de calcul, cu reunirea rezultatelor pentru a obține rezultatul corect. Un exemplu de algoritm paralel este adunarea sau înmulțirea matricelor.
 
-Terminul _paralel_ nu înseamnă _fix în același moment_. Două sarcini distincte sunt _paralele_ dacă se întâmplă în același interval de timp.
+Termenul _paralel_ nu înseamnă neapărat simultan în sens strict. Două sarcini se execută _paralel_ dacă au loc în același interval de timp.
 
-__Programare paralelă__ (sau __programare concurentă__) este o metoda de elaborare a programelor în care problema este împărțită în mai multe sarcini independente, soluțiile cărora sunt executate simultan, fie pe același procesor, fie pe mai multe procesoare în cadrul aceluiași sistem de calcul fizic sau virtual.
+__Programarea paralelă__ (sau __programarea multithreading__) este metoda de scriere a programelor în care o problemă este împărțită în mai multe subprobleme independente, fiecare fiind executată simultan cu celelalte, pe procesoare (nuclee) diferite, în cadrul aceluiași calculator fizic sau virtual.
 
-__Programare distribuită__ este o metodă de elaborare a programelor în care problema este împărțită în mai multe sarcini independente, soluțiile cărora sunt executate simultan pe mai multe calculatoare fizice sau virtuale, conectate în rețea.
+__Programarea distribuită__ presupune împărțirea unei probleme în subprobleme independente, fiecare fiind executată pe calculatoare diferite, fizice sau virtuale.
 
-Proiectând un algoritm paralel, este necesar să se efectueze următorii pași:
+La proiectarea algoritmilor paraleli trebuie urmați pașii:
 
-- __decompoziție__ - proces de împărțire a sarcinii și a soluției sale în părți;
-- __relația__ - definirea relațiilor între părțile soluției;
-- __sincronizare__ - coordonarea ordinii de execuție a părților soluției.
+- __decompoziție__ – împărțirea problemei și a soluției în părți;
+- __comunicare__ – definirea interacțiunilor dintre părți;
+- __sincronizare__ – coordonarea ordinii de execuție a părților.
 
-Firele de execuție care se execută simultan pot avea memorie proprie, dar pot avea și acces la o memorie comună, numită __memorie partajată__ (en. __shared memory__).
+Firele care rulează în paralel pot avea memorie proprie, dar pot accesa și memorie partajată, numită __memorie partajată__ (en. shared memory).
 
-Începând cu standardul limbajului __C++11__, limbajul oferă suport pentru programare paralelă. C++ oferă următoarele elemente de programare paralelă (clasificare după standarde):
+Începând cu standardul __C++11__, limbajul oferă suport pentru programare multithreading. C++ suportă următoarele elemente de programare paralelă (clasificare după standard):
 
-- __С++11__
-  - modelul de memorie
+- __C++11__
+  - model de memorie
   - variabile atomice
   - fire de execuție
-  - mutex-uri (semafoare binare) și blocante
-  - date locale ale firului de execuție
-  - sarcini
-- __С++14__
-  - blocante de citire / scriere
-- __С++17__
+  - mutexe și lock-uri
+  - date locale firului
+  - task-uri
+- __C++14__
+  - lock-uri pentru citire/scriere
+- __C++17__
   - algoritmi paraleli
-- __С++20__
-  - smart pointers atomici
-  - fire de execuție cu așteptare
-  - bariere (barrier) și clanțe (latch)
-  - semafoare generale
+- __C++20__
+  - pointeri inteligenți atomici
+  - fire cu așteptare
+  - latch-uri și bariere
+  - semafoare generice
   - corutine
 
 ## Fire de execuție
 
-În limbajul C++ lucrul cu fire de execuție este definit în antetul `<thread>`. Crearea unui fir de execuție se realizează prin declararea unui obiect de tip `std::thread`, care primește ca argument o funcție care va fi îndeplinită în firul de execuție și, opțional, argumentele acestei funcții.
+Lucrul cu firele în C++ este definit în antetul `<thread>`. Crearea unui fir se face prin declararea unui obiect al clasei `std::thread`, constructorul primind funcția ce va fi executată în firul nou creat, precum și eventual parametrii acesteia.
 
-Un exemplu simplu de creare a unui fir de execuție este prezentat mai jos:
+Exemplu simplu de creare a unui fir:
 
 ```cpp
+/**
+  * @file thread_example.cpp
+  * @brief Exemplu de creare a unui fir
+  * @details g++ -std=c++11 thread_example.cpp -o thread_example
+  */
 #include <thread>
 #include <iostream>
 
@@ -75,11 +80,16 @@ int main() {
 }
 ```
 
-În acest exemplu se creează un fir de execuție care îndeplinește funcția `hello`, iar programul principal așteaptă terminarea firului de execuție (`t.join();`). Dacă nu așteptați terminarea firului de execuție, atunci comportamentul programului nu este definit (și de obicei se termină cu o eroare a firului de execuție).
+În acest exemplu se creează un fir care execută funcția `hello`, iar programul principal așteaptă finalizarea firului (`t.join();`). Dacă nu se așteaptă finalizarea firului, comportamentul programului nu este definit (de obicei firul se închide cu eroare).
 
-Începând cu standardul _C++20_ este posibil să se creeze fire de execuție care se prind automat, folosind clasa `std::jthread`.
+Începând cu __C++20__ se pot crea fire care se atașează automat, folosind clasa `std::jthread`.
 
 ```cpp
+/**
+  * @file jthread_example.cpp
+  * @brief Exemplu de creare a unui fir
+  * @details g++ -std=c++20 jthread_example.cpp -o jthread_example
+  */
 #include <thread>
 #include <iostream>
 
@@ -93,69 +103,82 @@ int main() {
 }
 ```
 
-## Lucrul cu sistem și fire de execuție
+## Lucrul cu sistemul și firele
 
-Pentru lucrul efectiv cu sistem de operare este necesară cunoașterea configurației sistemului și a resurselor disponibile. În caz particular este necesar să se cunoască numărul de nuclee ale procesorului, care determină numărul de fire de execuție care efectiv pot fi create. Biblioteca standard C++ pentru obținerea informației despre sistem și firele de execuție oferă funcția:
+Pentru a lucra eficient cu sistemul de operare, este util să cunoaștem configurația acestuia. De exemplu, la lucrul cu firele, este util să știm câte nuclee sunt disponibile. Biblioteca standard C++ oferă funcția:
 
 ```cpp
-`std::thread::hardware_concurrency();
+std::thread::hardware_concurrency();
 ```
 
-Aceasta funcție returnează numărul fizic de fire de execuție ale procesorului. Dacă numărul actual de fire nu este cunoscut, atunci funcția returnează 0.
+Aceasta returnează numărul de nuclee disponibile. Dacă nu se poate determina, funcția returnează 0.
 
-Totodată pentru gestionarea firelor de execuție în C++ sunt utilizate următoarele metode:
+Alte funcții utile pentru fire:
 
-- `std::this_thread::get_id()` returnează identificatorul firului de execuție curent;
-- `std::this_thread::sleep_for(<time duration>)` suspendă execuția firului de execuție curent pentru `<time duration>` timp. Timpul este specificat sub formă de obiect al clasei `std::chrono::duration`;
-- `std::this_thread::sleep_until(<time point>)` suspendă execuția firului de execuție curent până la momentul `<time point>`. Timpul este specificat sub formă de obiect al clasei `std::chrono::time_point`.
+- `std::this_thread::get_id()` – identificatorul firului curent;
+- `std::this_thread::sleep_for(<durată>)` – suspendă firul curent pentru `<durată>` (obiect de tip `std::chrono::duration`);
+- `std::this_thread::sleep_until(<moment>)` – suspendă firul curent până la `<moment>` (obiect de tip `std::chrono::time_point`);
 
-Un exemplu de utilizare a metodelor este prezentat mai jos:
+Exemplu de utilizare:
 
 ```cpp
+/**
+  * @file 23_threads_01.cpp
+  * @brief Exemplu de lucru cu fire
+  * @details g++ -std=c++11 23_threads_01.cpp -o 23_threads_01
+  */
 #include <iostream>
+#include <vector>
 #include <thread>
 #include <chrono>
 
 int main() {
-    int threads = std::thread::hardware_concurrency();
-    std::cout << "threads: " << threads << std::endl;
-    if(threads == 0) {
+    unsigned int total_threads = std::thread::hardware_concurrency();
+    std::cout << "threads: " << total_threads << std::endl;
+    if(total_threads == 0) {
         std::cout << "unknown number of threads, exit" << std::endl;
         return 1;
     }
 
     std::cout << "main thread id: " << std::this_thread::get_id() << std::endl;
 
-    for(int i = 0; i < threads; ++i) {
-        std::thread t([i]() {
-            std::cout << "thread id: " << std::this_thread::get_id() 
-                    << " started" << std::endl;
+    std::vector<std::thread> threads;
+
+    for(unsigned int i = 0; i < total_threads; ++i) {
+        threads.push_back(std::thread([i]() {
+            std::cout << "thread id: " << std::this_thread::get_id() << " started" << std::endl;
             std::this_thread::sleep_for(std::chrono::seconds(i));
-            std::cout << "thread id: " << std::this_thread::get_id() 
-                    << " finished" << std::endl;
-        });
-        t.join();
+            std::cout << "thread id: " << std::this_thread::get_id() << " finished" << std::endl;
+        }));
+    }
+    for(unsigned int i = 0; i < total_threads; ++i) {
+        threads[i].join();
     }
     return 0;
 }
 ```
 
-## Problema partajării resurselor dintre firele de execuție
+## Problema partajării datelor între fire
 
-Una din problemele programării paralele este interacțiunea firelor de execuție cu memoria comună. Dacă două fire de execuție au acces la aceeași zonă de memorie, atunci ele pot interfera unul cu celălalt, schimbând valoarea stocată în acea zonă de memorie. Problema când rezultatul operațiilor executate în două sau mai multe fire de execuție depinde de ordinea lor de execuție se numește __stare de cursă__ (en. race condition) sau __concurența__.
+Una dintre problemele programării paralele este accesul concurent la memorie. Dacă două fire accesează aceeași zonă de memorie, pot apărea conflicte, modificând valorile stocate. Situația în care rezultatul depinde de ordinea execuției firelor se numește __condiție de cursă__ (race condition).
 
-Soluții posibile ale problemei stării de cursă:
+Soluții pentru această problemă:
 
-- includerea structurii de date într-un mecanism de protecție care garantează modificarea obiectului de către firul care l-a capturat;
-- rescrierea structurii de date pentru a elimina cursa (programare fără blocare), de exemplu, creând o copie a structurii de date pentru fiecare fir de execuție sau folosind variabile atomice.
+- protejarea structurii de date cu un mecanism care garantează accesul exclusiv;
+- rescrierea structurii de date pentru a elimina nevoia de blocare (programare lock-free).
 
 ### Mutex
 
-__Mutex__ (de la en. __mutual exclusion__ - excludere reciprocă) este un obiect simplu (primitiv de sincronizare) care permite marcarea tuturor fragmentelor de cod care accesează aceeași structură de date pentru a preveni starea de cursă.
+__Mutexul__ (din engleză mutual exclusion) este un obiect simplu (primitiv de sincronizare) care marchează secțiuni de cod pentru a preveni condițiile de cursă.
 
-Mutex-ul este definit în fișier anterior `<mutex>`, se numește `std::mutex`. Blocarea și deblocarea structurii se realizează prin apelarea metodelor `lock` și `unlock`. Totuși, utilizarea directă a acestora nu este recomandată. În schimb, este mai bine să utilizați un obiect de tip `std::lock_guard`, care blochează mutex-ul la crearea sa și deblochează la distrugerea sa.
+Mutexul este declarat în `<mutex>` ca `std::mutex`. Blocarea/deblocarea se face cu `lock`/`unlock`, dar se recomandă folosirea clasei `std::lock_guard`, care blochează mutexul la creare și îl deblochează la distrugere.
 
 ```cpp
+/**
+  * @file mutex_example.cpp
+  * @brief Exemplu de utilizare a unui mutex
+  * @details g++ -std=c++11 mutex_example.cpp -o mutex_example
+  */
 #include <iostream>
 #include <thread>
 #include <mutex>
@@ -191,23 +214,56 @@ int main() {
 }
 ```
 
+> [!NOTE]
+> `std::lock_guard` folosește principiul RAII și deblochează mutexul automat la ieșirea din blocul de cod.
+
 ### Variabile și operații atomice
 
-O operație este __atomică__ dacă nu poate fi îndeplinită parțial: fie se realizează complet, fie nu se realizează deloc. Operația atomică este realizată de un singur fir de execuție.
+O operație este __atomică__ dacă nu poate fi întreruptă: se execută complet sau deloc. O operație atomică poate fi efectuată de un singur fir la un moment dat.
 
-Atomicitatea poate fi realizată sau prin hardware sau prin software. În primul caz, sunt utilizate instrucțiuni speciale ale procesorului, iar în al doilea caz, sunt utilizate mecanisme de sincronizare care blochează resursa partajată pentru a efectua operația asupra acesteia. _Blocarea este o operație atomică_.
+Atomicitatea poate fi asigurată hardware (prin instrucțiuni speciale garantate de procesor) sau software (prin mecanisme de sincronizare care blochează resursa). _Blocarea este o operație atomică_.
 
-Tip de date se numește __atomic__ dacă operațiile cu acest tip de date sunt atomice.
+__Tipul atomic__ este un tip de date pentru care operațiile sunt atomice.
 
-Definiția tipului atomic este dată în antetul `<atomic>`.
+Tipurile atomice standard sunt definite în `<atomic>`.
+
+Exemplu de utilizare a unui tip atomic:
+
+```cpp
+#include <atomic>
+#include <thread>
+#include <iostream>
+
+std::atomic<int> counter{0};
+
+void increment() {
+    for (int i = 0; i < 1000; ++i) {
+        ++counter;
+    }
+}
+
+int main() {
+    std::thread t1(increment);
+    std::thread t2(increment);
+    t1.join();
+    t2.join();
+    std::cout << counter << std::endl;
+    return 0;
+}
+```
 
 ## Programare asincronă
 
-__Programare asincronă__ este o metoda de organizare a programei în care unele operații se îndeplinesc nu în ordinea în care au fost apelate. În loc să aștepte terminarea operației, programul continuă să funcționeze, iar operația se termină în fundal.
+__Programarea asincronă__ este o metodă de organizare a programului în care unele operații nu se execută în ordinea apelării. În loc să aștepte finalizarea unei operații, programul continuă execuția, iar operația se finalizează în fundal.
 
-Începând cu standardul `C++11` a fost introdusă clasa `std::future`, care permite obținerea rezultatului unei operații asincrone. Clasa `std::future` reprezintă un obiect care stochează rezultatul unei operații asincrone. Ea oferă metode pentru verificarea terminării operației și obținerea rezultatului. Operația asincronă este realizată cu ajutorul funcției `std::async`, care primește ca argument o funcție și argumentele acesteia.
+În C++11 a fost introdusă clasa `std::future`, care permite obținerea rezultatului unei operații asincrone. Clasa `std::future` reprezintă un obiect ce stochează rezultatul unei operații asincrone și oferă metode pentru verificarea finalizării și obținerea rezultatului. Operația asincronă se realizează cu funcția `std::async`, care primește ca parametrii funcția de executat și argumentele acesteia.
 
 ```cpp
+/**
+  * @file async_example.cpp
+  * @brief Exemplu de programare asincronă
+  * @details g++ -std=c++11 async_example.cpp -o async_example
+  */
 #include <iostream>
 #include <future>
 #include <thread>
@@ -226,39 +282,42 @@ int main() {
 
 ## Algoritmi paraleli
 
-Începând cu standardul `C++17` în standardul limbajului C++ au fost introduse versiuni paralele ale unor algoritmi standard. Aceste versiuni sunt prezentate ca redeclarări ale multor funcții care lucrează cu diapazoane, cum ar fi `std::find`, `std::transform` sau `std::reduce`. Versiunile paralele au aceeași semnătură ca și cele "obișnuite" unifilare, cu excepția adăugării unui nou prim parametru care specifică politica de execuție.
+În C++17 au fost adăugate versiuni paralele ale unor algoritmi. Acestea sunt funcții care acceptă ca prim parametru o politică de execuție, de exemplu `std::find`, `std::transform` sau `std::reduce`. Semnătura este aceeași ca la versiunile obișnuite, cu un parametru suplimentar pentru politică.
 
 ```cpp
 std::vector<int> my_data;
-std::sort(std::execution::par,my_data.begin(),my_data.end());
+std::sort(std::execution::par, my_data.begin(), my_data.end());
 ```
 
-Politica de execuție `std::execution::par` specifică că acest apel poate fi executat ca un algoritm de calcul paralel care utilizează mai multe fire de execuție simultan. Este important de menționat că aceasta este o permisiune, nu o cerință - biblioteca este liberă să execute în continuare codul într-un singur fir de execuție.
+Politica `std::execution::par` permite bibliotecii să execute algoritmul în paralel, folosind mai multe fire. Este doar o permisiune, nu o obligație – implementarea poate alege să ruleze tot secvențial.
 
-Politici de execuție sunt clase definite în antetul `<execution>`. Ele sunt folosite pentru a specifica modul în care algoritmii paraleli trebuie să se comporte.
+Politicile de execuție sunt declarate în `<execution>`.
 
-Standardul declară următoarele politici de execuție:
+Standardul definește următoarele politici:
 
-- `std::execution::sequenced_policy` cu obiectul declarat `std::execution::seq` - _politică secvențială_ (sequenced policy) nu este o politică de paralelism: ea forțează implementarea să execute toate operațiile în firul de execuție care a apelat funcția, fără paralelism. Cu toate acestea, este o politică de execuție, ceea ce înseamnă că are același impact asupra complexității algoritmice și a lansării excepțiilor ca și celelalte politici standard.
-- `std::execution::parallel_policy` cu obiectul declarat `std::execution::par` - _politică paralelă_ (parallel policy) oferă execuție paralelă de bază, cu operațiile care pot fi executate fie în firul de execuție care a apelat algoritmul, fie în fire de execuție create de bibliotecă. Operațiile care se execută într-un fir de execuție trebuie să se execute într-o anumită ordine și să nu se amestece, dar ordinea exactă nu este specificată și poate varia de la apel la apel. O anumită operație va fi executată în același fir de execuție pe toată durata de viață.
-- `std::execution::parallel_unsequenced_policy` cu obiectul declarat `std::execution::par_unseq` - _politică paralelă neordonată_ (parallel unsequenced policy) oferă bibliotecii cea mai mare scalabilitate a algoritmului în schimbul unor cerințe stricte pentru iteratori, valori și obiecte apelate utilizate cu algoritmul.
-- `std::execution::unsequenced_policy` cu obiectul declarat `std::execution::unseq` - _politică neordonată_ (unsequenced policy) oferă bibliotecii cea mai mare scalabilitate a algoritmului în schimbul unor cerințe stricte pentru iteratori, valori și obiecte apelate utilizate cu algoritmul.
+- `std::execution::sequenced_policy` cu obiectul `std::execution::seq` – execuție secvențială (fără paralelism).
+- `std::execution::parallel_policy` cu obiectul `std::execution::par` – execuție paralelă pe mai multe fire.
+- `std::execution::parallel_unsequenced_policy` cu obiectul `std::execution::par_unseq` – execuție paralelă și vectorizată.
+- `std::execution::unsequenced_policy` cu obiectul `std::execution::unseq` – execuție neordonată, vectorizată.
 
-Exemple de utilizare:
+Exemplu de utilizare:
 
 ```cpp
-std::vector<int> vec ={3, 2, 1, 4, 5, 6, 10, 8, 9, 4};
+std::vector<int> vec = {3, 2, 1, 4, 5, 6, 10, 8, 9, 4};
 
-std::sort(vec.begin(), vec.end());                            // sequential as ever
-std::sort(std::execution::seq, vec.begin(), vec.end());       // sequential
-std::sort(std::execution::par, vec.begin(), vec.end());       // parallel
-std::sort(std::execution::par_unseq, vec.begin(), vec.end()); // parallel and vectorized
+std::sort(vec.begin(), vec.end());                            // secvențial, ca înainte
+std::sort(std::execution::seq, vec.begin(), vec.end());       // secvențial
+std::sort(std::execution::par, vec.begin(), vec.end());       // paralel
+std::sort(std::execution::par_unseq, vec.begin(), vec.end()); // paralel și vectorizat
 ```
+
+> [!NOTE]
+> Suportul pentru politicile de execuție din `<execution>` depinde de implementarea STL și poate fi limitat în unele compilatoare.
 
 ## Bibliografie
 
 1. [Concurrency support library, cppreference.com](https://en.cppreference.com/w/cpp/thread)
 2. [About Processes and Threads, Microsoft](https://learn.microsoft.com/en-us/windows/win32/procthread/about-processes-and-threads)
 3. [MaxRokatansky, Multithreading, habr.com](https://habr.com/ru/companies/otus/articles/549814/)
-4. [Многопоточность, https://cpp-kt.github.io](https://cpp-kt.github.io/cpp-notes/26_multithreading.html)
+4. [Multithreading, https://cpp-kt.github.io](https://cpp-kt.github.io/cpp-notes/26_multithreading.html)
 5. [Rainer Grimm, Multithreading with C++17 and C++20, moderncpp.com](https://www.modernescpp.com/index.php/multithreading-in-c-17-and-c-20/)
