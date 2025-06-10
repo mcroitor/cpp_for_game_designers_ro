@@ -1,27 +1,27 @@
 # Operații
 
 - [Operații](#operații)
-  - [Noțiune de operație](#noțiune-de-operație)
+  - [Noțiunea de operație](#noțiunea-de-operație)
   - [Operații aritmetice](#operații-aritmetice)
   - [Operații pe biți](#operații-pe-biți)
-  - [Increment / decrement](#increment--decrement)
+  - [Incrementare și Decrementare](#incrementare-și-decrementare)
   - [Operatori compuși](#operatori-compuși)
   - [Operații logice](#operații-logice)
-  - [Prioritatea operațiilor](#prioritatea-operațiilor)
-  - [Supraincarcarea operatorilor](#supraincarcarea-operatorilor)
-  - [Operator de comparare](#operator-de-comparare)
-  - [Operator de comparare în trei sensuri](#operator-de-comparare-în-trei-sensuri)
-  - [Bibiliografie](#bibiliografie)
+  - [Prioritatea operatorilor](#prioritatea-operatorilor)
+  - [Supraîncărcarea operatorilor](#supraîncărcarea-operatorilor)
+  - [Operatorul de comparație](#operatorul-de-comparație)
+  - [Operatorul „spaceship”](#operatorul-spaceship)
+  - [Referințe](#referințe)
 
-## Noțiune de operație
+## Noțiunea de operație
 
-În sens general, operația este o acțiune (proces) efectuată asupra unei sau mai multor valori, numite _operanzi_. Această acțiune este definită de _operator_ - o construcție specială a limbajului.
+În sens general, o operație este o acțiune (proces) efectuată asupra uneia sau mai multor valori, numite _operanzi_. Această acțiune este definită de un _operator_ – o construcție specială a limbajului.
 
-Operațiile sunt:
+Operațiile pot fi:
 
-- _unare_ - cu un singur operand. Exemplu de operație unară - incrementare, schimbarea semnului unui număr;
-- _binare_ - cu doi operanzi. Exemplu de operație binară - adunare, înmulțire, `sau`;
-- _ternare_ - cu trei operanzi.
+- _unare_ – cu un singur operand. Exemplu: incrementarea, schimbarea semnului unui număr;
+- _binare_ – cu doi operanzi. Exemplu: adunarea, înmulțirea, „sau”;
+- _ternare_ – cu trei operanzi.
 
 ## Operații aritmetice
 
@@ -35,40 +35,40 @@ Operațiile sunt:
 
 Operațiile aritmetice pot fi aplicate pentru:
 
-- tipuri de date întregi;
-- tipuri cu virgulă mobilă (reale);
-- tipuri (clase) care conțin operații aritmetice supraincarcate.
+- tipuri întregi;
+- tipuri cu virgulă mobilă (tipuri reale);
+- tipuri (clase) care au operatorii aritmetici supraîncărcați.
 
-Dacă în expresie aritmetică sunt folosite operanzi de tipuri diferite, compilatorul va converti implicit operandul de tip mai mic la tipul operandului mai mare.
+Dacă într-o expresie aritmetică se folosesc operanzi de tipuri diferite, compilatorul convertește implicit operandul de tip mai mic la tipul operandului de tip mai mare.
 
-Operațiile `+` și `-` pot fi utilizate ca unare, pentru a schimba semnul expresiei.
+Operatorii `+` și `–` pot fi folosiți și ca unari, pentru schimbarea semnului expresiei.
 
-Operația `%` este utilizată numai pentru tipuri de date întregi.
+Operatorul `%` se folosește doar pentru tipuri întregi.
 
-Dacă în operația de împărțire, operandele sunt de tip întreg, rezultatul tot va fi întreg.
+Dacă la împărțire ambii operanzi sunt întregi, rezultatul va fi tot un număr întreg.
 
 ## Operații pe biți
 
-Limbajul C/C++ suportă următoarele operații pe biți
+Limbajul C/C++ suportă următoarele operații logice pe biți (bitwise):
 
-- `&` - ȘI (AND) pe biți;
-- `^` - XOR (sau SAU exclusiv) pe biți;
-- `|` - SAU (OR) pe biți;
-- `~` - negarea pe biți (NOT).
+- `&` – ȘI pe biți (AND);
+- `^` – XOR pe biți (sau exclusiv);
+- `|` – SAU pe biți (OR);
+- `~` – inversare pe biți (NOT).
 
-Totodată, există operații de deplasare pe biți:
+Există și operații de deplasare pe biți:
 
-- `<<` - deplasare la stânga a valorii operandului stâng cu numărul de biți specificat de operandul drept;
-- `>>` - deplasare la dreapta a valorii operandului stâng cu numărul de biți specificat de operandul drept.
+- `<<` – deplasare la stânga a valorii operandului stâng cu numărul de biți dat de operandul drept;
+- `>>` – deplasare la dreapta a valorii operandului stâng cu numărul de biți dat de operandul drept.
 
-| __bit 1__ | __bit 2__ | `&` | `\|` | `^` | `~` |
-| --------- | --------- | --- | ---- | --- | --- |
-|         0 |         0 |   0 |    0 |   0 |   1 |
-|         0 |         1 |   0 |    1 |   1 |   1 |
-|         1 |         0 |   0 |    1 |   1 |   0 |
-|         1 |         1 |   1 |    1 |   0 |   0 |
+| __bit1__ | __bit2__ | `&` | `\|` | `^` | `~` |
+| -------- | -------- | --- | ---- | --- | --- |
+| 0 | 0 | 0 | 0 | 0 | 1 |
+| 0 | 1 | 0 | 1 | 1 | 1 |
+| 1 | 0 | 0 | 1 | 1 | 0 |
+| 1 | 1 | 1 | 1 | 0 | 0 |
 
-Următorul exemplu arată operațiile pe biți pentru numerele 17 și 45:
+Exemplu de operații pe biți cu numerele 17 și 45:
 
 | Expresie   | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 | Rezultat |
 | ---------- | --- | -- | -- | -- | - | - | - | - | -------- |
@@ -79,41 +79,41 @@ Următorul exemplu arată operațiile pe biți pentru numerele 17 și 45:
 | `17 ^ 45`  | 0   | 0  | 1  | 1  | 1 | 1 | 0 | 0 | 60       |
 | `~17`      | 1   | 1  | 1  | 0  | 1 | 1 | 1 | 0 | 238      |
 
-## Increment / decrement
+## Incrementare și Decrementare
 
-În limbajul C++ definite două operații care efectuează creșterea sau scăderea unei valori întregi cu 1:
+În C++ sunt definiți doi operatori care măresc sau micșorează o valoare întreagă cu 1:
 
-- operator `++` – incrementare;
-- operator `––`  – decrementare.
+- operatorul `++` – incrementare;
+- operatorul `--` – decrementare.
 
-Acestea operatori sunt unari, adică necesită un singur operand. Acești operatori pot fi plasați înainte (prefixate) și după operand (postfixate).
+Acești operatori sunt unari, adică necesită un singur operand. Pot fi plasați înainte sau după operand.
 
-- `A++` - este echivalent cu `A = A + 1`. Returnează valoarea inițială a _A_;
-- `++A` - este echivalent cu `A = A + 1`. Returnează valoarea modificată a _A_;
-- `A--` - este echivalent cu `A = A - 1`. Returnează valoarea inițială a _A_;
-- `--A` - este echivalent cu `A = A - 1`. Returnează valoarea modificată a _A_.
+- `A++` este echivalent cu `A = A + 1`. Returnează valoarea inițială a lui _A_.
+- `++A` este echivalent cu `A = A + 1`. Returnează valoarea modificată a lui _A_.
+- `A--` este echivalent cu `A = A - 1`. Returnează valoarea inițială a lui _A_.
+- `--A` este echivalent cu `A = A - 1`. Returnează valoarea modificată a lui _A_.
 
 ## Operatori compuși
 
-Operatori compuși permit efectuarea unei operații aritmetice și atribuirea rezultatului în primul operand.
+Operatorii compuși permit efectuarea unei operații aritmetice și atribuirea rezultatului primului operand.
 
-Sunt definite următoarele operatori compuși: `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=`.
+Sunt definite următoarele operații compuse: `+=`, `-=`, `*=`, `/=`, `%=`, `&=`, `|=`, `^=`, `<<=`, `>>=`.
 
 De exemplu, `A += B` este echivalent cu `A = A + B`.
 
 ## Operații logice
 
-Operații logice sunt elemente compuse ale expresiilor logice și sunt utilizate pentru organizarea logicii condiționale, de exemplu, în ramificări (`if`) sau cicluri (`while`, `for`).
+Operațiile logice sunt elemente de bază ale expresiilor logice și sunt folosite la organizarea logicii condiționale, de exemplu în ramificații (`if`) sau bucle (`while`, `for`).
 
-Limbajul suportă următoarele operații logice:
+În C++ există 3 operații logice:
 
-- `!` - negarea logică (NOT);
-- `&&` - conjuncția logică (AND);
-- `||` - disjuncția logică (OR).
+- `&&` – ȘI logic (conjuncție);
+- `||` – SAU logic (disjuncție);
+- `!` – NU logic (negație).
 
-Operațiile logice permit formarea unei expresii logice complexe din mai multe expresii logice simple.
+Operațiile logice permit combinarea mai multor expresii logice simple într-una mai complexă.
 
-Regulile operațiilor logice sunt prezentate în tabelul următor:
+Tabelul de adevăr pentru operațiile logice:
 
 | `A`   | `B`   | `A && B` | `A \|\| B` | `!A`  |
 | ----- | ----- | -------- | ---------- | ----- |
@@ -122,80 +122,78 @@ Regulile operațiilor logice sunt prezentate în tabelul următor:
 | false | true  | false    | true       | true  |
 | false | false | false    | false      | true  |
 
-## Prioritatea operațiilor
+## Prioritatea operatorilor
 
-| prioritate | operator | descriere | grup   |
-| ---------- | -------- | --------- | ------ |
-| 1 | `::` | rezolvarea domeniului | acces |
-| 2 | `.`  | selectarea membrului obiectului | acces |
-| 2 | `->` | selectarea membrului pentru pointer la obiect | acces |
-| 2 | `[]` | indexarea array-ului | acces |
-| 2 | `()` | apelul funcției | altul |
-| 2 | `++` | incrementare postfixată | incrementare / decrementare |
-| 2 | `--` | decrementare postfixată | incrementare / decrementare |
-| 2 | `typeid` | numele tipului | special |
-| 2 | `const_cast` | conversie constantă a tipului | special |
-| 2 | `dynamic_cast` | conversie dinamică a tipului | special |
-| 2 | `reinterpret_cast` | conversie interpretativă a tipului | special |
-| 2 | `static_cast` | conversie statică a tipului | special |
-| 3 | `sizeof` | dimensiunea obiectului sau tipului | special |
-| 3 | `++` | incrementare prefixată | incrementare / decrementare |
-| 3 | `--` | decrementare prefixată | incrementare / decrementare |
-| 3 | `~` | complement la unu (complement bit) | aritmetic |
-| 3 | `!` | negarea logică | logic |
-| 3 | `-` | negarea unară | aritmetic |
-| 3 | `+` | plus unar | aritmetic |
-| 3 | `&` | luarea adresei | acces |
-| 3 | `*` | dereferențierea | acces |
-| 3 | `new` | crearea obiectului | special |
-| 3 | `delete` | distrugerea obiectului | special |
-| 3 | `()` | conversie a tipului | special |
-| 4 | `.*` | selectarea pointerului la membrul obiectului | acces |
-| 4 | `->*` | pointer la membru (pointer la obiect) | acces |
-| 5 | `*` | înmulțire | aritmetic |
-| 5 | `/` | împărțire | aritmetic |
-| 5 | `%` | modul | aritmetic |
-| 6 | `+` | adunare | aritmetic |
-| 6 | `-` | scădere | aritmetic |
-| 7 | `<<` | deplasare la stânga | aritmetic |
-| 7 | `>>` | deplasare la dreapta | aritmetic |
-| 8 | `<=>` | comparare | comparare |
-| 9 | `<` | mai mic | comparare |
-| 9 | `>` | mai mare | comparare |
-| 9 | `<=` | mai mic sau egal | comparare |
-| 9 | `>=` | mai mare sau egal | comparare |
-| 10 | `==` | comparare (egalitate) | comparare |
-| 10 | `!=` | nu egal (inegalitate) | comparare |
-| 11 | `&` | și pe biți | aritmetic |
-| 12 | `^` | sau exclusiv pe biți | aritmetic |
-| 13 | `\|` | sau pe biți | aritmetic |
-| 14 | `&&` | și logic | logic |
-| 15 | `\|\|` | sau logic | logic |
-| 16 | `?:` | logic condițional | altul |
-| 16 | `=` | atribuire | atribuire |
-| 16 | `*=` | atribuire înmulțire | atribuire |
-| 16 | `/=` | atribuire împărțire | atribuire |
-| 16 | `%=` | atribuire rest împărțire | atribuire |
-| 16 | `+=` | atribuire adunare | atribuire |
-| 16 | `-=` | atribuire scădere | atribuire |
-| 16 | `<<=` | atribuire deplasare la stânga | atribuire |
-| 16 | `>>=` | atribuire deplasare la dreapta | atribuire |
-| 16 | `&=` | atribuire și pe biți | atribuire |
-| 16 | `\|=` | atribuire sau pe biți | atribuire |
-| 16 | `^=` | atribuire sau exclusiv pe biți | atribuire |
-| 17 | `,` | virgulă (separator de comenzi) | altul |
+| prioritate | operator | descriere | grupă |
+| ---------- | -------- | --------- | ----- |
+| 1 | `::` | Rezoluția domeniului | acces |
+| 2 | `.`  | Acces membru obiect | acces |
+| 2 | `->` | Acces membru pointer | acces |
+| 2 | `[]` | Indexare tablou | acces |
+| 2 | `()` | Apel funcție | altele |
+| 2 | `++` | Incrementare postfixată | incrementare/decrementare |
+| 2 | `--` | Decrementare postfixată | incrementare/decrementare |
+| 2 | `typeid` | Nume tip | speciale |
+| 2 | `const_cast` | Conversie const | speciale |
+| 2 | `dynamic_cast` | Conversie dinamică | speciale |
+| 2 | `reinterpret_cast` | Conversie reinterpretată | speciale |
+| 2 | `static_cast` | Conversie statică | speciale |
+| 3 | `sizeof` | Dimensiunea obiectului sau tipului | speciale |
+| 3 | `++` | Incrementare prefixată | incrementare/decrementare |
+| 3 | `--` | Decrementare prefixată | incrementare/decrementare |
+| 3 | `~` | Negare pe biți | aritmetice |
+| 3 | `!` | Negare logică | logice |
+| 3 | `-` | Minus unar | aritmetice |
+| 3 | `+` | Plus unar | aritmetice |
+| 3 | `&` | Adresă | acces |
+| 3 | `*` | Dereferențiere | acces |
+| 3 | `new` | Alocare obiect | speciale |
+| 3 | `delete` | Ștergere obiect | speciale |
+| 3 | `()` | Conversie tip | speciale |
+| 4 | `.*` | Acces pointer la membru obiect | acces |
+| 4 | `->*` | Acces pointer la membru pointer | acces |
+| 5 | `*` | Înmulțire | aritmetice |
+| 5 | `/` | Împărțire | aritmetice |
+| 5 | `%` | Modulo | aritmetice |
+| 6 | `+` | Adunare | aritmetice |
+| 6 | `-` | Scădere | aritmetice |
+| 7 | `<<` | Deplasare la stânga | aritmetice |
+| 7 | `>>` | Deplasare la dreapta | aritmetice |
+| 8 | `<=>` | Comparație spațială | comparații |
+| 9 | `<` | Mai mic | comparații |
+| 9 | `>` | Mai mare | comparații |
+| 9 | `<=` | Mai mic sau egal | comparații |
+| 9 | `>=` | Mai mare sau egal | comparații |
+| 10 | `==` | Egalitate | comparații |
+| 10 | `!=` | Diferență | comparații |
+| 11 | `&` | ȘI pe biți | aritmetice |
+| 12 | `^` | XOR pe biți | aritmetice |
+| 13 | `\|` | SAU pe biți | aritmetice |
+| 14 | `&&` | ȘI logic | logice |
+| 15 | `\|\|` | SAU logic | logice |
+| 16 | `?:` | Operator ternar | altele |
+| 16 | `=` | Atribuire | atribuire |
+| 16 | `*=` | Atribuire cu înmulțire | atribuire |
+| 16 | `/=` | Atribuire cu împărțire | atribuire |
+| 16 | `%=` | Atribuire cu modulo | atribuire |
+| 16 | `+=` | Atribuire cu adunare | atribuire |
+| 16 | `-=` | Atribuire cu scădere | atribuire |
+| 16 | `<<=` | Atribuire cu deplasare la stânga | atribuire |
+| 16 | `>>=` | Atribuire cu deplasare la dreapta | atribuire |
+| 16 | `&=` | Atribuire cu ȘI pe biți | atribuire |
+| 16 | `\|=` | Atribuire cu SAU pe biți | atribuire |
+| 16 | `^=` | Atribuire cu XOR pe biți | atribuire |
+| 17 | `,` | Virgulă (separator de comenzi) | altele |
 
-> __Notă:__ Prioritatea operațiilor este importantă pentru a evita ambiguitățile în evaluarea expresiilor. De exemplu, în expresia `a + b * c` în primul rând se va efectua înmulțirea, apoi adunarea. Dacă prioritatea operatorilor nu este specificată, atunci se va folosi prioritatea implicită.
+## Supraîncărcarea operatorilor
 
-## Supraincarcarea operatorilor
+Adesea, pentru comoditate, este util să redefinim un operator pentru o clasă (de exemplu, + pentru vectori). Astfel, codul devine mai compact și mai ușor de înțeles. Forma generală a definirii unui operator este:
 
-Deseori, pentru comoditate, este util să se redefinească un operator pentru o clasă (de exemplu, `+` pentru vectori). În acest caz, programul devine mai compact și mai ușor de înțeles. Forma generală a definirii unui operator este următoarea:
+`<tip_returnat> operator <semn_operator> (<parametri_operator>);`
 
-`<return_type> operator <operator_sign> (<operator_parameters>);`
+Operatorii pot fi unari (lucrează cu un singur obiect) sau binari (lucrează cu două obiecte). Exemple de operatori unari: `++`, `--`, `*` (dereferențiere). Exemple de operatori binari: `+`, `+=`, `*` (înmulțire), `==`.
 
-Operatorii pot fi unari (care lucrează cu un singur operand) și binari (care lucrează cu doi operanzi). Exemple de operatori unari: `++`, `--`, `*` (operator de dereferențiere). Exemple de operatori binari: `+`, `+=`, `*` (înmulțire), `==`.
-
-Operatorii sunt funcții speciale care au un nume special. Ei pot fi definiti ca funcții membre ale clasei sau ca funcții externe. Exemplu de supraincarcare a operatorilor:
+Operatorii sunt funcții cu nume speciale. Ei pot fi declarați atât în interiorul clasei, cât și în afara acesteia. Exemplu de supraîncărcare a operatorilor:
 
 ```cpp
 class int_pair{
@@ -220,18 +218,18 @@ std::ostream& operator << (std::ostream& out, const int_pair& p) {
 }
 ```
 
-Operatorii unari se declara ca parte a clasei. Operatorii binari pot fi declarate atât în interiorul clasei, cât și în afara clasei. Operatorul binar declarat în interiorul clasei are doar un parametru de intrare (al doilea parametru al operatorului va fi obiectul, operatorul căruia este apelat). Operatorii binari declarați în afara clasei au doi parametri.
+Operatorii unari se declară ca membri ai clasei. Operatorii binari pot fi declarați atât în interiorul, cât și în afara clasei. Operatorul binar declarat în interiorul clasei are un singur parametru (primul operand este obiectul curent). Operatorii binari declarați în afara clasei au doi parametri.
 
-> __Recomandare:__ pentru determinarea locului potrivit pentru definirea operatorului - în interiorul clasei sau în afara ei - întrebați-vă dacă acest operator modifică operanzii săi. Dacă modifică - atunci acest operator este parte a clasei. Dacă nu modifică, atunci cel mai bine este să definiți operatorul în afara clasei. De exemplu, operația de atribuire modifică operandul din dreapta, deci este mai bine să o definiți în interiorul clasei; operația de adunare nu modifică operanzii săi, deci este mai bine să o definiți în afara clasei.
+ > __Recomandare:__ pentru a decide unde să definiți operatorul – în interiorul sau în afara clasei – întrebați-vă dacă operatorul modifică operanzii săi. Dacă da, operatorul ar trebui să fie membru al clasei. Dacă nu, este mai bine să-l definiți în afara clasei. De exemplu, operatorul de atribuire modifică operandul din stânga, deci e mai bine să fie membru al clasei; operatorul de adunare nu modifică operanzii, deci e mai bine să fie definit în afara clasei.
 
-În exemplul următor sunt prezentate modurile de supraincarcare a operatorilor pentru vector bidimensional:
+Exemplu de supraîncărcare a operatorilor pentru un vector bidimensional:
 
 ```cpp
 class vector{
     float x, y;
 public:
     vector(float p1 = 0, float p2 = 0): x(p1), y(p2) {}
-    vector operator = (const vector& p){
+    vector& operator = (const vector& p){
         x = p.x;
         y = p.y;
         return *this;
@@ -243,23 +241,24 @@ public:
 };
 
 vector operator + (const vector& p1, const vector& p2){
-    vector tmp;
-    tmp = p1;
+    vector tmp = p1;
     tmp += p2;
     return tmp;
 }
 ```
 
-## Operator de comparare
+Nu toți operatorii pot fi supraîncărcați în C++. De exemplu, operatorii `::`, `.`, `.*`, `?:` nu pot fi redefiniți.
 
-Pentru a compara obiecte de același tip se folosește operatorul de bază `==` și operatorul `!=` care este derivat din operatorul de bază.
+## Operatorul de comparație
+
+Pentru compararea obiectelor se folosește operația de bază `a == b`, iar operația `a != b` este derivată din aceasta.
 
 ```cpp
 class int_pair{
     int first, second;
 public:
     // ...
-    // operator de comparare
+    // operator de comparație
     bool operator == (const int_pair& p) const {
         return (first == p.first) && (second == p.second);
     }
@@ -270,19 +269,26 @@ bool operator != (const int_pair& p1, const int_pair& p2){
 }
 ```
 
-## Operator de comparare în trei sensuri
+## Operatorul „spaceship”
 
-Până la standardul `C++20` pentru a ordona obiecte se folosea operația de bază `<` (_mai mic_). Celelalte operații erau derivate din aceasta și implementate în biblioteca standard, în spațiul de nume `std::rel_ops`.
+Până la standardul `C++20`, pentru ordonare se folosea operatorul de bază `<` (_mai mic_). Ceilalți operatori erau derivați din acesta și implementați în biblioteca standard, în spațiul de nume `std::rel_ops`.
 
-Începând cu standardul `C++20` a fost introdus operatorul de comparare în trei sensuri (en. __spaceship__ - `navă cosmică`) - `<=>`. Semantica operatorului este următoarea:
+Începând cu standardul `C++20`, a fost introdus operatorul de comparație triplă (en. __spaceship__ – „nava spațială”) – `<=>`, care a devenit baza pentru operațiile de ordonare. Semantica operatorului este următoarea:
 
-- `a <=> b` egal cu zero, dacă `a == b`;
-- `a <=> b` mai mic decât zero, dacă `a < b`;
-- `a <=> b` mai mare decât zero, dacă `a > b`.
+- `a <=> b` este mai mic decât zero dacă `a < b`;
+- `a <=> b` este mai mic sau egal cu zero dacă `a <= b`;
+- `a <=> b` este mai mare decât zero dacă `a > b`;
+- `a <=> b` este mai mare sau egal cu zero dacă `a >= b`.
 
-Definirea acestui operator pentru un tip de date automat permite compilatorului să genereze toate celelalte operații de comparare.
+Dacă acest operator este definit, compilatorul va genera automat toți operatorii de ordonare pe baza lui.
 
 ```cpp
+/**
+ * @file spaceship.cpp
+ * @brief Exemplu de utilizare a operatorului spaceship
+ * @details g++ -std=c++20 spaceship.cpp
+ */
+#include <iostream>
 class int_pair{
     int first, second;
 public:
@@ -302,7 +308,9 @@ int main() {
 }
 ```
 
-## Bibiliografie
+> Pentru o compatibilitate maximă, este recomandat să specificați explicit tipul de returnare, de exemplu `std::strong_ordering`.
+
+## Referințe
 
 1. [C++ Operator Precedence, cppreference.com](https://en.cppreference.com/w/cpp/language/operator_precedence)
-2. [Andrey2008, Операции сравнения в C++20, Habr: Pvs-Studio](https://habr.com/ru/companies/pvs-studio/articles/465575/)
+2. [Andrey2008, Operații de comparație în C++20, Habr: Pvs-Studio](https://habr.com/ru/companies/pvs-studio/articles/465575/)
