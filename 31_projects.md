@@ -1,329 +1,229 @@
-# Proiect. Sisteme de asamblare a proiectelor
+# Proiect. Sisteme de build pentru proiecte
 
-- [Proiect. Sisteme de asamblare a proiectelor](#proiect-sisteme-de-asamblare-a-proiectelor)
+- [Proiect. Sisteme de build pentru proiecte](#proiect-sisteme-de-build-pentru-proiecte)
   - [Organizarea proiectului](#organizarea-proiectului)
-  - [Noțiune de compilare](#noțiune-de-compilare)
-  - [Compilarea din linia de comandă](#compilarea-din-linia-de-comandă)
-  - [Sisteme de asamblare a proiectelor](#sisteme-de-asamblare-a-proiectelor)
+  - [Noțiunea de compilare](#noțiunea-de-compilare)
+  - [Compilare din linia de comandă](#compilare-din-linia-de-comandă)
+  - [Sisteme de build pentru proiecte](#sisteme-de-build-pentru-proiecte)
     - [make](#make)
     - [Ninja](#ninja)
     - [Autotools](#autotools)
     - [CMake](#cmake)
-  - [Arhitectura fișierului Makefile](#arhitectura-fișierului-makefile)
-  - [Exemplu de `Makefile` universal](#exemplu-de-makefile-universal)
   - [Bibliografie](#bibliografie)
 
 ## Organizarea proiectului
 
-Proiectul este un ansamblu de fișiere sursă, distribuite într-un anumit mod în directoarele proiectului.
+Un proiect reprezintă ansamblul fișierelor sursă, organizate într-o anumită structură de directoare.
 
-Proiectul poate conține un singur fișier de proiect sau mai multe, pentru construirea unui artefact, numit ținta proiectului, din fișierele sursă. Ținta proiectului poate fi o bibliotecă statică, o bibliotecă dinamică, un fișier executabil sau un ansamblu de biblioteci și fișiere executabile.
+Proiectul poate conține unul sau mai multe fișiere de proiect, pentru a construi din surse un rezultat care poate fi considerat ținta proiectului. Ținta poate fi o bibliotecă statică, o bibliotecă dinamică, un executabil sau o combinație de biblioteci și executabile.
 
-Proiectul poate conține mai multe subproiecte. Un subproiect este un ansamblu de fișiere sursă ale altui proiect, adăugate în structura de directoare a proiectului.
+Un proiect poate fi compus din mai multe subproiecte. Un subproiect este un set de surse (și nu numai) ale unui alt proiect, adăugat în structura de directoare a proiectului principal.
 
-Totodată, proiectul poate conține și module terțe: dependențe externe (de exemplu, biblioteci).
+De asemenea, proiectul poate include module externe: dependențe externe (de exemplu, biblioteci).
 
-Organizarea codului sursă în proiect poate fi foarte diversă, dar ideea principală este împărțirea:
+Organizarea codului sursă într-un proiect poate fi foarte variată, însă ideea principală este separarea:
 
 - codului sursă al proiectului
 - subproiectelor
 - resurselor proiectului
 - modulelor
-- rezultatului compilării
+- rezultatului build-ului
 - fișierelor temporare
 - documentației
 
-cu scopul de a simplifica lucrul cu proiectul.
+pentru a ușura lucrul cu proiectul.
 
-O structură posibilă a proiectului în stilul UNIX-like:
+O variantă de structură în stil Linux:
 
-- `bin` - conține rezultatul compilării proiectului
-- `include` - fișierele antet
-- `src` - fișierele `cpp`
-- `lib` - dependențele externe (biblioteci)
-- `obj` - fișiere temporare create în timpul compilării proiectului
-- `resources` - resursele utilizate de aplicație (imagini, audio, video, etc.)
+- `bin` - conține rezultatul build-ului proiectului
+- `include` - fișiere header
+- `src` - fișiere `cpp`
+- `lib` - dependențe externe (biblioteci)
+- `obj` - fișiere temporare generate în timpul build-ului
+- `resources` - resurse folosite de aplicație (imagini, audio, video etc.)
 
-Fiecare IDE are propria structură a proiectului.
+Fiecare IDE poate propune propria structură de proiect.
 
-## Noțiune de compilare
+## Noțiunea de compilare
 
-__Compilarea aplicatiei__ - este procesul de transformare a codului sursa al programului in fisierul executabil. In procesul de compilare codul sursa al programului este transformat in fisiere obiect, care sunt apoi legate intr-un fisier executabil.
+__Compilarea aplicației__ este procesul de transformare a codului sursă într-un fișier executabil. În timpul compilării, codul sursă este transformat în fișiere obiect, care apoi sunt legate într-un executabil.
 
-__Compilatorul__ - este programul care efectueaza transformarea codului sursa al programului în cod masina.
+__Compilatorul__ este programul care realizează compilarea codului sursă. El transformă codul sursă în fișiere obiect.
 
-__Fișierul obiect__ - este fișierul care conține codul mașină, derivat de la codul sursă al programului.
+__Fișierul obiect__ este un fișier care conține cod mașină echivalent cu codul sursă.
 
-Proces de compilare a programului include următoarele etape:
+Procesul de compilare include următoarele etape:
 
-- `prepocesarea` - prelucrarea preliminară a codului sursă al programului, inclusiv directivele preprocesorului. În urma preprocesării în codul sursă al programului pot fi inserate conținutul fișierelor, declarate cu directiva `#include`, de asemenea pot fi eliminate comentariile și procesate directivele preprocesorului;
-- `compilarea` - transformarea codului sursă al programului în fișiere obiect. În urma compilării codul sursă al programului este transformat în fișiere obiect, care conțin codul mașină, care va fi executat de procesor;
-- `link-editarea` - unirea fișierelor obiect într-un fișier executabil.
+- `preprocesare` – prelucrarea inițială a codului sursă, inclusiv directivele preprocesorului. În urma acestei etape, pot fi inserate conținuturi din fișierele incluse cu `#include`, pot fi eliminate comentariile și procesate directivele preprocesorului;
+- `compilare` – transformarea codului sursă în fișiere obiect. Rezultatul este cod mașină care va fi executat de procesor;
+- `linkare` – combinarea fișierelor obiect într-un executabil.
 
-## Compilarea din linia de comandă
+## Compilare din linia de comandă
 
-In realitate nu este necesar să știi cum să compilezi o aplicație din linia de comandă, deoarece mediile de programare moderne vin cu un compilator, iar întregul proces de compilare a aplicației este redus la selectarea unui element de meniu sau apăsarea unei combinații de taste. Cu toate acestea, pentru dezvoltarea generală, este util să știi cum se face acest lucru - cum se compilează o aplicație din fișiere sursă, mai ales că aceasta nu este o situație rară pentru utilizatorii sistemului de operare UNIX-like.
+Astăzi nu este obligatoriu să știi să compilezi din linia de comandă, deoarece majoritatea mediilor de dezvoltare includ compilatorul și tot procesul de build se rezumă la un click sau o combinație de taste. Totuși, pentru cultura generală este util să știi cum se realizează build-ul unei aplicații din surse, mai ales că această situație nu este rară pentru utilizatorii de Linux.
 
-Orice aplicație de tip consolă poate fi pornită cu un set de chei (parametri). Pentru a ști ce chei poate accepta această aplica ție, trebuie să o porniți cu cheia `--help` sau `-h`, în funcție de implementarea aplicației. De exemplu, despre utilizarea compilatorului `GNU C++` puteți afla rulând următoarea comandă:
+Orice aplicație de tip consolă poate fi pornită cu o serie de opțiuni (parametri). Pentru a afla ce opțiuni acceptă, se poate apela cu `--help` sau `-h`, în funcție de implementare. De exemplu, pentru a afla opțiunile compilatorului `GNU C++`:
 
 ```shell
 g++ --help
 ```
 
-Pentru a compila un fișier sursă, trebuie să utilizați următoarea comandă:
+Pentru a compila fișierul `main.cpp` într-un executabil `file[.exe]` este suficient să scrii:
 
 ```shell
-g++ main.cpp -o file -l filename
+g++ main.cpp -o file -lfilename
 ```
 
-În realitate pentru compilarea codului sursă în fișier executabil, la compilator poate fi transmis numai numele fișierului sursă, dar în acest caz compilarea va fi reușită numai dacă programul folosește doar biblioteca standard C/C++, iar fișierul executabil va fi numit `a[.exe]`. Prin urmare, cheia `-o` indică numele fișierului executabil, adică `file`. Cheia `-l` indică că la compilare trebuie să fie adăugată biblioteca de programare. Conform regulilor de conectare a bibliotecilor de programare în sistemul de operare UNIX-like, dacă numele fișierului bibliotecii este `libfilename.a`, atunci pentru a o conecta este suficient să scrieți `-l filename`, sau să specificați numele complet al bibliotecii.
+Poți încerca să compilezi doar cu numele fișierului, dar compilarea va reuși doar dacă programul folosește doar biblioteca standard C, iar executabilul se va numi `a[.exe]`. Opțiunea `-o` setează numele fișierului rezultat, iar `-l` adaugă o bibliotecă la linkare. În Linux, dacă biblioteca se numește `libfilename.a`, este suficient să scrii `-l filename` sau să indici calea completă.
 
-Dacă proiectul aplicației constă din mai multe fișiere sursă, atunci pentru pentru compilarea aplicației trebuie să specificați toate fișierele sursă.
+Poți scrie opțiunea fără spațiu între cheie și valoare:
+
+```shell
+g++ main.cpp -ofile
+```
+
+Dacă proiectul are mai multe fișiere, poți specifica toate sursele la compilare:
 
 ```shell
 g++ first.cpp second.cpp main.cpp -o file
 ```
 
 > [!TIP]
-> Fișierele antet nu trebuie să fie specificate la compilare. Compilatorul le va găsi singur.
+> Fișierele header nu se indică la compilare, deoarece compilatorul le caută automat în directorul proiectului.
 
-De obicei în proiectele complexe fiecare fișier sursă se compilează în fișier obiect, iar apoi fișierele obiect se conectează într-un singur fișier executabil. În acest caz, procesul de compilare va fi următorul:
+Poți compila fiecare fișier separat în obiect, apoi să le legi într-un executabil:
 
 ```shell
 g++ first.cpp -o first.o -O2 -c -std=c++14
 g++ second.cpp -o second.o -O2 -c -std=c++14
 g++ main.cpp -o main.o -O2 -c -std=c++14
-g++ first.o second.o main.o -o file
+g++ first.o second.o main.o -o file -love
 ```
 
 > [!TIP]
-> Enumerarea bibliotecilor utilizate de aplicație se face la etapa de construire a fișierului executabil.
+> Bibliotecile se specifică la etapa de linkare, nu la compilarea fișierelor sursă.
 
-Cele mai des utilizate chei de compilare sunt prezentate în tabel:
+Cele mai folosite opțiuni de compilare sunt prezentate în tabelul de mai jos:
 
-| __Cheie__ | __Descriere__ |
-| -------- | ------------ |
-| `-o`     | specificarea numelui fișierului executabil |
-| `-E`     | preprocesarea fișierului sursă |
-| `-S`     | compilarea fișierului sursă în fișier asamblor |
-| `-c`     | compilarea fișierului sursă în fișier obiect |
-| `-g`     | generarea informațiilor de depanare |
-| `-O<N>`    | nivelul de optimizare, unde N obține valori de la 0 la 4 |
-| `-std=<standard>` | specificarea standardului limbajului C++. Valorile posibile: `c++11`, `c++14`, `c++17`, `c++20`, `c++23` |
-| `-l`     | conectarea bibliotecii |
-| `-I`     | specificarea căii către fișierele antet |
-| `-L`     | specificarea căii către biblioteci |
+| __Opțiune__ | __Descriere__ |
+| ----------- | ------------- |
+| `-o`        | numele fișierului rezultat |
+| `-E`        | doar preprocesare |
+| `-S`        | compilare în fișier de asamblare |
+| `-c`        | compilare în fișier obiect |
+| `-g`        | generare de informații de depanare |
+| `-O<N>`     | nivel de optimizare, N între 0 și 4 |
+| `-std=<standard>` | standardul C++: `c++11`, `c++14`, `c++17`, `c++20`, `c++23` |
+| `-l`        | adăugare bibliotecă la linkare |
+| `-I`        | cale către fișiere header |
+| `-L`        | cale către biblioteci |
 
-Compilarea fișierelor sursă în fișiere obiect și link-editarea lor într-un singur fișier executabil devine un proces destul de complicat. Din acest motiv, pentru a simplifica acest proces, se folosesc sisteme de asamblare a proiectelor.
+Compilarea manuală a fiecărui fișier și linkarea devin rapid obositoare. Pentru automatizare se folosesc sisteme de build.
 
-## Sisteme de asamblare a proiectelor
+## Sisteme de build pentru proiecte
 
-Automatizarea asamblării - este o etapă a procesului de dezvoltare a software-ului, care constă în automatizarea unui set larg de sarcini rezolvate de programatori în activitatea lor de zi cu zi. Acest proces include acțiuni precum:
+Automatizarea build-ului este etapa din dezvoltarea software care presupune automatizarea unui spectru larg de sarcini zilnice ale programatorului.
 
-- compilarea codului sursă în fișiere obiect,
-- legarea fișierelor obiect într-un fișier executabil,
-- executarea testelor,
-- desfășurarea programului în mediul țintă,
-- generarea documentației sau descrierea modificărilor noii versiuni,
-- configurarea și pregătirea fișierelor pentru asamblare,
-- colectarea și transmiterea informației către programul final (versiunea programului, sistemul, compilatorul, informația hardware, informația de sistem, licența programului, numele autorului etc.).
+Include:
 
-Instrument de bază pentru automatizarea asamblării este `make`, care a definit stilul și metodele pentru instrumentele care au apărut mai târziu. `Make` lucrează cu fișiere `Makefile`. Acest format este acceptat de majoritatea instrumentelor larg utilizate (`Automake`, `CMake`, `imake`, `qmake`, `nmake`, `wmake`, `Apache Ant`, `Apache Maven`, `OpenMake Meister`, `Gradle`).
+- compilarea codului sursă în obiecte,
+- linkarea codului binar într-un executabil,
+- rularea testelor,
+- instalarea aplicației în mediul țintă,
+- generarea documentației sau a jurnalului de modificări,
+- configurarea și pregătirea fișierelor pentru build,
+- colectarea și transmiterea informațiilor către aplicația finală (versiune, sistem, compilator, hardware, licență, autor etc.).
 
-Cerințele cheie pentru instrumentele de automatizare sunt:
+Principalul instrument de automatizare este utilitarul `make`, care a definit stilul și metodele pentru multe alte instrumente apărute ulterior. `make` folosește fișiere `Makefile`. Acest format este suportat de majoritatea instrumentelor moderne (`Automake`, `CMake`, `imake`, `qmake`, `nmake`, `wmake`, `Apache Ant`, `Maven`, `OpenMake Meister`, `Gradle`).
 
-- suportul pentru tehnologiile de integrare continuă, în special pentru compilațiile nocturne,
-- gestionarea dependențelor codului sursă,
-- asamblarea diferențială,
-- notificarea în cazul în care codul sursă (după asamblare) se potrivește cu fișierele binare existente,
-- furnizarea de rapoarte convenabile despre rezultatele compilării
-- executarea automată a testelor și executarea condiționată în funcție de rezultatele trecerii.
+Cerințe cheie pentru instrumentele de automatizare: suport pentru integrare continuă (build-uri de noapte), managementul dependențelor, build incremental, notificări la coincidența codului sursă cu binarele existente, rapoarte clare despre build, rulare automată a testelor și execuție condiționată de rezultatele acestora.
 
-Variantele de automatizare utilizate în diferite instrumente:
+Tipuri de automatizare:
 
-- automatizare la cerere (en. _on-demand automation_): rularea unui scenariu de comandă de către utilizator,
-- automatizare programată (en. _scheduled automation_): integrare continuă care se desfășoară sub formă de compilații nocturne,
-- automatizare condiționată (en. _triggered automation_): integrare continuă care efectuează o compilație la fiecare confirmare a modificării codului (en. _commit_) în sistemul de control al versiunilor.
+- la cerere (on-demand): rularea manuală a scriptului din linia de comandă,
+- programată (scheduled): integrare continuă, de obicei build-uri de noapte,
+- condiționată (triggered): build la fiecare commit în sistemul de versionare.
 
 ### make
 
-`make` - este un instrument de automatizare a procesului de compilare a programelor. Cel mai des este folosit pentru compilarea codului sursă în fișiere obiect și legarea lor într-un fișier executabil sau bibliotecă.
+`make` este un utilitar care automatizează transformarea fișierelor dintr-o formă în alta. Cel mai des, compilarea surselor în obiecte și linkarea în executabile sau biblioteci.
 
-`make` utilizează fișierele speciale, de obicei numite `Makefile`, în care sunt definite dependențele între fișiere și regulile de compilare a acestora.
+Utilitarul folosește fișiere speciale, de obicei numite `Makefile`, unde sunt descrise dependențele și comenzile pentru fiecare transformare.
 
 ### Ninja
 
-`Ninja` este o utilitate de linie de comandă, un sistem de construire a proiectelor din fișiere sursă. Acest instrument a fost elaborat de Evan Martin, un angajat al companiei Google.
+`Ninja` este un utilitar cross-platform pentru build din linia de comandă, dezvoltat de Evan Martin (Google).
 
-Ninja prezintă o versiune îmbunătățită și optimizată a utilității `make`. Scopul principal al Ninja este automatizarea și accelerarea procesului de construire a proiectelor, precum și accelerarea recompilării ulterioare, pe baza fișierelor generate de utilitar și soluționarea problemelor tipice în dezvoltarea cross-platform.
+Ninja este o versiune îmbunătățită a lui Make, cu accent pe viteză și build-uri incrementale rapide, utilă în dezvoltarea cross-platform.
 
 ### Autotools
 
-`Autotools` este un sistem de construire a proiectelor software GNU, un set de instrumente software destinate suportului portabilității codului sursă între sistemele UNIX-like.
+`Autotools` este sistemul de build GNU, un set de instrumente pentru portabilitatea codului între sisteme UNIX-like.
 
-Migrarea codului de pe un sistem pe altul poate fi o sarcină dificilă. Diferite realizări ale compilatorului limbajului C pot diferi semnificativ: anumite funcții ale limbajului pot lipsi, pot avea un alt nume sau pot fi în biblioteci diferite. Programatorul poate rezolva această problemă folosind macro-uri și directive de preprocesor, cum ar fi `#if`, `#ifdef` și altele. Dar în acest caz, utilizatorul care compilează programul pe propriul sistem va trebui să definească toate aceste macro-uri, ceea ce nu este atât de simplu, deoarece există multe distribuții și variații ale sistemelor. Autotools sunt apelate printr-o secvență de comenzi `./configure && make && make install` și rezolvă aceste probleme automat.
+Portarea codului poate fi dificilă din cauza diferențelor între compilatoare și biblioteci. Autotools rezolvă aceste probleme automat, fiind apelat cu `./configure && make && make install`.
 
-Sistemul de construire `GNU Autotools` se utilizează larg în multe proiecte cu sursă deschisă. `GNU Autotools` include:
+Autotools include:
 
-- `Autoconf` - un istrument pentru generarea scripturilor de configurare `configure` pe baza fișierelor `configure.ac` (sau `configure.in`). Scriptul generat este apoi rulat de utilizator, iar scriptul verifică caracteristicile sistemului și creează un `Makefile`.
-- `Automake` - citeste fișierele `Makefile.am` și creează un `Makefile` portabil, adică `Makefile.in`, care apoi, după procesarea scriptului de configurare, devine `Makefile` și este utilizat de utilitarul `make`.
-- `Libtool` - gestionează crearea bibliotecilor în sistemele de operare similare Unix.
+- `Autoconf` – generează scriptul `configure` pe baza fișierului `configure.ac` sau `configure.in`, care detectează particularitățile sistemului și creează `Makefile`.
+- `Automake` – citește `Makefile.am` și creează un `Makefile.in` portabil, care devine `Makefile` după rularea scriptului de configurare.
+- `Libtool` – gestionează crearea bibliotecilor pe sisteme Unix-like.
 
 ### CMake
 
-`CMake` - este un sistem cross-platform de automatizare a procesului de construire a proiectelor software. Acest instrument de nivel înalt permite utilizatorilor să scrie fișiere de configurare `CMakeLists.txt` independente de platformă, care sunt apoi transformate în fișiere de configurare specifice platformei. Totodată, `CMake` poate automatiza proces de instalare și configurarea a pachetelor software.
+`CMake` este un sistem de build cross-platform care generează fișiere de build pentru diverse platforme și compilatoare, pe baza unui fișier `CMakeLists.txt` unde sunt descrise dependențele și regulile de build.
 
-`CMake` se consideră o alternativă mai modernă și mai ușor de utilizat decât `Autotools`, utilizat în comunitatea GNU.
+CMake permite gestionarea ușoară a dependențelor și suportă diverse configurații (Debug, Release).
 
-## Arhitectura fișierului Makefile
+Dacă proiectul `MyProject` are structura:
 
-Pentru a utiliza sistemul de asamblare `make` este necesar să creați un fișier `Makefile`.
+- `bin` – rezultatul build-ului
+- `include` – fișiere header
+- `src` – fișiere cpp
+- `lib` – biblioteci externe
+- `obj` – fișiere temporare
 
-Reguli de creare a fișierului `Makefile` sunt următoarele:
+și următoarele cerințe:
 
-- în fișierul `Makefile` pot fi definite variabile, comenzi și comentarii.
-- variabilele sunt de obicei definite la începutul fișierului și sunt definite ca `<nume> = <valoare>`. Variabilele pot fi utilizate în fișierul `Makefile` ca `$(<nume>)`.
-- comentariile încep cu simbolul `#` și continuă până la sfârșitul liniei.
-- fiecare regulă a fișierului este structurată după modelul
+- standard C++20
+- folosește biblioteca `liblove`
+- folosește biblioteca `libmath`
+- executabilul se numește `app`
 
-```makefile
-<regula> : [<dependența> [...]]
-    [<comanda>]
+atunci `CMakeLists.txt` va arăta astfel:
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(MyProject)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+include_directories(include) # Calea către fișierele header
+link_directories(lib)        # Calea către biblioteci externe (doar dacă este necesar)
+
+file(GLOB SOURCES "src/*.cpp") # Adună automat toate fișierele .cpp din src
+add_executable(app ${SOURCES})
+
+target_link_libraries(app love math) # Leagă bibliotecile
 ```
 
-- o regulă are orice număr de dependențe. Dacă există dependențe, atunci mai întâi acestea sunt executate, în ordinea în care sunt enumerate, iar apoi comanda regulei.
-- fiecare dependență este o altă regulă definită în fișierul `Makefile`.
-- comenzile încep cu un tabulator.
+> [!TIP]
+> Dacă vrei ca executabilul să fie plasat în folderul `bin`, adaugă linia:
+>
+> ```cmake
+> set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+> ```
 
-Există o practică larg răspândită de a numi regulile din `Makefile` în conformitate cu numele fișierelor pe care le creează. De exemplu, regula pentru crearea fișierului `file` va fi numită `file`.
+Build-ul proiectului cu `CMake` se face astfel:
 
-Un exemplu `Makefile` pentru asamblarea proiectului din trei fișiere `first.cpp`, `second.cpp` și `main.cpp`:
-
-```makefile
-all: file
-
-file: first.o second.o main.o
-    g++ first.o second.o main.o -o file -love
-    
-first.o: first.cpp
-    g++ -c first.cpp -O2 -std=c++14 -o first.o
-
-second.o: second.cpp
-    g++ -c second.cpp -O2 -std=c++14 -o second.o
-
-main.o: main.cpp
-    g++ -c main.cpp -O2 -std=c++14 -o main.o
-```
-
-Definirea variabilelor în fișierul `Makefile` permite crearea unui `Makefile` mai flexibil. De exemplu, în următorul exemplu, variabilele `CC`, `CXXFLAGS`, `LDFLAGS` și `OUT` sunt definite la începutul fișierului. Variabila `CC` conține numele compilatorului, `CXXFLAGS` - opțiunile de compilare, `LDFLAGS` - opțiunile de legare, `OUT` - numele fișierului executabil.
-
-```makefile
-CC = g++
-CXXFLAGS = -O2 -std=c++14
-LDFLAGS = -love
-OUT = file
-
-all: file
-
-file: first.o second.o main.o
-    $(CC) first.o second.o main.o -o $(OUT) $(LDFLAGS)
-    
-first.o: first.cpp
-    $(CC) -c first.cpp $(CXXFLAGS) -o first.o
-
-second.o: second.cpp
-    $(CC) -c second.cpp $(CXXFLAGS) -o second.o
-
-main.o: main.cpp
-    $(CC) -c main.cpp $(CXXFLAGS) -o main.o
-```
-
-Exemplu de `Makefile` cu reguli suplimentare:
-
-```makefile
-CC = g++
-CXXFLAGS = -O2 -std=c++14
-LDFLAGS = -love
-OUT = file
-
-BINDIR = bin
-SRCDIR = src
-OBJDIR = obj
-
-all: prepare $(OUT)
-
-prepare:
-   mkdir -p $(OBJDIR) $(BINDIR)
-
-clean:
-   rm -f $(OBJDIR)/*.o $(BINDIR)/*
-
-help:
-   @echo Usage:
-   echo make - build application
-   echo make clean - remove build artifacts
-   echo make help - show help
-
-$(OUT): $(OBJDIR)/first.o $(OBJDIR)/second.o $(OBJDIR)/main.o
-    $(CC) $(OBJDIR)/first.o $(OBJDIR)/second.o $(OBJDIR)/main.o -o $(BINDIR)/$(OUT) $(LDFLAGS)
-    
-$(OBJDIR)/first.o:
-    $(CC) -c $(SRCDIR)/first.cpp $(CXXFLAGS) -o $(OBJDIR)/first.o
-
-$(OBJDIR)/second.o:
-    $(CC) -c $(SRCDIR)/second.cpp $(CXXFLAGS) -o $(OBJDIR)/second.o
-
-$(OBJDIR)/main.o:
-    $(CC) -c $(SRCDIR)/main.cpp $(CXXFLAGS) -o $(OBJDIR)/main.o
-```
-
-Construirea proiectului se face prin rularea comenzii `make`. În acest caz, prima regulă definită în fișierul `Makefile` va fi executată. Totodata, se poate rula o regulă specifică, specificând numele acesteia ca parametru pentru comanda `make`. De exemplu, pentru a curăța proiectul de fișiere temporare și fișierul executabil, se poate rula comanda `make clean`.
-
-## Exemplu de `Makefile` universal
-
-Presupunem că proiectul constă din mai multe fișiere sursă, distribuite în directoarele proiectului:
-
-- `bin` - conține rezultatul compilării proiectului
-- `include` - fișierele antet
-- `src` - fișierele `cpp`
-- `lib` - dependențele externe (biblioteci)
-- `obj` - fișiere temporare create în timpul compilării proiectului
-
-În acest caz, `Makefile` va arăta astfel:
-
-```makefile
-CC = g++
-CXXFLAGS = -O2 -std=c++20 -I include
-LDFLAGS = -L lib
-
-BINDIR = bin
-SRCDIR = src
-OBJDIR = obj
-
-SRC = $(wildcard $(SRCDIR)/*.cpp)
-OBJ = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))
-
-APP = app
-
-all: prepare $(APP)
-
-prepare:
-    mkdir -p $(OBJDIR) $(BINDIR)
-
-clean:
-    rm -f $(OBJDIR)/*.o $(BINDIR)/*
-
-help:
-    @echo Usage:
-    echo make - build application
-    echo make clean - remove build artifacts
-    echo make help - show help
-
-$(APP): $(OBJ)
-    $(CC) $(OBJ) -o $(BINDIR)/$(APP) $(LDFLAGS)
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-    $(CC) -c $< $(CXXFLAGS) -o $@
+```bash
+# Creează directorul de build
+mkdir build
+# Intră în directorul de build
+cd build
+# Generează fișierele de build
+cmake ..
+# Compilează proiectul
+cmake --build .
 ```
 
 ## Bibliografie

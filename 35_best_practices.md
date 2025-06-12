@@ -1,94 +1,93 @@
-# Practici bune de programare
+# Cele mai bune practici de programare
 
-- [Practici bune de programare](#practici-bune-de-programare)
-  - [Stil de programare](#stil-de-programare)
-    - [Utilizați nume de variabile, funcții și clase clare și descriptive](#utilizați-nume-de-variabile-funcții-și-clase-clare-și-descriptive)
-    - [Utilizați comentarii pentru a explica codul](#utilizați-comentarii-pentru-a-explica-codul)
-    - [Utilizați spații pentru a îmbunătăți citirea codului](#utilizați-spații-pentru-a-îmbunătăți-citirea-codului)
-    - [Utilizați tab-uri pentru a evidenția blocurile de cod](#utilizați-tab-uri-pentru-a-evidenția-blocurile-de-cod)
-    - [Utilizați linii goale pentru a separa blocurile logice de cod](#utilizați-linii-goale-pentru-a-separa-blocurile-logice-de-cod)
-    - [Evitați utilizarea numerelor și șirurilor magice](#evitați-utilizarea-numerelor-și-șirurilor-magice)
-    - [Evitați utilizarea liniilor de cod prea lungi](#evitați-utilizarea-liniilor-de-cod-prea-lungi)
+- [Cele mai bune practici de programare](#cele-mai-bune-practici-de-programare)
+  - [Stilul de programare](#stilul-de-programare)
+    - [Folosiți denumiri clare pentru variabile, funcții și clase](#folosiți-denumiri-clare-pentru-variabile-funcții-și-clase)
+    - [Folosiți comentarii pentru clarificarea codului](#folosiți-comentarii-pentru-clarificarea-codului)
+    - [Folosiți spații pentru lizibilitate](#folosiți-spații-pentru-lizibilitate)
+    - [Folosiți indentarea pentru blocuri de cod](#folosiți-indentarea-pentru-blocuri-de-cod)
+    - [Folosiți linii goale pentru separarea logică a codului](#folosiți-linii-goale-pentru-separarea-logică-a-codului)
+    - [Evitați numerele și șirurile „magice”](#evitați-numerele-și-șirurile-magice)
+    - [Evitați liniile de cod prea lungi](#evitați-liniile-de-cod-prea-lungi)
     - [Evitați funcțiile prea mari](#evitați-funcțiile-prea-mari)
   - [Documentarea codului](#documentarea-codului)
-  - [Testarea codului](#testarea-codului)
-  - [Idiomuri de programare](#idiomuri-de-programare)
-    - [Idiomuri de bază](#idiomuri-de-bază)
+  - [Testarea](#testarea)
+  - [Idiome de programare](#idiome-de-programare)
+    - [Idiome de bază](#idiome-de-bază)
       - [Increment și decrement](#increment-și-decrement)
       - [Swap](#swap)
     - [RAII](#raii)
     - [Pimpl](#pimpl)
-  - [Bibliografia](#bibliografia)
+  - [Bibliografie](#bibliografie)
 
-Practici bune de programare sunt reguli și recomandări care ajută la scrierea codului de calitate, ușor de citit și de întreținut. Practicile bune de programare sunt importante pentru dezvoltarea de software de calitate, care este ușor de înțeles, de testat și de întreținut. În practicile bune de programare sunt incluse următoarele aspecte:
+Cele mai bune practici de programare reprezintă un set de reguli și recomandări care ajută la îmbunătățirea calității codului, la ușurarea înțelegerii și mentenanței acestuia. Acestea includ reguli de stil, documentare, testare și utilizarea idiomelor de programare.
 
-1. Stil de programare.
-2. Documentarea codului.
-3. Testarea codului.
-4. Idiomuri de programare.
+Aspecte esențiale ale bunelor practici:
 
-## Stil de programare
+1. Stilul de programare — reguli de formatare și organizare a codului.
+2. Documentarea codului — adăugarea de comentarii explicative.
+3. Testarea — verificarea codului pentru a corespunde cerințelor.
+4. Idiome de programare — soluții standardizate pentru probleme frecvente.
 
-__Stilul de programare__ se referă la regulile de formatare a codului programului [^1]. Stilul de programare definește
+## Stilul de programare
 
-1. cerințele pentru denumirile variabilelor, funcțiilor etc.
-2. regulile de formatare a codului;
-3. regulile de organizare a codului;
-4. regulile de documentare a codului.
+__Stilul de programare__ reprezintă ansamblul regulilor de formatare a codului. Acesta stabilește:
 
-Stilul de programare ajută la îmbunătățirea citirii codului, simplifică înțelegerea și întreținerea acestuia. Acest lucru este deosebit de important în dezvoltarea de echipă, când mai mulți programatori lucrează la același proiect sau când un programator transmite proiectul altuia.
+1. reguli pentru denumirea variabilelor, funcțiilor etc.;
+2. reguli de formatare și organizare a codului;
+3. reguli de documentare.
 
-Stilul de programare este de obicei definit de standardele interne ale companiei sau comunității de programatori. Cu toate acestea, există standarde care sunt larg utilizate în industria programării. De exemplu, standardele de formatare a codului pentru limbajul `C++` sunt definite în cartea C++ _Coding Standards: 101 Rules, Guidelines, and Best Practices_ [^2] și în standardul _Google C++ Style Guide_ [^3].
+Un stil coerent îmbunătățește lizibilitatea și facilitează colaborarea în echipă[^1]. În proiectele de echipă sau la predarea unui proiect, un stil unitar este esențial.
 
-În majoritatea mediilor de dezvoltare sunt implementate instrumente care permit verificarea automată a codului pentru conformitatea cu stilul de programare. Este recomandat să utilizați aceste instrumente pentru menținerea unui stil de programare uniform în proiect.
+Stilul de programare poate fi dictat de standardele interne ale unei companii sau de comunitate. Există însă și standarde larg acceptate, precum "C++ Coding Standards: 101 Rules, Guidelines, and Best Practices"[^2] sau "Google C++ Style Guide"[^3].
 
-Mai jos sunt enumerate câteva recomandări de bază pentru formatarea codului:
+Majoritatea mediilor de dezvoltare oferă instrumente pentru verificarea automată a stilului. Se recomandă utilizarea acestor instrumente pentru a menține un stil unitar.
 
-1. Utilizați nume de variabile, funcții și clase clare și descriptive.
-2. Utilizați comentarii pentru a explica codul.
-3. Utilizați spații pentru a îmbunătăți citirea codului.
-4. Utilizați tab-uri pentru a evidenția blocurile de cod.
-5. Utilizați linii goale pentru a separa blocurile logice de cod.
-6. Evitați utilizarea numerelor și șirurilor magice.
-7. Evitați utilizarea liniilor de cod prea lungi.
+Câteva reguli de bază:
+
+1. Folosiți denumiri clare pentru variabile, funcții și clase.
+2. Folosiți comentarii pentru clarificarea codului.
+3. Folosiți spații pentru lizibilitate.
+4. Folosiți indentarea pentru blocuri de cod.
+5. Folosiți linii goale pentru separarea logică a codului.
+6. Evitați numerele și șirurile „magice”.
+7. Evitați liniile de cod prea lungi.
 8. Evitați funcțiile prea mari.
 
-### Utilizați nume de variabile, funcții și clase clare și descriptive
+### Folosiți denumiri clare pentru variabile, funcții și clase
 
-Numele variabilelor, funcțiilor și claselor trebuie să fie clare și descriptive. Numele ar trebui să reflecte scopul variabilei, funcției sau clasei și să fie ușor de înțeles pentru alți programatori. Pentru denumirea se folosește, de obicei, unul dintre următoarele stiluri:
+Denumirile trebuie să fie descriptive și să reflecte scopul variabilei, funcției sau clasei. Exemple de stiluri de denumire:
 
-1. `camelCase` - primul cuvânt cu literă mică, fiecare cuvânt următor cu literă mare: `myVariable`, `myFunction`. De obicei, este folosit pentru denumirea variabilelor, funcțiilor și metodelor.
-2. `snake_case` - toate cuvintele cu litere mici, separate de caracterul de subliniere: `my_variable`, `my_function`, `my_class`. Acest tip de denumire este de obicei folosit în biblioteca standard a limbajului `C++`.
-3. `PascalCase` - fiecare cuvânt cu literă mare: `MyClass`. Acest tip de denumire este de obicei folosit pentru denumirea claselor și structurilor în `C++`.
-4. `UPPER_CASE` - toate literele cu majuscule, cuvintele separate de caracterul de subliniere: `MY_CONSTANT`. Este folosit pentru denumirea constantelor.
+1. `camelCase` — primul cuvânt cu literă mică, următoarele cu majusculă: `myVariable`, `myFunction`. Folosit pentru variabile, funcții, metode.
+2. `snake_case` — toate cuvintele cu litere mici, separate prin underscore: `my_variable`, `my_function`, `my_class`. Folosit frecvent în STL.
+3. `PascalCase` — fiecare cuvânt cu majusculă: `MyClass`. Folosit pentru clase și structuri.
+4. `UPPER_CASE` — toate literele mari, cuvintele separate prin underscore: `MY_CONSTANT`. Folosit pentru constante.
 
-În alte limbaje de programare pot fi utilizate alte stiluri de denumire.
+### Folosiți comentarii pentru clarificarea codului
 
-### Utilizați comentarii pentru a explica codul
+Comentariile ajută la înțelegerea scopului și logicii codului. Este important să explicați nu doar ce face codul, ci și de ce a fost ales acel mod de implementare. Comentariile pot conține și informații suplimentare (autor, dată etc.).
 
-Un cod curat și calitativ trebuie să conțină o anumită documentație sub formă de comentarii, care explică codul, caracteristicile și logica sa de lucru. Este important nu numai să explicați codul, ci și să justificați deciziile luate și să furnizați informații suplimentare (de exemplu, autor, dată de creare etc.). Mai detaliat despre comentarii și documentare a codului vom discuta în secțiunea _Documentarea codului_.
+### Folosiți spații pentru lizibilitate
 
-### Utilizați spații pentru a îmbunătăți citirea codului
+Spațiile între operatori, cuvinte cheie și variabile cresc lizibilitatea codului.
 
-Atunci când scriem un anumit text, îl despărțim cuvintele cu spații pentru a îmbunătăți citirea. Același lucru se aplică și codului programului: plasarea spațiilor între operatori, cuvinte cheie și variabile îmbunătățește citirea codului și îl face mai ușor de înțeles.
-
-Este rău să scriem:
+Greșit:
 
 ```cpp
 int a=5;
 ```
 
-Cu mult mai bine să scriem:
+Corect:
 
 ```cpp
 int a = 5;
 ```
 
-### Utilizați tab-uri pentru a evidenția blocurile de cod
+### Folosiți indentarea pentru blocuri de cod
 
-Tab-urile sau indentare cu spații sunt utilizate pentru a evidenția blocurile de cod și a îmbunătăți citirea acestuia. Tab-urile permit ușor de determinat înglobarea blocurilor de cod și de îmbunătățit înțelegerea acestuia.
+Indentarea (prin spații sau taburi) evidențiază blocurile de cod și ajută la înțelegerea structurii.
 
-Este rău să scriem:
+Greșit:
 
 ```cpp
 for (int i = 0; i < 10; i++) {
@@ -96,7 +95,7 @@ std::cout << i << std::endl;
 }
 ```
 
-Cu mult mai bine să scriem:
+Corect:
 
 ```cpp
 for (int i = 0; i < 10; i++) {
@@ -104,13 +103,11 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 
-În plus, indentarea permite evidențierea blocuri logice de cod, care pot fi candidați pentru extragerea în funcții separate.
+### Folosiți linii goale pentru separarea logică a codului
 
-### Utilizați linii goale pentru a separa blocurile logice de cod
+Liniile goale separă blocuri logice, crescând lizibilitatea.
 
-Un cod complex secvențial de obicei conține mai multe blocuri logice care îndeplinesc diferite sarcini. Pentru a îmbunătăți citirea codului și a înțelege structura acestuia, blocurile logice de cod ar trebui să fie separate cu linii goale.
-
-Este rău să scriem:
+Greșit:
 
 ```cpp
 int a = 5;
@@ -119,7 +116,7 @@ int c = a + b;
 std::cout << c << std::endl;
 ```
 
-Cu mult mai bine să scriem:
+Corect:
 
 ```cpp
 int a = 5;
@@ -129,11 +126,11 @@ int c = a + b;
 std::cout << c << std::endl;
 ```
 
-### Evitați utilizarea numerelor și șirurilor magice
+### Evitați numerele și șirurile „magice”
 
-_Numerele magice_ și _șirurile magice_ sunt numere și șiruri care sunt utilizate direct în codul sursă, fără a fi declarate ca constante. Utilizarea numerelor și șirurilor magice îngreunează înțelegerea codului și întreținerea acestuia, deoarece nu este clar ce înseamnă aceste numere și șiruri. Prin urmare, numerele și șirurile magice ar trebui înlocuite cu constante cu nume clare.
+Numerele sau șirurile „magice” sunt valori folosite direct în cod, fără a fi declarate ca constante. Acestea îngreunează mentenanța și înțelegerea codului.
 
-Rău să scriem:
+Greșit:
 
 ```cpp
 if (status == 1) {
@@ -141,27 +138,27 @@ if (status == 1) {
 }
 ```
 
-Cu mult mai bine să scriem:
+Corect:
 
 ```cpp
-const int STATUS_OK = 1;
+constexpr int STATUS_OK = 1;
 
 if (status == STATUS_OK) {
     // ...
 }
 ```
 
-### Evitați utilizarea liniilor de cod prea lungi
+### Evitați liniile de cod prea lungi
 
-Liniile de cod prea lungi sunt greu de citit și de înțeles. De asemenea, liniile de cod prea lungi pot fi dificil de citit pe ecranele cu rezoluție mică sau în editorii de text cu lățimea limitată a liniei. Prin urmare, liniile de cod ar trebui să fie suficient de scurte pentru a fi ușor de citit și de înțeles.
+Liniile lungi sunt greu de citit și de urmărit. Împărțiți-le pe mai multe linii.
 
-Este rău să scriem:
+Greșit:
 
 ```cpp
 std::string longString = "This is a very long string that does not fit on the screen and is hard to read.";
 ```
 
-Cu mult mai bine să scriem:
+Corect:
 
 ```cpp
 std::string longString = "This is a very long string that does not fit on the screen "
@@ -170,95 +167,91 @@ std::string longString = "This is a very long string that does not fit on the sc
 
 ### Evitați funcțiile prea mari
 
-Funcțiile prea mari tot greu de citit și de înțeles. Și mai mult, funcțiile prea mari sunt dificil de testat și de întreținut. De aceea, funcțiile mari să separ în funcții mai mici, fiecare din care să îndeplinească o singură sarcină.
+Funcțiile lungi sunt greu de citit, testat și întreținut. Împărțiți funcțiile complexe în funcții mai mici, fiecare cu o singură responsabilitate.
 
 ## Documentarea codului
 
-Documentarea codului este un proces de adăugare a comentariilor la codul programului pentru a explica funcționarea și destinația acestuia. Documentarea codului ajută la îmbunătățirea înțelegerii codului, simplificarea întreținerii și dezvoltării acestuia. Pe baza codului documentat, programe speciale pot genera automat documentația programului, iar mediile de dezvoltare pot oferi sugestii și informații suplimentare despre cod.
+Documentarea codului presupune adăugarea de comentarii explicative pentru a clarifica funcționarea și scopul acestuia. O documentare bună facilitează mentenanța și dezvoltarea ulterioară. Pe baza comentariilor, instrumente precum Doxygen[^4] sau Javadoc[^5] pot genera automat documentație tehnică.
 
-Documentarea codului de obicei include următoarele tipuri de comentarii:
+Tipuri de comentarii utile:
 
-1. Metadate - informații despre versiune, autor, dată de creare etc.
-2. Comentarii pentru clase, funcții și variabile - descriu scopul și caracteristicile clasei, funcției sau variabilei.
-3. Comentarii pentru blocuri de cod - explică logica de funcționare a blocului de cod.
-4. Comentarii pentru linii de cod - justifică deciziile luate și explică secțiunile de cod complexe.
+1. Comentarii la clase, funcții și variabile — explică scopul și particularitățile acestora.
+2. Comentarii la blocuri de cod — explică logica unui bloc.
+3. Comentarii la linii de cod — justifică decizii sau explică fragmente complexe.
+4. Metadate — informații despre versiune, autor, dată etc.
 
-Documentarea excesivă a codului poate fi, de asemenea, dăunătoare, deoarece complică înțelegerea codului și crește volumul codului. Prin urmare, documentarea codului ar trebui să fie moderată și informativă.
+Documentarea excesivă poate dăuna, îngreunând citirea codului. Comentariile trebuie să fie concise și relevante.
 
-Pentru crearea documentației tehnice a programului de obicei se folosesc instrumente speciale, cum ar fi Doxygen [^4], Javadoc [^5] etc. Aceste instrumente permit generarea automată a documentației programului pe baza comentariilor din cod.
-
-Pentru definirea standardelor de documentare a codului de obicei se folosesc standarde de formatare a codului, cum ar fi Google C++ Style Guide [^3].
-
-Un exemplu de documentare a funcției în `C++`:
+Exemplu de documentare a unei funcții în C++:
 
 ```cpp
 /**
- * @brief This is a brief description of the function.
+ * @brief Descriere succintă a funcției.
  *
- * This is a detailed description of the function.
+ * Descriere detaliată a funcției.
  *
- * @param[in] a The first parameter.
- * @param[in] b The second parameter.
- * @return The result of the function.
+ * @param[in] a Primul parametru.
+ * @param[in] b Al doilea parametru.
+ * @return Rezultatul funcției.
  */
 int add(int a, int b) {
     return a + b;
 }
 ```
 
-Exemplu de documentare a clasei în `C++`:
+Exemplu de documentare a unei clase:
 
 ```cpp
 /**
- * @brief This is a brief description of the class.
+ * @brief Descriere succintă a clasei.
  *
- * This is a detailed description of the class.
+ * Descriere detaliată a clasei.
  */
 class MyClass {
 public:
     /**
-     * @brief This is a brief description of the function.
+     * @brief Descriere succintă a funcției.
      *
-     * This is a detailed description of the function.
+     * Descriere detaliată a funcției.
      *
-     * @param[in] a The first parameter.
-     * @param[in] b The second parameter.
-     * @return The result of the function.
+     * @param[in] a Primul parametru.
+     * @param[in] b Al doilea parametru.
+     * @return Rezultatul funcției.
      */
     int add(int a, int b);
 };
 ```
 
-Documentația la cod se face printr-un comentariu de tip bloc, care începe cu `/**` și se termină cu `*/`. În comentariu se pot folosi taguri speciale, care permit generarea automată a documentației programului.
+Comentariile pentru documentație folosesc blocul `/** ... */` și pot conține tag-uri speciale pentru generarea automată a documentației.
 
-Câteva taguri de bază din documentație:
+Tag-uri frecvente:
 
-1. `@brief` - o descriere scurtă.
-2. `@param` - descrierea parametrului funcției.
-3. `@return` - descrierea valorii returnate de funcție.
-4. `@version` - versiunea funcției sau clasei.
-5. `@author` - autorul funcției sau clasei.
-6. `@date` - data creării funcției sau clasei.
+1. `@brief` — descriere scurtă.
+2. `@param` — descrierea parametrului.
+3. `@return` — descrierea valorii returnate.
+4. `@version` — versiunea funcției sau clasei.
+5. `@author` — autorul.
+6. `@date` — data creării.
 
-## Testarea codului
+## Testarea
 
-Una din problemele informaticii este justificarea corectitudinii programului. Testarea programului este procesul de verificare a conformității programului cu cerințele și detectarea erorilor. Testarea programului permite să ne asigurăm că programul funcționează corect și nu conține erori.
+Testarea codului este procesul de verificare a corectitudinii și identificare a erorilor. Testarea asigură că programul funcționează conform cerințelor.
 
-Sunt următoarele tipuri de testare a programului:
+Tipuri de testare:
 
-1. Testarea unitară (en. _unit testing_) - testarea fiecărui modul al programului în mod separat.
-2. Testarea de integrare (en. _integration testing_) - testarea interacțiunii dintre modulele programului.
-3. Testarea de sistem (en. _system testing_) - testarea întregului program.
-4. Testarea de acceptare (en. _acceptance testing_) - testarea programului de către client.
-5. Testarea de regresie (en. _regression testing_) - testarea programului după modificări.
-6. Testarea de performanță (en. _performance testing_) - testarea performanței programului.
-7. Testarea de securitate (en. _security testing_) - testarea securității programului.
+1. Testare unitară (unit testing) — testarea modulelor individuale (funcții, clase).
+2. Testare de integrare — testarea interacțiunii dintre module.
+3. Testare de sistem — testarea întregului program.
+4. Testare de acceptanță — validarea de către client.
+5. Testare de regresie — testarea după modificări.
+6. Testare de performanță — evaluarea performanței.
+7. Testare de securitate — evaluarea siguranței aplicației.
 
-Elaborarea testelor unitare este responsabilitatea programatorului [^6]. Testele unitare permit să ne asigurăm de corectitudinea funcționării modulelor separate ale programului și să detectăm erorile la etapele timpurii ale dezvoltării. Testele unitare de obicei se scriu împreună cu codul programului (sau chiar înainte de scrierea codului) și se execută automat la asamblarea proiectului.
+Kent Beck[^6] recomandă ca dezvoltatorii să scrie teste unitare pentru a verifica corectitudinea modulelor și a depista erorile devreme. Testele unitare se scriu împreună cu codul și se rulează automat la fiecare build.
 
-Pentru scrierea testelor unitare de obicei se folosesc biblioteci speciale de testare, cum ar fi Google Test [^7], Catch2 [^8] etc. Aceste biblioteci permit să scriem și să executăm testele în mod automat și să verificăm rezultatele testării.
+Framework-uri populare pentru teste unitare: Google Test[^7], Catch2[^8] etc.
 
-Totuși, un simplu test unitar poate fi scris și fără utilizarea unui framework. De exemplu, pentru testarea funcției de adunare a două numere se poate scrie următorul test:
+Exemplu simplu de test fără framework:
 
 ```cpp
 #include <cassert>
@@ -276,35 +269,24 @@ int main() {
 }
 ```
 
-## Idiomuri de programare
+## Idiome de programare
 
-Sub _idiom de programare_ se înțelege un mod standard de a scrie cod, care este cel mai eficient și convenabil pentru rezolvarea unei anumite sarcini. Idiomurile de programare de obicei fac parte din limbajul de programare și includ șabloane, algoritmi și structuri de date standard. Idiomurile de programare pot fi numite _șabloane de proiectare_ la nivel scăzut [^9], care sunt utilizate pentru rezolvarea unor sarcini specifice.
+O idiomă de programare este o soluție standardizată pentru o problemă frecventă. Idiomele sunt parte a limbajului și includ șabloane, algoritmi și structuri de date uzuale. Ele pot fi considerate „șabloane de proiectare de nivel scăzut”[^9].
 
-### Idiomuri de bază
+### Idiome de bază
 
 #### Increment și decrement
 
-Una din cele probleme standard de programare este numărarea (elementelor, operațiilor efectuate etc.). Soluția standard a acestei probleme constă în introducerea unei variabile - contor și creșterea (scăderea) valorii acesteia cu o unitate. În unele limbaje pentru aceasta se folosește forma:
-
-```basic
-i = i + 1
-```
-
-În limbajele bazate pe `C` pentru soluționarea acestei probleme se folosește operatorul de incrementare `++`:
+Pentru numărare se folosește o variabilă-contor și operatorii de incrementare/decrementare:
 
 ```cpp
 i++;
-```
-
-Respectiv, pentru decrementare se folosește operatorul de decrementare `--`:
-
-```cpp
 i--;
 ```
 
 #### Swap
 
-ALtă problema tipică a programării este schimbul valorilor a două variabile. Soluția standard a acestei probleme constă în utilizarea unei variabile intermediare:
+Pentru schimbul valorilor a două variabile:
 
 ```cpp
 template <typename T>
@@ -315,11 +297,11 @@ void swap(T& a, T& b) {
 }
 ```
 
-Totuși, dacă este necesar să schimbăm conținut a două containere, schimbul valorilor elementelor este ineficient. De obicei, containerul conține un pointer la memoria pe care o gestionează, de aceea schimbul de pointeri este o soluție mai eficientă:
+Pentru containere sau pointeri, schimbul direct al adreselor este mai eficient:
 
 ```cpp
 template <typename T>
-void swap(T* a, T* b) {
+void swap(T*& a, T*& b) {
     T* tmp = a;
     a = b;
     b = tmp;
@@ -328,11 +310,9 @@ void swap(T* a, T* b) {
 
 ### RAII
 
-_RAII_ (en. Resource Acquisition Is Initialization) - este o idiom de programare care constă în faptul că resursele trebuie să fie alocate în constructorul obiectului și eliberate în destructorul acestuia. Acest lucru permite să garantăm că resursele vor fi eliberate în caz de excepție sau ieșire din bloc.
+_RAII_ (Resource Acquisition Is Initialization) presupune ca resursele să fie alocate în constructor și eliberate în destructor. Astfel, resursele sunt eliberate automat la ieșirea din bloc sau la apariția unei excepții.
 
-RAII este utilizat pentru a evita scurgerile de memorie și alocările nereușite de resurse.
-
-Exemplu de realizare a RAII pentru lucru cu fișiere:
+Exemplu pentru fișiere:
 
 ```cpp
 class File {
@@ -344,7 +324,9 @@ public:
     }
 
     ~File() {
-        fclose(file);
+        if (file) {
+            fclose(file);
+        }
     }
 
     void read() {
@@ -358,9 +340,7 @@ private:
 
 ### Pimpl
 
-_Pimpl_ (en. Pointer to Implementation) - este un idiom de programare care constă în faptul că implementarea clasei este separată într-o clasă separată, care este stocată într-un pointer inteligent în clasa principală. Acest lucru permite să ascundem implementarea clasei de client și să reducem dependența dintre interfață și implementare.
-
-Exemplu:
+_Pimpl_ (Pointer to Implementation) presupune separarea implementării de interfață, ascunzând detaliile într-o clasă internă gestionată prin pointer. Astfel, dependențele și timpul de compilare scad, iar interfața rămâne stabilă.
 
 ```cpp
 class Widget {
@@ -391,14 +371,14 @@ void Widget::doSomething() {
 }
 ```
 
-## Bibliografia
+## Bibliografie
 
-[^1]: [Kernighan B., Pike R., The Practice of Programming, Addison-Wesley, 1999](https://www.google.com/search?q=kernighan+pike+the+practice+of+programming)
+[^1]: [Kernighan B., Pike R., The Practice of Programming, Williams, 2019](https://www.google.com/search?q=Керниган+Пайк+Практика+программирования)
 [^2]: [Sutter H., Alexandrescu A., C++ Coding Standards: 101 Rules, Guidelines, and Best Practices, Pearson Education, 2004](https://www.google.com/search?q=C%2B%2B+Coding+Standards%3A+101+Rules%2C+Guidelines%2C+and+Best+Practices)
 [^3]: [Google C++ Style Guide, Google, github.io](https://google.github.io/styleguide/cppguide.html)
 [^4]: [Doxygen, doxygen.nl](https://www.doxygen.nl)
 [^5]: [Javadoc, Oracle](https://www.oracle.com/java/technologies/javase/javadoc.html)
-[^6]: [Beck K., Test-Driven Development by Example, Addison-Wesley, 2003](https://www.google.com/search?q=Test-Driven+Development+by+Example)
+[^6]: [Beck Kent, Extreme Programming Explained, Piter, 2020](https://www.google.com/search?q=Бек+Кент+Экстремальное+программирование.+Разработка+через+тестирование)
 [^7]: [Google Test, Google, github.com](https://github.com/google/googletest)
 [^8]: [Catch2, catchorg, github.com](https://github.com/catchorg/Catch2)
-[^9]: [Software design pattern, Wikipedia](https://en.wikipedia.org/wiki/Software_design_pattern)
+[^9]: [Design Patterns, Wikipedia](https://ru.wikipedia.org/wiki/Шаблон_проектирования)
