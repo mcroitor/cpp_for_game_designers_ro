@@ -1,37 +1,39 @@
-# Programare bazată pe evenimente
+# Programare orientată pe evenimente
 
-- [Programare bazată pe evenimente](#programare-bazată-pe-evenimente)
+- [Programare orientată pe evenimente](#programare-orientată-pe-evenimente)
   - [Noțiuni de bază](#noțiuni-de-bază)
   - [Arhitectura aplicației](#arhitectura-aplicației)
-  - [Exemple](#exemple)
+  - [Exemplu](#exemplu)
   - [Biblioteci și framework-uri](#biblioteci-și-framework-uri)
-  - [Bibliografia](#bibliografia)
+  - [Bibliografie](#bibliografie)
 
 ## Noțiuni de bază
 
-Un sistem informațional poate fi considerat ca un obiect care are un anumit stare și comportament. Starea unui sistem informațional este determinat de un set de valori care descriu sistemul respectiv (atribute). Comportamentul sistemului este determinat de un set de acțiuni care pot fi efectuate asupra sistemului.
+Un sistem informațional poate fi privit ca un obiect care are stare și comportament. Starea sistemului este determinată de un set de valori (atribute) care îl descriu. Comportamentul sistemului este definit de acțiunile ce pot fi efectuate asupra acestuia.
 
-Modificarea stării unui obiect se numește __eveniment__. În urma evenimentului se creează un mesaj care conține informații despre evenimentul care a avut loc și care poate fi procesat de sistem. Deseori evenimentul și mesajul creat în urma evenimentului sunt folosite interschimbabil.
+Schimbarea stării unui obiect se numește __eveniment__. În urma unui eveniment se generează un mesaj care conține informații despre evenimentul produs și care poate fi procesat de sistem. Adesea, termenii "eveniment" și "mesaj" sunt folosiți ca sinonime.
 
-Evenimentele generate de factori externi se numesc __evenimente externe__, iar evenimentele generate de sistem se numesc __evenimente interne__.
+Evenimentele inițiate de factori externi se numesc __evenimente externe__, iar cele inițiate de sistem — __evenimente interne__.
 
-Sistem informațional reacționează la evenimente, procesându-le cu metode speciale numite __procesori de evenimente__.
+Sistemul reacționează la mesajele despre evenimente prin metode speciale numite __handler-e de evenimente__ (en. _event handler_).
 
-__Programarea bazată pe evenimente__ (sau __programarea orientată pe evenimente__, en. _event-driven programming_) este o paradigmă de programare în care accentul principal se pune pe procesarea evenimentelor. Programa scrisă conform principiilor programării bazate pe evenimente reprezintă un set de procesori de evenimente care sunt apelați la apariția unor evenimente specifice.
+__Programarea orientată pe evenimente__ (sau __event-driven programming__) este o paradigmă de programare în care accentul cade pe tratarea evenimentelor. O aplicație scrisă în acest stil este compusă dintr-un set de handler-e de evenimente care sunt apelate la apariția anumitor evenimente.
 
-Programarea bazată pe evenimente presupune împărțirea aplicației în părți independente, fiecare dintre ele fiind responsabilă pentru procesarea unui anumit eveniment (sau un set de evenimente). Aceste părți ale sistemului informațional pot funcționa în fire de execuție separate și pot interacționa între ele prin evenimente.
+Programarea orientată pe evenimente presupune împărțirea aplicației în componente independente, fiecare responsabilă de tratarea unui anumit eveniment. Aceste componente pot rula în fire de execuție diferite și pot comunica între ele prin evenimente.
+
+Acest model simplifică dezvoltarea și mentenanța aplicației, deoarece fiecare handler de eveniment poate fi implementat ca o funcție sau metodă separată.
 
 ## Arhitectura aplicației
 
-Programarea bazată pe evenimente se utilizează pe scară largă în interfețele grafice, deoarece permite reacționarea la acțiunile utilizatorului. În interfața grafică, evenimentele pot fi legate de diferite elemente ale interfeței, cum ar fi butoane, câmp de introducere, meniuri etc. Fiecare element al interfeței poate genera evenimente, la care trebuie să reacționeze procesorii de evenimente corespunzători.
+Programarea orientată pe evenimente este larg folosită în interfețele grafice, deoarece permite reacția la acțiunile utilizatorului. Într-o interfață grafică, evenimentele pot fi asociate cu diverse elemente (butoane, câmpuri de text, meniuri etc.), fiecare generând evenimente la care trebuie să reacționeze handler-ele corespunzătoare.
 
-Programare bazată pe evenimente permite separarea logicii aplicației în părți independente, fiecare dintre ele fiind responsabilă pentru procesarea unui anumit eveniment. Acest lucru facilitează dezvoltarea și întreținerea programului, deoarece fiecare procesor de eveniment poate fi implementat sub formă de funcție sau metodă separată.
+Acest model permite separarea logicii aplicației în componente independente, fiecare responsabilă de tratarea unui anumit eveniment. Astfel, dezvoltarea și mentenanța devin mai simple.
 
-Arhitectura generică a aplicației bazate pe evenimente constă din următoarele componente:
+Arhitectura de bază a unei aplicații orientate pe evenimente include următoarele componente:
 
-- __Eveniment__ (en. _event_) — semnal care indică faptul că ceva s-a întâmplat în sistem. Evenimentele pot fi generate de diferiți factori, cum ar fi utilizatorul, dispozitivele hardware sau alte programe.
+- __Eveniment__ (en. _event_) — un mesaj semnal care este transmis sistemului și poate fi procesat. Evenimentul conține informații despre tipul său și date suplimentare necesare procesării.
 
-În cel mai simplu caz, evenimentul poate fi reprezentat ca o enumerare (enum) care conține toate tipurile de evenimente posibile. De exemplu, pentru interfața grafică, putem defini următoarele tipuri de evenimente:
+Cel mai simplu mod de a defini evenimentele este folosirea unui enum pentru toate tipurile posibile. De exemplu, pentru o interfață grafică:
 
 ```cpp
 enum class EventType {
@@ -40,54 +42,63 @@ enum class EventType {
     MouseMove,
     KeyPress
 };
+
+struct Event {
+    EventType type;
+    // date suplimentare
+};
 ```
 
-Un tip de eveniment mai complex conține date adiționale, de exemplu, despre obiectul care a generat evenimentul.
+Evenimentele mai complexe pot conține date suplimentare, de exemplu, despre obiectul care a generat evenimentul.
 
-- __Sursa de eveniment__ (en. _event source_) — obiect care generează evenimente. Sursa de eveniment poate fi reprezentată de un element al interfeței grafice (de exemplu, buton, câmp de introducere) sau de altă parte a programului (de exemplu, socket de rețea, descriptor de fișier).
-- __Coada de evenimente__ (en. _event queue_) — structură de date care stochează evenimentele în așteptare. Coada de evenimente permite separarea procesului de generare a evenimentelor de procesul de procesare a evenimentelor.
+- __Sursă de eveniment__ (en. _event source_) — obiectul care generează evenimente. Poate fi un element de interfață (buton, câmp de text) sau o altă componentă (socket de rețea, descriptor de fișier).
+- __Coada de evenimente__ (en. _event queue_) — structură de date unde sunt stocate evenimentele ce așteaptă procesare. Coada permite separarea generării de evenimente de procesarea lor.
 
-Coada de evenimente poate fi implementată sub formă de coadă FIFO (First-In-First-Out) în care evenimentele sunt adăugate la sfârșitul cozii și extrase de la începutul cozii.
+O implementare simplă a cozii de evenimente este o coadă FIFO (First-In-First-Out):
 
 ```cpp
 class EventQueue {
-    std::deque<EventType> events;
+    std::deque<Event> events;
 public:
-    void Push(const EventType& event) {
+    void Push(const Event& event) {
         events.push_back(event);
     }
 
-    EventType Pop() {
-        if (events.size() == 0) {
-            return EventType::NoEvent;
+    Event Pop() {
+        if(events.empty()) {
+            return Event{EventType::NoEvent};
         }
-        
-        EventType event = events.front();
+        Event event = events.front();
         events.pop_front();
         return event;
     }
 };
 ```
 
-- __Procesor de eveniment__ (en. _event processor_, _event handler_) — funcție sau metodă care procesează un anumit tip de eveniment. Procesorul de evenimente primește evenimentul și efectuează acțiunile necesare în funcție de tipul evenimentului.
+- __Handler de eveniment__ (en. _event handler_) — funcția sau metoda apelată la apariția unui anumit eveniment. Handler-ul execută acțiunile necesare ca răspuns la eveniment.
 
-De obicei se definește o interfață pentru procesorul de evenimente, care conține o metodă pentru procesarea evenimentului. Fiecare procesor de evenimente implementează această interfață și definește metoda de procesare a evenimentului.
+De obicei se definește o interfață pentru handler-ul de eveniment:
 
 ```cpp
 struct EventHandler {
-    virtual void operator()(const EventType& event) = 0;
+    virtual void operator()(const Event& event) = 0;
+    virtual ~EventHandler() = default;
 };
 ```
 
-Altfel procesoare de eveniment pot fi implementate ca metode ale clasei, în acest caz obiectul clasei trebuie să verifice periodic coada de evenimente și să apeleze procesorul de evenimente corespunzător, destinat obiectului respectiv.
+Handler-ele pot fi și metode de clasă; în acest caz, obiectul trebuie să verifice periodic coada de evenimente și să apeleze handler-ul potrivit.
 
-- __Dispecer de evenimente__ (en. _event dispatcher_) — componentă a programului care generează evenimente și le adaugă în coada de evenimente. Dispecerul de evenimente este responsabil pentru asocierea surselor de evenimente cu procesorii de evenimente corespunzători.
+- __Dispatcher de evenimente__ (en. _event dispatcher_) — componenta care generează evenimente și le adaugă în coadă, asociind sursele de evenimente cu handler-ele potrivite.
 
-Cea mai simplă implementare a dispecerului de evenimente se realizează ca o hartă (map) care asociază tipul de eveniment cu procesorul de eveniment corespunzător. Totodată, dispecerul de evenimente poate fi implementat ca o un `switch`.
+O implementare simplă a dispatcher-ului poate folosi o mapare între tipuri de evenimente și handler-ele lor sau un switch:
 
 ```cpp
-void DispatchEvent(const EventType& event) {
-    switch (event) {
+EventHandler buttonClickHandler;
+EventHandler mouseMoveHandler;
+EventHandler keyPressHandler;
+
+void DispatchEvent(const Event& event) {
+    switch (event.type) {
         case EventType::ButtonClick:
             buttonClickHandler(event);
             break;
@@ -101,36 +112,39 @@ void DispatchEvent(const EventType& event) {
 }
 ```
 
-- __Ciclu de evenimente__ (en. _event loop_) — este o buclă care extrage evenimente din coada de evenimente și le trimite la procesare procesorilor de evenimente corespunzători. Ciclul de evenimente este responsabil pentru procesarea evenimentelor în ordinea în care acestea au fost generate.
+- __Bucla de evenimente__ (en. _event loop_) — ciclul principal al aplicației, care extrage evenimentele din coadă și le transmite handler-elor potrivite.
 
-De obicei ciclul de evenimente este implementat ca o buclă infinită care extrage evenimente din coada de evenimente și le trimite la procesare procesorilor de evenimente corespunzători (apelând dispecerul de evenimente).
+De obicei, bucla de evenimente este un ciclu infinit care poate fi oprit la închiderea aplicației:
 
 ```cpp
+EventQueue eventQueue;
+
 void EventLoop() {
     while (true) {
-        EventType event = eventQueue.Pop();
+        Event event = eventQueue.Pop();
         DispatchEvent(event);
     }
 }
 ```
 
-## Exemple
+## Exemplu
 
-Ca exemplu, considerăm un sistem informațional în care trăiește un motan virtual. Motanul virtual poate genera următoarele evenimente:
+Să considerăm un sistem cu o pisică virtuală. Pisica poate genera următoarele evenimente:
 
-- __este flămând__ — motanul este flămând și vrea să mănânce.
-- __vrea să fie mângâiat__ — motanul vrea să fie mângâiat și să se joace.
-- __este sătul__ — motanul s-a săturat și vrea să doarmă.
+- __îi este foame__ — pisica vrea să mănânce;
+- __vrea să fie mângâiată__ — pisica vrea atenție și joacă;
+- __s-a săturat__ — pisica vrea să doarmă.
 
-Utilizatorul poate interacționa cu motanul virtual, generând următoarele evenimente:
+Utilizatorul poate genera următoarele evenimente:
 
-- __a hrăni__ — utilizatorul hrănește motanul.
-- __a mângâia__ — utilizatorul mângâie motanul.
-- __a ieși din sistem__ — utilizatorul iese din sistem.
+- __hrănește pisica__ — utilizatorul hrănește pisica;
+- __mângâie pisica__ — utilizatorul mângâie pisica;
+- __ieșire din sistem__ — utilizatorul închide aplicația.
+
+Evenimentele sunt generate de pisică și de utilizator și sunt adăugate în coada de evenimente. Sistemul de procesare extrage evenimentele și le transmite handler-elor potrivite.
 
 ```cpp
 enum class EventType {
-    NoEvent,
     CatHungry,
     CatWantsToPlay,
     CatSleepy,
@@ -138,51 +152,52 @@ enum class EventType {
     PetCat,
     SystemExit
 };
+
+struct Event {
+    EventType type;
+    // date suplimentare
+};
 ```
 
-Evenimentele sunt generate de motanul virtual și utilizatorul și sunt adăugate în coada de evenimente. Sistem de procesare a evenimentelor selectează evenimentele din coadă și le trimite la procesare procesorilor de evenimente corespunzători.
-
-În acest caz procesorii de evenimente sunt reprezentate de clase care implementează interfața `EventHandler`.
+Handler-ele pot fi implementate astfel:
 
 ```cpp
 struct EventHandler {
-    virtual void operator()(const EventType& event) = 0;
-};
-
-struct NoEventHandler : public EventHandler {
-    void operator()(const EventType&) override {}
+    virtual void operator()(const Event& event) = 0;
+    virtual ~EventHandler() = default;
 };
 
 struct CatHungryHandler : public EventHandler {
-    void operator()(const EventType& event) override { /* prelucrarea evenimentului */ }
+    void operator()(const Event& event) override { /* tratarea evenimentului */ }
 };
 
 struct CatWantsToPlayHandler : public EventHandler {
-    void operator()(const EventType& event) override { /* prelucrarea evenimentului */ }
+    void operator()(const Event& event) override { /* tratarea evenimentului */ }
 };
 
 struct CatSleepyHandler : public EventHandler {
-    void operator()(const EventType& event) override { /* prelucrarea evenimentului */ }
+    void operator()(const Event& event) override { /* tratarea evenimentului */ }
 };
 
 struct FeedCatHandler : public EventHandler {
-    void operator()(const EventType& event) override { /* prelucrarea evenimentului */ }
+    void operator()(const Event& event) override { /* tratarea evenimentului */ }
 };
 
 struct PetCatHandler : public EventHandler {
-    void operator()(const EventType& event) override { /* prelucrarea evenimentului */ }
+    void operator()(const Event& event) override { /* tratarea evenimentului */ }
 };
 
 struct SystemExitHandler : public EventHandler {
-    void operator()(const EventType& event) override { exit(0); }
+    void operator()(const Event& event) override { exit(0); }
 };
 ```
 
-Uneori dispecerul de evenimente este implementat ca o hartă (map) care asociază tipul de eveniment cu procesorul de eveniment corespunzător:
+Fără un destructor virtual, la ștergerea prin `std::shared_ptr<EventHandler>` pot apărea scurgeri de memorie dacă clasa derivată alocă resurse.
+
+Dispatcher-ul de evenimente poate fi implementat ca o mapare între tipuri de evenimente și handler-ele lor:
 
 ```cpp
 std::map<EventType, std::shared_ptr<EventHandler>> eventHandlers = {
-    {EventType::NoEvent, std::make_shared<NoEventHandler>()},
     {EventType::CatHungry, std::make_shared<CatHungryHandler>()},
     {EventType::CatWantsToPlay, std::make_shared<CatWantsToPlayHandler>()},
     {EventType::CatSleepy, std::make_shared<CatSleepyHandler>()},
@@ -192,40 +207,40 @@ std::map<EventType, std::shared_ptr<EventHandler>> eventHandlers = {
 };
 ```
 
-Deja cunoscutul ciclu de evenimente extrage evenimente din coada de evenimente și le trimite la procesare procesorilor de evenimente corespunzători:
+Bucla de evenimente extrage evenimentele și le transmite handler-elor:
 
 ```cpp
 void EventLoop() {
     while (true) {
-        EventType event = eventQueue.Pop();
-        (*eventHandlers[event.type])(event.type);
+        Event event = eventQueue.Pop();
+        (*eventHandlers[event.type])(event);
     }
 }
 ```
 
-Important de menționat că obiectele programului nu trebuie să interacționeze direct între ele. În schimb, ele trebuie să genereze evenimente și să le transmită pentru procesare procesorilor de evenimente corespunzători. Acest lucru permite reducerea cuplării între componentele programului și ușurința extinderii programului.
+Este important ca obiectele din program să nu interacționeze direct între ele, ci să genereze evenimente și să le transmită handler-elor potrivite. Astfel, se reduce gradul de cuplare între componente și se facilitează extinderea aplicației.
 
 ## Biblioteci și framework-uri
 
-Există multe biblioteci și framework-uri care facilitează dezvoltarea programelor scrise cu programare bazată pe evenimente. Unele dintre cele mai populare biblioteci și framework-uri pentru dezvoltarea interfețelor grafice sunt:
+Există numeroase biblioteci și framework-uri care simplifică dezvoltarea aplicațiilor bazate pe evenimente. Dintre cele mai populare pentru interfețe grafice:
 
-- __WinAPI__ este un set de funcții C pentru dezvoltarea aplicațiilor Windows cu interfață grafică.
-- __MFC__ (Microsoft Foundation Classes) este un framework pentru dezvoltarea aplicațiilor Windows cu interfață grafică. Prezintă un înveliș peste WinAPI.
-- __Qt__ este un framework pentru dezvoltarea aplicațiilor grafice, cross-platform.
-- __GTK__ (GIMP Toolkit) este o bibliotecă pentru dezvoltarea aplicațiilor grafice, vine din Linux, dar este disponibil și pentru alte platforme.
-- __wxWidgets__ este o bibliotecă pentru dezvoltarea aplicațiilor grafice.
-- __FLTK__ (Fast Light Toolkit) este o bibliotecă pentru dezvoltarea aplicațiilor grafice.
+- __WinAPI__ — set de funcții pentru dezvoltarea aplicațiilor Windows (doar pentru Windows).
+- __MFC__ — bibliotecă pentru interfețe grafice în C++ (doar pentru Windows).
+- __Qt__ — framework cross-platform pentru interfețe grafice în C++.
+- __GTK__ — bibliotecă pentru interfețe grafice în C.
+- __wxWidgets__ — bibliotecă cross-platform pentru interfețe grafice în C++.
+- __FLTK__ — bibliotecă cross-platform pentru interfețe grafice în C++.
 
-Comunicarea cu interfața grafică în aceste biblioteci se realizează prin programare bazată pe evenimente. Fiecare element al interfeței grafice (de exemplu, buton, câmp de introducere) generează evenimente la care se pot atașa procesori de evenimente corespunzători.
+Interacțiunea cu interfața grafică în aceste biblioteci se realizează prin programare orientată pe evenimente. Fiecare element (buton, câmp de text etc.) generează evenimente la care se poate reacționa prin definirea handler-elor corespunzătoare.
 
-## Bibliografia
+## Bibliografie
 
-1. [_Programare orientată eveniment_, Wikipedia](https://ro.wikipedia.org/wiki/Programare_orientată_eveniment)
-2. Fowler М. _Analysis Patterns: Reusable Object Models._ Addison-Wesley. (1996)
+1. [Programare orientată pe evenimente, Wikipedia](https://ro.wikipedia.org/wiki/Programare_orientat%C4%83_pe_evenimente)
+2. Fowler M. _Patterns of Enterprise Application Architecture._ Addison-Wesley. (2002)
 3. Gamma E., Helm R., Johnson R., Vlissides J. _Design Patterns: Elements of Reusable Object-Oriented Software._ Addison-Wesley. (1994)
-4. [_Windows API_, Microsoft](https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list)
-5. [_MFC_, Microsoft](https://docs.microsoft.com/en-us/cpp/mfc/mfc-desktop-applications)
-6. [_Qt_, Qt Project](https://www.qt.io/)
-7. [_GTK_, GTK](https://www.gtk.org/)
-8. [_wxWidgets_, wxWidgets](https://www.wxwidgets.org/)
-9. [_FLTK_, FLTK](https://www.fltk.org/)
+4. [Windows API, Microsoft](https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list)
+5. [MFC, Microsoft](https://docs.microsoft.com/en-us/cpp/mfc/mfc-desktop-applications)
+6. [Qt, Qt Project](https://www.qt.io/)
+7. [GTK, GTK](https://www.gtk.org/)
+8. [wxWidgets, wxWidgets](https://www.wxwidgets.org/)
+9. [FLTK, FLTK](https://www.fltk.org/)

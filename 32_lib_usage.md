@@ -1,110 +1,115 @@
-# Utilizarea bibliotecilor externe
+# Utilizarea bibliotecilor terțe
 
-- [Utilizarea bibliotecilor externe](#utilizarea-bibliotecilor-externe)
-  - [Biblioteci de programare](#biblioteci-de-programare)
+- [Utilizarea bibliotecilor terțe](#utilizarea-bibliotecilor-terțe)
+  - [Biblioteca de programare](#biblioteca-de-programare)
   - [Utilizarea bibliotecilor statice](#utilizarea-bibliotecilor-statice)
-    - [Exemplu de utilizare a bibliotecii statice](#exemplu-de-utilizare-a-bibliotecii-statice)
+    - [Exemplu de utilizare a unei biblioteci statice](#exemplu-de-utilizare-a-unei-biblioteci-statice)
   - [Utilizarea bibliotecilor dinamice](#utilizarea-bibliotecilor-dinamice)
-    - [Dynamic linking](#dynamic-linking)
-    - [Dynamic loading](#dynamic-loading)
+    - [Legare implicită](#legare-implicită)
+    - [Legare explicită](#legare-explicită)
   - [Bibliografie](#bibliografie)
 
-## Biblioteci de programare
+## Biblioteca de programare
 
-__Biblioteca de programare__ este un set de resurse de programare așa cum sunt funcții, clase, obiecte, constante și variabile. În special, constantele pot fi date grafice sau multimedia. Bibliotecile de programare sunt împărțite în trei tipuri: __statice__, __dinamice__ și __de șabloane__.
+Prin __bibliotecă de programare__ se înțelege un ansamblu de resurse software, precum funcții, clase, obiecte, constante și diverse variabile. De exemplu, constantele pot reprezenta date grafice sau multimedia. Bibliotecile de programare se împart în trei tipuri: __statice__, __dinamice__ și __biblioteci de șabloane__.
 
-Bibliotecile de programare statice sunt prezentate prin două fișiere:
+Bibliotecile statice sunt reprezentate de două fișiere:
 
-1. Fișierul antet cu extensia `h` (`hxx`, `hpp`), care descrie interfața bibliotecii;
-2. Arhiva binară cu extensia `lib` (în Windows) sau `a` (în sistemele compatibile Unix), care stochează toate resursele de programare sub formă de cod obiect.
+1. Un fișier header cu extensia `h` (`hxx`, `hpp`), care descrie interfața bibliotecii;
+2. Un fișier binar cu extensia `lib` (în Windows) sau `a` (în sistemele Unix), care conține toate resursele software sub formă de cod obiect.
 
-Bibliotecile de programare dinamice sunt prezentate prin trei fișiere:
+Bibliotecile dinamice sunt reprezentate de trei fișiere:
 
-1. Fișierul antet cu extensia `h` (`hxx`, `hpp`), care descrie interfața bibliotecii;
-2. Arhiva binară cu extensia `dll` (în Windows) sau `so` (în sistemele compatibile Unix), numită bibliotecă dinamică (în sistemele Unix - partajată), care stochează toate resursele de programare sub formă de cod binar;
-3. Fișierul cu extensia `lib` (în Windows) sau `a` (în sistemele compatibile Unix), numit bibliotecă de import, care stochează locațiile resurselor de programare în biblioteca dinamică. În sistemele Unix, biblioteca de import nu este utilizată.
+1. Un fișier header cu extensia `h` (`hxx`, `hpp`), care descrie interfața bibliotecii;
+2. Un fișier binar cu extensia `dll` (în Windows) sau `so` (în sistemele Unix), numit bibliotecă dinamică (sau partajată în Unix), care conține toate resursele software sub formă de cod binar;
+3. Un fișier cu extensia `lib` (în Windows) sau `a` (în Unix), numit bibliotecă de import, care conține informații despre locația resurselor din biblioteca dinamică. În Unix, biblioteca de import nu este folosită.
 
-Există și biblioteci de programare care nu pot fi reprezentate altfel decât sub formă de cod sursă - acestea sunt bibliotecile care conțin șabloane de clase și funcții. Aceste biblioteci sunt furnizate în fișiere antet.
+Există și un tip special de biblioteci care nu pot fi distribuite decât sub formă de cod sursă – biblioteci ce conțin șabloane de clase și funcții. Acestea sunt livrate sub formă de fișiere header.
 
-Numirea bibliotecilor de programare pentru compilatorul Gnu C++ (g++) are următoarea formă:
+Denumirea fișierelor pentru bibliotecile de programare în Gnu C++ (g++) este:
 
-- fișierul antet: `<nume bibliotecă>.h` sau `<nume bibliotecă>.hpp`;
-- biblioteca statică: `lib<nume bibliotecă>.a` (în sistemele Unix) sau `<nume bibliotecă>.lib` (în Windows);
-- biblioteca dinamică: `<nume bibliotecă>.so` (în sistemele Unix) sau `<nume bibliotecă>.dll` (în Windows).
+- fișier header: `<nume_bibliotecă>.h` sau `<nume_bibliotecă>.hpp`;
+- bibliotecă statică: `lib<nume_bibliotecă>.a` (Unix) sau `<nume_bibliotecă>.lib` (Windows);
+- bibliotecă dinamică: `<nume_bibliotecă>.so` (Unix) sau `<nume_bibliotecă>.dll` (Windows).
 
-Fișierele antet de obicei sunt plăsate în directorul `include` a compilatorului, bibliotecile statice și de import - în directorul `lib`, iar bibliotecile dinamice sunt plasate în directoarele sistemului (`C:\Windows\System32` sau `/usr/bin`). Aceste căi pot fi redefinite în program sau în timpul compilării.
+Fișierele header se găsesc de obicei în folderul `INCLUDE` al compilatorului, bibliotecile statice și de import – în folderul `LIB`, iar bibliotecile dinamice – în folderele de sistem (`c:\Windows\System32` sau `/usr/bin`). Aceste căi pot fi suprascrise în program sau la compilare.
 
-Fiecare tip de bibliotecă de programare are avantaje și dezavantaje. De exemplu, utilizarea bibliotecilor statice crește portabilitatea programelor datorită faptului că acestea nu depind de niciun modul (biblioteci dinamice), dar codul programului crește. Utilizarea bibliotecilor dinamice permite crearea de programe mici ca dimensiune, dar în timpul execuției acestea vor ocupa în memorie locul bibliotecii dinamice.
+Fiecare tip de bibliotecă are avantaje și dezavantaje. De exemplu, utilizarea bibliotecilor statice crește portabilitatea programelor, deoarece nu depind de module externe, însă dimensiunea executabilului crește. Utilizarea bibliotecilor dinamice permite crearea unor programe mai mici, dar la rulare acestea ocupă memorie suplimentară pentru biblioteca dinamică.
 
 ## Utilizarea bibliotecilor statice
 
-La utilizarea funcțiilor (claselor sau altor resurse programatice) din bibliotecile statice, la etapa de compilare a programului din bibliotecă compilatorul ia doar codurile obiect ale resurselor utilizate. Prin urmare, la dimensiunea bibliotecii statice de câteva megaocteți, programul crește în dimensiune cu câteva zeci de kiloocteți (în funcție de dimensiunea funcțiilor utilizate).
+La utilizarea funcțiilor (claselor sau altor resurse) din biblioteci statice, la compilare, compilatorul include doar codul obiect al resurselor folosite. Astfel, chiar dacă biblioteca are câțiva megabytes, programul rezultat crește doar cu câteva zeci de kilobytes (în funcție de funcțiile folosite).
 
-Pentru utilizarea bibliotecilor statice în program este necesar să se execute următoarele acțiuni:
+Pentru a utiliza o bibliotecă statică într-un program, trebuie să:
 
-1. De a conecta fișierul antet al bibliotecii în program;
-2. La compilarea programului să se specifice calea către bibliotecă în parametrii de compilare.
+1. Includeți fișierul header al bibliotecii în program;
+2. La compilare, specificați calea către bibliotecă în parametrii compilatorului.
 
-În acest caz, compilatorul ia doar codurile obiect ale funcțiilor utilizate din bibliotecă și le include în codul programului. Această includere a codului se numește __asamblarea statică__.
+În acest caz, compilatorul include doar codul obiect al funcțiilor folosite, proces numit __legare statică__.
 
-### Exemplu de utilizare a bibliotecii statice
+### Exemplu de utilizare a unei biblioteci statice
 
-Fie dată o bibliotecă statică __MyMath__, care este caracterizată de următoarele fișiere:
+Presupunem că avem biblioteca statică __MyMath__, cu următoarele fișiere:
 
-1. `MyMath.h` - fișierul antet al bibliotecii;
-2. `libMyMath.a` - arhiva binară a bibliotecii.
+1. `MyMath.h` – fișierul header;
+2. `libMyMath.a` – arhiva binară a bibliotecii.
 
-Fie această bibliotecă plasată în directorul `C:\MyLibs\MyMath`. Pentru a utiliza biblioteca în program, este necesar să se execute următoarele acțiuni:
+Biblioteca se află în folderul `C:\MyLibs\MyMath`. Pentru a o folosi:
 
-1. De a conecta fișierul antet al bibliotecii în program:
+1. Includeți fișierul header în program:
 
-```cpp
-#include "MyMath.h"
-```
+   ```cpp
+   #include "MyMath.h"
+   ```
 
-2. La compilarea programului să se specifice calea către bibliotecă în parametrii de compilare:
+2. La compilare, specificați calea către bibliotecă:
 
-```bash
-g++ -o MyProgram.exe MyProgram.cpp -IC:\\MyLibs\\MyMath -LC:\\MyLibs\\MyMath -lMyMath
-```
+   ```bash
+   g++ -o MyProgram.exe MyProgram.cpp -IC:\\MyLibs\\MyMath -LC:\\MyLibs\\MyMath -lMyMath
+   ```
 
-În acest caz, cheia de compilare `-I` indică calea către fișierul antet al bibliotecii, cheia `-L` indică calea către biblioteca de programare, iar cheia `-l` indică numele bibliotecii. Cărțile pot fi atât absolute, cât și relative.
+Aici, `-I` indică calea către fișierele header, `-L` către biblioteci, iar `-l` numele bibliotecii. Căile pot fi absolute sau relative.
 
 ## Utilizarea bibliotecilor dinamice
 
-Bibliotecile dinamice pot fi utilizate în două moduri diferite:
+Bibliotecile dinamice pot fi folosite în două moduri:
 
-- legare la timpul de încărcare a programului - __legare dinamică__ (en. __dynamic linking__);
-- legare la timpul de execuție a programului - __încărcare dinamică__ (en. __dynamic loading__).
+- Legare implicită;
+- Legare explicită.
 
-### Dynamic linking
+### Legare implicită
 
-__Legarea dinamică a bibliotecii__ cu aplicația se realizează la momentul conectării fișierului antet al bibliotecii, precum și la indicarea în proprietățile proiectului utilizarea bibliotecii. În acest caz, biblioteca va fi încărcată în memoria operațională înainte de pornirea aplicației. La pornirea aplicației, sistemul de operare verifică existența bibliotecilor dinamice legate de program, pe căile sistemului, în directorul curent sau în memoria operațională. Numai după aceea programul este executat. Dacă cel puțin o bibliotecă nu a fost găsită, aplicația se încheie cu o eroare corespunzătoare.
+__Legarea implicită__ a unei biblioteci cu aplicația are loc la includerea header-ului și la specificarea bibliotecii în proprietățile proiectului. Biblioteca este încărcată în memorie înainte de lansarea aplicației. La pornire, sistemul de operare caută bibliotecile dinamice asociate programului în căile de sistem, în directorul curent sau în memorie. Dacă lipsește o bibliotecă, aplicația se oprește cu eroare.
 
-În timpul compilării a programului care utilizează biblioteca dinamică codul binar al aplicației crește cu câteva byte, deoarece în locul codului binar al funcțiilor din bibliotecă este inclusă doar o instrucțiune de apel a funcției din bibliotecă, care este definită în biblioteca de import.
+La compilare, codul executabil crește cu câțiva bytes, deoarece în locul codului funcției din biblioteca dinamică se inserează un apel către acea funcție, declarat în biblioteca de import.
 
-### Dynamic loading
+### Legare explicită
 
-Totodată bibliotecile dinamice pot fi încărcate și utilizate nu numai la pornirea aplicației, ci și, după necesitate, în timpul execuției acesteia.
+Bibliotecile dinamice pot fi încărcate și la cerere, în timpul execuției programului.
 
-__Încărcarea dinamică a bibliotecii__ se realizează prin intermediul funcției `LoadLibrary` (sau `dlopen` în Unix), care încarcă biblioteca în memorie în momentul apelării funcției. În acest caz, aplicația poate funcționa fără bibliotecă până în momentul încărcării acesteia cu funcția `LoadLibrary`.
+__Legarea explicită__ se face cu funcția `LoadLibrary` (`dlopen` în Unix), care încarcă biblioteca la momentul apelului. Astfel, aplicația poate funcționa fără bibliotecă până la momentul încărcării acesteia.
 
-În SO Windows pentru încărcarea dinamică a bibliotecii se utilizează următoarele funcții, definite în fișierul antet `windows.h`:
+În Windows, pentru legare explicită se folosesc funcțiile din `windows.h`:
 
-- `LoadLibrary` - încarcă biblioteca dinamică în memorie operativă;
-- `GetProcAddress` - obține adresa funcției din biblioteca dinamică;
-- `FreeLibrary` - descarcă biblioteca dinamică din memorie operativă;
-- `GetModuleHandle` - obține descriptorul bibliotecii dinamice.
+- `LoadLibrary` — încarcă biblioteca dinamică în memorie;
+- `GetProcAddress` — obține adresa unei funcții din bibliotecă;
+- `FreeLibrary` — eliberează biblioteca din memorie;
+- `GetModuleHandle` — obține descriptorul bibliotecii.
 
-În Unix pentru încărcarea dinamică a bibliotecii se utilizează următoarele funcții, definite în fișierul antet `dlfcn.h`:
+În Unix, pentru legare explicită se folosesc funcțiile din `dlfcn.h`:
 
-- `dlopen` - încarcă biblioteca dinamică în memorie operativă;
-- `dlsym` - obține adresa funcției din biblioteca dinamică;
-- `dlclose` - descarcă biblioteca dinamică din memorie operativă;
+- `dlopen` — încarcă biblioteca dinamică în memorie;
+- `dlsym` — obține adresa unei funcții din bibliotecă;
+- `dlclose` — eliberează biblioteca din memorie.
 
-Dacă există o bibliotecă dinamică `MyMath.dll`, iar în ea este definită funcția `int Add(int, int)`, atunci în SO Windows pentru legarea explicită a bibliotecii cu programul este necesar să se execute următoarele acțiuni:
+Dacă există biblioteca dinamică `MyMath.dll` cu funcția `int Add(int, int)`, în Windows legarea explicită se face astfel:
 
 ```cpp
+/**
+ * @file dll_load_example.cpp
+ * @brief Exemplu de legare explicită a unei biblioteci dinamice, Windows
+ * @details g++ dll_load_example.cpp -o dll_load_example.exe
+ */
 #include <windows.h>
 #include <iostream>
 
@@ -113,16 +118,16 @@ typedef int (*pOperation)(int, int);
 int main()
 {
     HINSTANCE hLib = LoadLibrary("MyMath.dll");
-    if (hLib == NULL)
+    if (hLib == nullptr)
     {
-        std::cerr << "Error loading library" << std::endl;
+        std::cerr << "Eroare la încărcarea bibliotecii" << std::endl;
         return 1;
     }
 
     pOperation Add = (pOperation)GetProcAddress(hLib, "Add");
-    if (Add == NULL)
+    if (Add == nullptr)
     {
-        std::cerr << "Error loading function" << std::endl;
+        std::cerr << "Eroare la încărcarea funcției" << std::endl;
         return 1;
     }
 
@@ -133,9 +138,14 @@ int main()
 }
 ```
 
-În sistemul de operare Unix pentru legarea explicită a bibliotecii cu programul este necesar să se execute următoarele acțiuni:
+În Unix, legarea explicită se face astfel:
 
 ```cpp
+/**
+ * @file dl_load_example.cpp
+ * @brief Exemplu de legare explicită a unei biblioteci dinamice, Unix
+ * @details g++ dl_load_example.cpp -o dl_load_example -ldl
+ */
 #include <dlfcn.h>
 #include <iostream>
 
@@ -144,17 +154,21 @@ typedef int (*pOperation)(int, int);
 int main()
 {
     void* hLib = dlopen("MyMath.so", RTLD_LAZY);
-    if (hLib == NULL)
+    if (hLib == nullptr)
     {
-        std::cerr << "Error loading library" << std::endl;
+        std::cerr << "Eroare la încărcarea bibliotecii" << std::endl;
         return 1;
     }
 
     pOperation Add = (pOperation)dlsym(hLib, "Add");
-    if (Add == NULL)
+    if (Add == nullptr)
     {
-        std::cerr << "Error loading function" << std::endl;
-        return 1;
+        char* error = dlerror();
+        if (error != nullptr) {
+            std::cerr << "Eroare la dlsym: " << error << std::endl;
+            dlclose(hLib);
+            return 1;
+        }
     }
 
     std::cout << Add(2, 3) << std::endl;
@@ -169,4 +183,4 @@ int main()
 1. [Library (computing), Wikipedia](https://en.wikipedia.org/wiki/Library_(computing))
 2. [Create C/C++ DLLs in Visual Studio, microsoft.com](https://learn.microsoft.com/en-us/cpp/build/dlls-in-visual-cpp?view=msvc-170)
 3. [dlopen, Linux Manual page](https://www.man7.org/linux/man-pages/man3/dlopen.3.html)
-4. [Wheeler David, Dynamically Loaded (DL) Libraries](dwheeler.com/program-library/Program-Library-HOWTO/)
+4. [Wheeler David, Dynamically Loaded (DL) Libraries](https://dwheeler.com/program-library/Program-Library-HOWTO/)
