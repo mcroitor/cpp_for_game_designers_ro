@@ -21,7 +21,13 @@ După executarea acestei lucrării de laborator student va face cunoștința cu 
 3. Creați un repozitoriu nou.
 4. Clonați repozitoriu pe calculator personal
 5. Adăugați în repozitoriu fișier README.md cu descrierea proiectului
-6. Creați fișiere `hpp` cu definirea structurilor de bază necesitate pentru proiect
+   1. Denumirea proiectului
+   2. Descrierea proiectului / reguli de joc
+   3. Structuri de date si descrierea lor
+6. Creați fișiere `hpp` cu definirea structurilor de bază necesitate pentru proiect. Fisiere obligatorii:
+   1. motor de joaca (de exemplu, `GameEngine.hpp` sau `Engine.hpp`)
+   2. desenator (de exemplu `Painter.hpp`, `Presenter.hpp` sau `Renderer.hpp`)
+   3. ascultator (de exemplu `Listener.hpp`)
 7. Plasați cod pe __GitHub__
 
 ## Prezentare
@@ -32,8 +38,9 @@ La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 - `1p` - crearea contului pe GitHub
 - `1p` - crearea proiectului
-- `4p` - crearea fișierelor cu structurile necesare
-- `3p` - adăugarea descrierii proiectului
+- `2p` - crearea fișierelor cu structurile necesare
+- `2p` - adăugarea descrierii proiectului
 - `1p` - publicarea codului pe GitHub in ramura `lab01`
+- `3p` - apararea proiectului
 - `-1p` - pentru fiecare zi de întârziere
 - `-5p` - pentru copierea codului de la colegi
