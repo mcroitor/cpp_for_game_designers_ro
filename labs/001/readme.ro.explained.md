@@ -148,6 +148,16 @@ public:
 };
 ```
 
+- `listener.hpp`
+
+```cpp
+#pragma once
+
+class Listener {
+   int GetKeyPressed();
+};
+```
+
 ### 5. Adăugarea descrierii proiectului
 
 Creati în directorul `SnakeGame` fișierul `readme.md` cu următorul conținut:
@@ -182,8 +192,9 @@ La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 - `1p` - crearea contului pe GitHub
 - `1p` - crearea proiectului
-- `4p` - crearea fișierelor cu structurile necesare
-- `3p` - adăugarea descrierii proiectului
+- `2p` - crearea fișierelor cu structurile necesare
+- `2p` - adăugarea descrierii proiectului
 - `1p` - publicarea codului pe GitHub in ramura `lab01`
+- `3p` - apararea proiectului
 - `-1p` - pentru fiecare zi de întârziere
 - `-5p` - pentru copierea codului de la colegi

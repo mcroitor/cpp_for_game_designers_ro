@@ -1,11 +1,16 @@
 #include <iostream>
 
+using namespace std;
+
 int main() {
-    std::cout << "sizeof(char) = " << sizeof(char) <<std::endl;
-    std::cout << "sizeof(short) = " << sizeof(short) <<std::endl;
-    std::cout << "sizeof(int) = " << sizeof(int) <<std::endl;
-    std::cout << "sizeof(long) = " << sizeof(long) <<std::endl;
-    std::cout << "sizeof(long long) = " << sizeof(long long) <<std::endl;
-    std::cout << "sizeof(bool) = " << sizeof(bool) <<std::endl;
+    cout << "sizeof(char) = " << sizeof(char) <<endl;
+    cout << "sizeof(short) = " << sizeof(short) <<endl;
+    cout << "sizeof(int) = " << sizeof(int) <<endl;
+    cout << "sizeof(long) = " << sizeof(long) <<endl;
+    cout << "sizeof(long long) = " << sizeof(long long) <<endl;
+    cout << "sizeof(bool) = " << sizeof(bool) <<endl;
+
+    char age = 100ull;
+
     return 0;
 }

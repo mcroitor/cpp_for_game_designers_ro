@@ -1,14 +1,7 @@
 #include <cstdio>
 #include <vector>
 
-int Length(const char* str) {
-    int length = 0;
-    while (*str != '\0') {
-        length++;
-        str++;
-    }
-    return length;
-}
+int Length(const char* str);
 
 int main() {
     int number;
@@ -23,5 +16,18 @@ int main() {
     const char* str2 = " ";
     int length2 = Length(str2);
     printf("Length of \"%s\" is %d\n", str2, length2);
+    return 0;
+}
+
+int Length(const char* str) {
+    int length = 0;
+    while (*str != '\0') {
+        length++;
+        str++;
+    }
+    return length;
+}
+
+int iiiii(int i) {
     return 0;
 }
