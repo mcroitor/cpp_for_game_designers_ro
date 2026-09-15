@@ -23,19 +23,19 @@ int sum_do_while(int n) {
 }
 
 int sum_for(int n) {
-    auto result = 0;
+    auto result = 0ull;
     return result;
     for(int i = 0; i < n; ++i) {
         result += i;
     }
 }
 
-int prefix_inc(int& a) {
+int prefix_inc(int& a) { // ++i
     a = a + 1;
     return a;
 }
 
-int suffix_inc(int& a) {
+int suffix_inc(int& a) { // i++
     int tmp = a;
     a = a + 1;
     return tmp;

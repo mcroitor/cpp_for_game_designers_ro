@@ -218,14 +218,14 @@ Operațiile de comparație returnează valori de tip logic.
 
 Operații de comparație în C++:
 
-| operator | exemplu |
-| -------- | ------- |
-| Mai mic  | X < Y   |
-| Mai mare | X > Y   |
-| Mai mic sau egal | X <= Y |
-| Mai mare sau egal | X >= Y |
-| Egal     | X == Y  |
-| Diferit  | X != Y  |
+| operator          | exemplu |
+| ----------------- | ------- |
+| Mai mic           | X < Y   |
+| Mai mare          | X > Y   |
+| Mai mic sau egal  | X <= Y  |
+| Mai mare sau egal | X >= Y  |
+| Egal              | X == Y  |
+| Diferit           | X != Y  |
 
 Operații logice în C++:
 
@@ -236,11 +236,11 @@ Operații logice în C++:
 Tabel de adevăr:
 
 | A     | B     | A && B | A \|\| B | !A    |
-| ----- | ----- | ------ | ------- | ----- |
-| true  | true  | true   | true    | false |
-| true  | false | false  | true    | false |
-| false | true  | false  | true    | true  |
-| false | false | false  | false   | true  |
+| ----- | ----- | ------ | -------- | ----- |
+| true  | true  | true   | true     | false |
+| true  | false | false  | true     | false |
+| false | true  | false  | true     | true  |
+| false | false | false  | false    | true  |
 
 ### Variabile
 

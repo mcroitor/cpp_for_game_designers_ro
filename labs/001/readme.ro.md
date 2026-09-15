@@ -30,6 +30,8 @@ După executarea acestei lucrării de laborator student va face cunoștința cu 
    3. ascultator (de exemplu `Listener.hpp`)
 7. Plasați cod pe __GitHub__
 
+> În caz, dacă se utilizează LLM (Large Language Model) pentru obținerea rezultatului, proiectul trebuie să includă și mențiunea corespunzătoare în README.md, și fișierul `prompts.md`, care conține prompturile utilizate și răspunsurile generate.
+
 ## Prezentare
 
 La lucrare de laborator în Moodle adaugați referința repozitoriu.
