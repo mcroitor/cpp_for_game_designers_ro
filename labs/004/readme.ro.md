@@ -24,10 +24,11 @@ La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 ## Evaluare
 
-- `2p` - utilizarea containerelor STL
+- `1p` - utilizarea containerelor STL
 - `1p` - utilizarea `std::string`
 - `1p` - fluxurile de intrare/ieșire
-- `2p` - utilizarea smart pointers / referințe
-- `4p` - utilizarea algoritmilor STL
+- `1p` - utilizarea smart pointers / referințe
+- `3p` - utilizarea algoritmilor STL
+- `3p` - apararea proiectului
 - `-1p` - pentru fiecare zi de întârziere
 - `-5p` - pentru copierea codului de la colegi

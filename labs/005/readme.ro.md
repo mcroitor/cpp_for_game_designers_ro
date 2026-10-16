@@ -20,8 +20,9 @@ La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 ## Evaluare
 
-- `3p` - crearea bibliotecilor de programare
-- `4p` - utilizarea bibliotecilor externe
-- `3p` - împrospătarea fișierului de construcție
+- `2p` - crearea bibliotecilor de programare
+- `3p` - utilizarea bibliotecilor externe
+- `2p` - împrospătarea fișierului de construcție
+- `3p` - apararea proiectului
 - `-1p` - pentru fiecare zi de întârziere
 - `-5p` - pentru plagiat

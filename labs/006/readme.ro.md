@@ -31,9 +31,9 @@ La lucrare de laborator în Moodle adaugați referința repozitoriu.
 
 ## Evaluare
 
-- `3p` - utilizarea sistemelor de documentare a codului
-- `3p` - descrierea proiectului în fișierul `README.md`
-- `4p` - existența testelor
-- `-1p` - pentru fiecare zi de întârziere
+- `2p` - utilizarea sistemelor de documentare a codului
+- `2p` - descrierea proiectului în fișierul `README.md`
+- `3p` - existența testelor
+- `3p` - apararea proiectului
 - `-1p` - pentru fiecare zi de întârziere
 - `-5p` - pentru plagiat
