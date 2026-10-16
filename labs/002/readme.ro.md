@@ -22,9 +22,10 @@ La lucrare de laborator în Moodle adaugați referința repozitoriu.
 ## Evaluare
 
 - `2p` - implementarea metodelor pentru structuri
-- `4p` - crearea fișierului de construcție
+- `2p` - crearea fișierului de construcție
 - `1p` - crearea fișierului `.gitignore`
 - `1p` - adaugarea in fisier `README.md` modului de construire a proiectului
-- `2p` - adăugarea fișierelor `cpp` și fișierului de construcție pe GitHub în ramura `lab02`
+- `1p` - adăugarea fișierelor `cpp` și fișierului de construcție pe GitHub în ramura `lab02`
+- `3p` - apararea proiectului
 - `-1p` - pentru fiecare zi de întârziere
 - `-5p` - pentru copierea codului de la colegi
